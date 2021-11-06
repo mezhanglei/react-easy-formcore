@@ -1,6 +1,6 @@
 # react-easyform
 
-[English](./README.md) | 中文说明
+English | [中文说明](./README_CN.md)
 
 [![Version](https://img.shields.io/badge/version-0.0.1-green)](https://www.npmjs.com/package/react-easyform)
 
