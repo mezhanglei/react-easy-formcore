@@ -1,5 +1,5 @@
 {
-  "name": "react-easyform",
+  "name": "react-baseform",
   "version": "0.0.1",
   "description": "轻量级form表单容器组件",
   "main": "lib/bundle.js",
@@ -20,10 +20,10 @@
     "css-fix": "stylelint src/**/*.{css,scss,less} --fix"
   },
   "keywords": [
-    "react-easyform",
-    "react-easy-form",
+    "react-baseform",
+    "react-base-form",
     "react-form",
-    "easy-form"
+    "base-form"
   ],
   "author": "zhanglei",
   "license": "MIT",
