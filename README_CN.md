@@ -1,8 +1,8 @@
-# react-baseform
+# react-easy-formcore
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-0.0.1-green)](https://www.npmjs.com/package/react-baseform)
+[![Version](https://img.shields.io/badge/version-0.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -18,16 +18,16 @@
 ## 安装
 
 ```bash
-npm install react-baseform --save
+npm install react-easy-formcore --save
 # 或者
-yarn add react-baseform
+yarn add react-easy-formcore
 ```
 
 ## 基本使用
 
 ```javascript
 import React from 'react';
-import { Form, FormStore } from "react-baseform";
+import { Form, FormStore } from "react-easy-formcore";
 import { Input, Select } from 'antd'
 
 class demo extends React.Component {
@@ -65,7 +65,7 @@ class demo extends React.Component {
 
 ```javascript
 import React from 'react';
-import { Form, FormStore } from "react-baseform";
+import { Form, FormStore } from "react-easy-formcore";
 import { Input, Select } from 'antd'
 
 class demo extends React.Component {

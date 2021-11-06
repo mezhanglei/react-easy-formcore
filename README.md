@@ -1,8 +1,8 @@
-# react-baseform
+# react-easy-formcore
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.0.1-green)](https://www.npmjs.com/package/react-baseform)
+[![Version](https://img.shields.io/badge/version-0.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -18,16 +18,16 @@ Lightweight form container component for forms. Simply create a `FormStore` inst
 ## install
 
 ```bash
-npm install react-baseform --save
+npm install react-easy-formcore --save
 # 或者
-yarn add react-baseform
+yarn add react-easy-formcore
 ```
 
 ## base
 
 ```javascript
 import React from 'react';
-import { Form, FormStore } from "react-baseform";
+import { Form, FormStore } from "react-easy-formcore";
 import { Input, Select } from 'antd'
 
 class demo extends React.Component {
@@ -65,7 +65,7 @@ class demo extends React.Component {
 
 ```javascript
 import React from 'react';
-import { Form, FormStore } from "react-baseform";
+import { Form, FormStore } from "react-easy-formcore";
 import { Input, Select } from 'antd'
 
 class demo extends React.Component {
