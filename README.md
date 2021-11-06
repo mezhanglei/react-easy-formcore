@@ -33,7 +33,7 @@ import { Input, Select } from 'antd'
 class demo extends React.Component {
     constructor(props) {
         super(props);
-        this.store = new FormStore();
+        this.store = new FormStore({Name1: 'initialvalue'});
         this.state = {
         }
     }
@@ -71,7 +71,7 @@ import { Input, Select } from 'antd'
 class demo extends React.Component {
     constructor(props) {
         super(props);
-        this.store = new FormStore();
+        this.store = new FormStore({Name1: 'initialvalue'});
         this.state = {
         }
     }
