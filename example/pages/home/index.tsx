@@ -19,7 +19,7 @@ class demo extends React.Component {
 
     validator = (value, callError) => {
         if (value?.length < 2) {
-            callError('主动报错');
+            callError('length is < 2');
         }
         callError();
     }

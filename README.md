@@ -130,8 +130,7 @@ class demo extends React.Component {
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
 - `onSubmit` The form submit callback, `optional`.
 - ` onReset` Form reset defaults, `optional`.
-- `onValuesChange` Event function when the form value changes, `Optional`.
-
+- `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 ### Form Field Props
 
 - `className` The class name of the form field, `optional`.
@@ -164,7 +163,8 @@ class demo extends React.Component {
 - `store.setFieldsError(erros: FormErrors<T>)` Set the error message for the form field.
 - ` store.setFieldRules(name: string, rules?: FormRule[])` Update the form field's checksum rules.
 - ` store.setFieldsRules(values: FormRules<T>)` Set the validation rules for a form field.
-- ` store.subscribe(name: string, onChange: () => void)` Subscribe to the form changes and return a function for unsubscribing.
+- ` store.subscribeValue(name: string, onChange: () => void)` Subscribe to the form value changes and return a function for unsubscribing.
+- `store.subscribeError(name: string, onChange: () => void)` Subscribe to the form error changes and return a function for unsubscribing.
 
 ### Hooks
 
