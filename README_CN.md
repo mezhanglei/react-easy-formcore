@@ -6,14 +6,14 @@
 
 # 适用场景
 
-轻量级表单表单容器组件。只需简单地创建一个`FormStore`实例并传递到`Form`组件上。对于表单组件（如`input`），无需再传递`value`和`onChange`了,数据由`FormStore`统一管理。
+轻量级表单表单容器组件，目标控件只需要提供`value`(或通过`valueProp`设置)和`onChange`方法，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
 # features
 
-- [x] Form.Item组件不提供样式，只提供`value`(或其他字段)和`onChange`双向绑定。
-- [x] Form.Field组件提供校验等表单控件外围容器的样式，以及`value`(或其他字段)和`onChange`双向绑定。
-- [x] 可以自定义`onChange`，但只能通过`FormStore`实例的`setFieldValue`等方法设置表单值
-- [x] 提供表单校验规则`rules`，可以自定义表单校验规则。
+- [x] Form.Item组件不提供样式，只提供`value`(或通过`valueProp`设置)和`onChange`双向绑定。
+- [x] Form.Field组件提供校验等表单控件外围容器的样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
+- [x] 使用的控件也可以自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
+- [x] Form.Field和 Form.Field提供表单校验规则属性`rules`，可以自定义表单校验规则。
 
 ## 安装
 

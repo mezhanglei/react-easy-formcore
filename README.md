@@ -6,7 +6,7 @@ English | [中文说明](./README_CN.md)
 
 # Introduction?
 
-Lightweight form container component for forms. Simply create a `FormStore` instance and pass it to the `Form` component. For form components such as `input`, there is no need to pass `value` and `onChange`, the data is managed by the `FormStore`.
+Lightweight form container component where the target control only needs to provide the `value` (or set via `valueProp`) and `onChange` methods, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # features
 
