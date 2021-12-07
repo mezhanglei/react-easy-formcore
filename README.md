@@ -167,6 +167,7 @@ class demo extends React.Component {
 - `compact` Whether to hide error messages for all Form.
 - `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
 - `labelWidth` The custom label width for all Form.
+- `labelAlign` The align of label for all Form.
 - `gutter` The distance between all Form.Field component custom labels and form components, `optional`.
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
 - `onSubmit` The form submit callback, `optional`.
@@ -181,6 +182,13 @@ class demo extends React.Component {
 - `valueGetter` The way to get the form value from the form event, `Optional`.
 - `suffix` Suffix node, `optional`.
 - `rules` Checksum rules for form fields `Optional`.
+- `inline` All Form.Field components set the inline layout, default is `false`.`optional`.
+- `compact` Whether to hide error messages `optional`.
+- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
+- `labelWidth` The custom label width `optional`.
+- `labelAlign` The align of label `optional`.
+- `gutter` The distance between all Form.Field component custom labels `optional`.
+- `errorClassName` add a custom class name when there is an error message, `optional`.
 
 ### Form.List Props
 

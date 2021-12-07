@@ -183,6 +183,13 @@ class demo extends React.Component {
 - `valueGetter` 从表单事件中获取表单值的方式，`可选`。
 - `suffix` 后缀节点，`可选`。
 - `rules` 表单域的校验规则 `可选`。
+- `inline` 是否行内布局，默认值为`false`。
+- `compact` 是否隐藏错误信息，默认值为`false`。
+- `required` 是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
+- `labelWidth` 组件自定义`label`宽度，`可选`。
+- `labelAlign` `label`的排列，`可选`。
+- `gutter` 自定义标签和表单组件间的距离，`可选`。
+- `errorClassName` 组件当有错误信息时，添加一个自定义类名，`可选`。
 
 ### Form.List Props
 
