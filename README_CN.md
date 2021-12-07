@@ -164,6 +164,9 @@ class demo extends React.Component {
 
 - `className` 表单元素类名，`可选`。
 - `store` 表单数据存储，`必须`。
+- `onSubmit` 表单提交回调，`可选`。
+- `onReset` 表单重置默认值，`可选`。
+- `onFormChange` 表单 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `inline` 所有 Form.Item 组件设置行内布局，默认值为`false`。
 - `compact` 所有 Form.Item 组件是否隐藏错误信息，默认值为`false`。
 - `required` 所有 Form.Item 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
@@ -171,9 +174,6 @@ class demo extends React.Component {
 - `labelAlign` 所有 Form.Item 组件 `label`的排列，`可选`。
 - `gutter` 所有 Form.Item 组件自定义标签和表单组件间的距离，`可选`。
 - `errorClassName` 所有 Form.Item 组件当有错误信息时，添加一个自定义类名，`可选`。
-- `onSubmit` 表单提交回调，`可选`。
-- `onReset` 表单重置默认值，`可选`。
-- `onFormChange` 表单 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 
 ### Form.Item Props
 
