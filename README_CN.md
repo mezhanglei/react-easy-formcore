@@ -168,6 +168,7 @@ class demo extends React.Component {
 - `compact` 所有 Form.Item 组件是否隐藏错误信息，默认值为`false`。
 - `required` 所有 Form.Item 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
 - `labelWidth` 所有 Form.Item 组件自定义标签宽度，`可选`。
+- `labelAlign` 所有 Form.Item 组件 `label`的排列，`可选`。
 - `gutter` 所有 Form.Item 组件自定义标签和表单组件间的距离，`可选`。
 - `errorClassName` 所有 Form.Item 组件当有错误信息时，添加一个自定义类名，`可选`。
 - `onSubmit` 表单提交回调，`可选`。

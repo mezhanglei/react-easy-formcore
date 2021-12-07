@@ -163,6 +163,9 @@ class demo extends React.Component {
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
+- `onSubmit` The form submit callback, `optional`.
+- ` onReset` Form reset defaults, `optional`.
+- `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `inline` All Form.Field components set the inline layout, default is `false`.
 - `compact` Whether to hide error messages for all Form.
 - `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
@@ -170,9 +173,6 @@ class demo extends React.Component {
 - `labelAlign` The align of label for all Form.
 - `gutter` The distance between all Form.Field component custom labels and form components, `optional`.
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
-- `onSubmit` The form submit callback, `optional`.
-- ` onReset` Form reset defaults, `optional`.
-- `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 ### Form.Item Props
 
 - `className` Form field class name, `optional`.
