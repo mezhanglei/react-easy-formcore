@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React from 'react';
 import "./index.less";
 import { Form, FormStore } from '../../../src/index';
 
@@ -27,15 +27,15 @@ class demo extends React.Component {
     render() {
         return (
             <Form store={this.store} onSubmit={this.onSubmit}>
-                <Form.Field label="Name1" name="name1" rules={[{ required: true, message: 'Name1 is Empty' }, { validator: this.validator, message: '自定义校验' }]}>
+                <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: this.validator, message: '自定义校验' }]}>
                     <input />
-                </Form.Field>
-                <Form.Field label="Name2" name="name2" rules={[{ required: true, message: 'Name2 is empty' }]}>
+                </Form.Item>
+                <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
                     <input />
-                </Form.Field>
-                <Form.Field label="">
+                </Form.Item>
+                <Form.Item label="">
                     <button>Submit</button>
-                </Form.Field>
+                </Form.Item>
             </Form>
         );
     }

@@ -2,18 +2,26 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.0.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.1.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `value` (or set via `valueProp`) and `onChange` methods, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
-# features
+# Form.Item
 
-- [x] Form.Item component does not provide styles, only `value` (or other fields) and `onChange` bi-directional binding.
-- [x] Form.Field component provides styles for the outer container of the form control such as checksum, as well as `value` (or other field) and `onChange` two-way binding.
-- [x] `onChange` can be customized, but the form value can only be set via methods such as `setFieldValue` of the `FormStore` instance
-- [x] Provide form validation rules `rules`, you can customize form validation rules.
+The smallest unit of a component in a form, and nodes as an object can be nested within each other.
+
+- [x] Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
+- [x] You can customize `onChange`, but you can only set the form value via an instance method such as `store.setFieldValue`.
+- [x] Custom form validation rules can be provided with the form validation rules property `rules`.
+
+# Form.List
+
+The `Form.Item` component is combined into an array as the values in `Form.
+
+- [x]  Each item in `Form.List` is an element of an array, no need to set the `name` field
+- [x] The `rules` checksum rules provided by `Form.List` are valid for all input items in the array, but have a lower priority than the items in the array's own `rules` rules
 
 ## install
 
@@ -26,94 +34,127 @@ yarn add react-easy-formcore
 ## base
 
 ```javascript
-import React from 'react';
+import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
-import { Input, Select } from 'antd'
+import { Input, Select } from "antd";
 
 class demo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.store = new FormStore({Name1: 'initialvalue'});
-        this.state = {
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.store = new FormStore({ Name1: "初始值设置" });
+    this.state = {};
+  }
 
-    onSubmit = async (e) => {
-        const { error, values } = await this.store.validate()
-        console.log(error, values, 'error ang values')
-    };
+  onSubmit = async (e) => {
+    const { error, values } = await this.store.validate();
+    console.log(error, values, "error ang values");
+  };
 
-    render() {
-        return (
-            <Form store={this.store} onSubmit={this.onSubmit}>
-                <Form.Field label="Name1" name="name1" rules={[{ required: true, message: 'Name1 is Empty' }]}>
-                  <Input />
-                </Form.Field>
-                <Form.Field label="Name2" name="name2" rules={[{ required: true, message: 'Name2 is empty' }]}>
-                   <Input />
-                </Form.Field>
-                <Form.Field label="">
-                    <button>Submit</button>
-                </Form.Field>
-            </Form>
-        );
+  // 自定义校验
+  // validator = (value) => {
+  //   if(!value) {
+  //     return false
+  //   }
+  //   return true;
+  // }
+
+  // 自定义校验
+  validator = (value, callError) => {
+    if (value?.length > 5) {
+      callError("name1 is more than 5");
     }
+    callError();
+  };
+
+  render() {
+    return (
+      <Form store={this.store} onSubmit={this.onSubmit}>
+        <Form.Item
+          label="Name1"
+          name="name1"
+          rules={[{ required: true, message: "name1 is empty" }, { validator: this.validator, message: "custome tips" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Name2"
+          name="name2"
+          rules={[{ required: true, message: "name2 is empty" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item label="">
+          <button>Submit</button>
+        </Form.Item>
+      </Form>
+    );
+  }
 }
-
 ```
-## validator
+## Form.List
 
 ```javascript
-import React from 'react';
+import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
-import { Input, Select } from 'antd'
+import { Input, Select } from "antd";
 
 class demo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.store = new FormStore({Name1: 'initialvalue'});
-        this.state = {
-        }
+  constructor(props) {
+    super(props);
+    this.store = new FormStore({ Name1: "initialvalue" });
+    this.state = {};
+  }
+
+  onSubmit = async (e) => {
+    const { error, values } = await this.store.validate();
+    console.log(error, values, "error ang values");
+  };
+
+  // validator
+  // validator = (value) => {
+  //   if(!value) {
+  //     return false
+  //   }
+  //   return true;
+  // }
+
+  // validator
+  validator = (value, callError) => {
+    if (value?.length > 5) {
+      callError("Name1 is more than 5");
     }
+    callError();
+  };
 
-    onSubmit = async (e) => {
-        const { error, values } = await this.store.validate()
-        console.log(error, values, 'error ang values')
-    };
 
-    // 使用rule里的message字段校验提示
-    // validator = (value) => {
-    //   if(!value) {
-    //     return false
-    //   }
-    //   return true;
-    // }
 
-    // 忽略message，通过callError方法自定义校验提示
-    validator = (value, callError) => {
-      if(value?.length > 5) {
-        callError('Name1 length more than 5')
-      }
-      callError()
-    }
-
-    render() {
-        return (
-            <Form store={this.store} onSubmit={this.onSubmit}>
-                <Form.Field label="Name1" name="name1" rules={[{ required: true, message: 'Name1 is Empty' }, { validator: this.validator, message: 'Custom lints' }]}>
-                  <Input />
-                </Form.Field>
-                <Form.Field label="Name2" name="name2" rules={[{ required: true, message: 'Name2 is Empty' }]}>
-                   <Input />
-                </Form.Field>
-                <Form.Field label="">
-                    <button>Submit</button>
-                </Form.Field>
-            </Form>
-        );
-    }
+  render() {
+    return (
+      <Form store={this.store} onSubmit={this.onSubmit}>
+        <Form.List name="list">
+          <Form.Item
+            label="list's one"
+            rules={[
+              { required: true, message: "list's one is Empty" },
+              { validator: this.validator, message: "custome tips" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="list's two"
+            rules={[{ required: true, message: "list's two is Empty" }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.List>
+        <Form.Item label="">
+          <button>Submit</button>
+        </Form.Item>
+      </Form>
+    );
+  }
 }
-
 ```
 
 ## APIs
@@ -131,42 +172,35 @@ class demo extends React.Component {
 - `onSubmit` The form submit callback, `optional`.
 - ` onReset` Form reset defaults, `optional`.
 - `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
-### Form Field Props
+### Form.Item Props
 
-- `className` The class name of the form field, `optional`.
-- `label` The form field label, `optional`.
-- `name` The form field field name, `optional`.
-- `valueProp` The name of the value attribute to fill in to the child component, the default value is `'value'`.
-- `valueGetter` The way to get the form value from the form event, `optional`.
-- `suffix` The suffix node, `optional`.
-- `rules` Checksum rules for the form field `Optional`.
+- `className` Form field class name, `optional`.
+- `label` Form field label, `Optional`.
+- `name` Form field name, `optional`.
+- `valueProp` attribute of the form value.`Optional`
+- `valueGetter` The way to get the form value from the form event, `Optional`.
+- `suffix` Suffix node, `optional`.
+- `rules` Checksum rules for form fields `Optional`.
 
-### Form Item Props
-- `name` The form field field name, `optional`.
-- `valueProp` The name of the value attribute to fill in to the child component, the default value is `'value'`.
-- `valueGetter` The way to get the form value from the form event, `optional`.
-- `suffix` The suffix node, `optional`.
-- `rules` Checksum rules for the form field `Optional`.
+### Form.List Props
+
+- `name` Form field name, `optional`.
+- `rules` Checksum rules for form fields `Optional`.
 
 ### FormStore Methods
 
-- ` new FormStore(defaultValues?, rules?: FormRule[])` Creates a form store.
+- `new FormStore(defaultValues?, rules?: FormRule[])` form manager。
 - `store.getFieldValue()` Returns the value of the entire form.
-- ` store.getFieldValue(name: string | string[]` Returns the value of the form field based on the field name. When name is an array, returns the value of multiple form fields
+- `store.getFieldValue(name: string | string[])` Returns the value of a form field based on the field name. When `name` is an array, returns the value of multiple form fields
 - `store.setFieldValue(name, value)` Update the value of a form field
-- `store.setFieldsValue(obj: Partial<T>)` Set the value of a form field
+- `store.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
 - `store.reset()` Reset the form.
-- `store.validate()` Validates the entire form and returns an error message and the form value.
-- `store.validate(name)` Validates the value of the form field against the field name and returns an error message and the form value.
-- `store.getFieldError(name?: string)` Returns an error message for a single form field or for all of the form's errors.
-- `store.setFieldError(name: string, message: string | undefined)` Update the error message for a form field
-- `store.setFieldsError(erros: FormErrors<T>)` Set the error message for the form field.
-- ` store.setFieldRules(name: string, rules?: FormRule[])` Update the form field's checksum rules.
-- ` store.setFieldsRules(values: FormRules<T>)` Set the validation rules for a form field.
-- ` store.subscribeValue(name: string, onChange: () => void)` Subscribe to the form value changes and return a function for unsubscribing.
-- `store.subscribeError(name: string, onChange: () => void)` Subscribe to the form error changes and return a function for unsubscribing.
+- `store.validate()` Checks the entire form and returns error messages and form values.
+- `store.validate(name)` Checks the value of a form field against the field `name` and returns an error message and the form value.
+- `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.
+- `store.setFieldRules(name: string, rules?: FormRule[])` Update the check rules for form fields.
+- `store.setFieldsRules(values: FormRules<T>)` Set the check rule (override) for the form field.
 
 ### Hooks
 
-- `useFormStore(defaultValues?, rules?: FormRule[])` Use hooks to create a FormStore.
-- `useFieldChange(props: FieldChangeProps)` Creates a form field listener using hooks.
+- `useFormStore(defaultValues?, rules?: FormRule[])` create `FormStore`
