@@ -88,11 +88,11 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref) => {
     if (currentPath) {
       const valuePropName = getValuePropName(valueProp, child && child.type);
       const childProps = child?.props as any;
+      const { onChange, className } = childProps || {};
       // 对onChange方法进行aop包装，在后面添加子元素自身的onChange事件
-      const childOnChange = childProps?.onChange;
-      const aopAfterFn = aopOnchange.addAfter(childOnChange);
+      const aopAfterFn = aopOnchange.addAfter(onChange);
 
-      let childClassName = childProps.className || '';
+      let childClassName = className || '';
       if (error) childClassName += ' ' + errorClassName
 
       const newChildProps = { className: childClassName, [valuePropName]: value, onChange: aopAfterFn, path: currentPath }
