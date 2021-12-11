@@ -41,7 +41,7 @@ import { Input, Select } from "antd";
 class demo extends React.Component {
   constructor(props) {
     super(props);
-    this.store = new FormStore({ Name1: "初始值设置" });
+    this.store = new FormStore({ name1: "初始值设置" });
     this.state = {};
   }
 
@@ -101,7 +101,7 @@ import { Input, Select } from "antd";
 class demo extends React.Component {
   constructor(props) {
     super(props);
-    this.store = new FormStore({ Name1: "initialvalue" });
+    this.store = new FormStore({ name1: "initialvalue" });
     this.state = {};
   }
 
@@ -133,7 +133,6 @@ class demo extends React.Component {
       <Form store={this.store} onSubmit={this.onSubmit}>
         <Form.List name="list">
           <Form.Item
-            label="list's one"
             rules={[
               { required: true, message: "list's one is Empty" },
               { validator: this.validator, message: "custome tips" },
@@ -142,7 +141,6 @@ class demo extends React.Component {
             <Input />
           </Form.Item>
           <Form.Item
-            label="list's two"
             rules={[{ required: true, message: "list's two is Empty" }]}
           >
             <Input />
@@ -164,6 +162,7 @@ class demo extends React.Component {
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
 - `onSubmit` The form submit callback, `optional`.
+- `onMount` The form mounted callback `optional`.
 - ` onReset` Form reset defaults, `optional`.
 - `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `inline` All Form.Field components set the inline layout, default is `false`.
@@ -178,10 +177,11 @@ class demo extends React.Component {
 - `className` Form field class name, `optional`.
 - `label` Form field label, `Optional`.
 - `name` Form field name, `optional`.
+- `initialValue` Form field initial value `Optional`
+- `rules` Checksum rules for form fields `Optional`.
 - `valueProp` attribute of the form value.`Optional`
 - `valueGetter` The way to get the form value from the form event, `Optional`.
 - `suffix` Suffix node, `optional`.
-- `rules` Checksum rules for form fields `Optional`.
 - `inline` All Form.Field components set the inline layout, default is `false`.`optional`.
 - `compact` Whether to hide error messages `optional`.
 - `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
@@ -192,8 +192,18 @@ class demo extends React.Component {
 
 ### Form.List Props
 
+- `className` Form field class name, `optional`.
+- `label` Form field label, `Optional`.
 - `name` Form field name, `optional`.
+- `initialValue` Form field initial value `Optional`
 - `rules` Checksum rules for form fields `Optional`.
+- `inline` All Form.Field components set the inline layout, default is `false`.`optional`.
+- `compact` Whether to hide error messages `optional`.
+- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
+- `labelWidth` The custom label width `optional`.
+- `labelAlign` The align of label `optional`.
+- `gutter` The distance between all Form.Field component custom labels `optional`.
+
 
 ### FormStore Methods
 
