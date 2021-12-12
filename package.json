@@ -1,6 +1,6 @@
 {
   "name": "react-easy-formcore",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "轻量级form表单容器组件",
   "main": "lib/bundle.js",
   "types": "./lib/index.d.ts",
@@ -11,7 +11,7 @@
     "README_CN.md"
   ],
   "scripts": {
-    "build-typings": "tsc -d --emitDeclarationOnly --target esnext --removeComments false --allowJs false --declarationDir ./lib",
+    "build-typings": "tsc -d --emitDeclarationOnly --target esnext --removeComments false --allowJs false --skipLibCheck true --suppressImplicitAnyIndexErrors true --declarationDir ./lib",
     "build": "cross-env NODE_ENV=production webpack --progress --config ./webpack/webpack.prod.js",
     "stats": "cross-env NODE_ENV=production webpack --progress --config ./webpack/webpack.prod.js --json > stats.json",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js --open",
