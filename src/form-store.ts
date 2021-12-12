@@ -1,7 +1,7 @@
 
 import { asyncSequentialExe } from './utils/common';
 import { isEmpty } from './utils/type';
-import { deepCopy } from './utils';
+import { deepCopy } from './utils/utils';
 import { deepGet, deepSet } from './utils/object';
 import { formListPath } from './form';
 
@@ -53,7 +53,11 @@ export class FormStore<T extends Object = any> {
   // 更新表单中的校验规则
   public setFieldRules(name: string, rules?: FormRule[]) {
     if (!name) return;
-    this.formRules[name] = rules;
+    if(rules === undefined) {
+      delete this.formRules[name]
+    } else {
+      this.formRules[name] = rules;
+    }
   }
 
   // 设置表单中的校验规则
@@ -152,14 +156,13 @@ export class FormStore<T extends Object = any> {
   public async validate(name: string, forbidError?: boolean): Promise<string>
   public async validate(name?: string, forbidError?: boolean) {
     if (name === undefined) {
-      const result = await Promise.all(Object.keys(this.formRules)?.map((n) => this.validate(n)))
+      const result = await Promise.all(Object.keys(this.formRules)?.map((n) => this.formRules?.[n] && this.validate(n)))
       const currentError = result?.filter((message) => message !== undefined)?.[0]
       return {
         error: currentError,
         values: this.getFieldValue()
       }
     } else {
-
       if (forbidError === true) return;
       // 清空错误信息
       this.setFieldError(name, undefined);
