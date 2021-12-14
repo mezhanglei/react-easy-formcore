@@ -187,7 +187,7 @@ class demo extends React.Component {
 - `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
 - `labelWidth` The custom label width `optional`.
 - `labelAlign` The align of label `optional`.
-- `gutter` The distance between all Form.Field component custom labels `optional`.
+- `gutter` The distance custom labels `optional`.
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
 ### Form.List Props
