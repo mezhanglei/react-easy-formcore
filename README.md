@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.1.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.1.4-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -204,6 +204,15 @@ class demo extends React.Component {
 - `labelAlign` The align of label `optional`.
 - `gutter` The distance between all Form.Field component custom labels `optional`.
 
+### rules
+The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.
+- `message` Default error message when a check rule reports an error `optional`。
+- `required` Indicates that the value of the field is required `optional`。
+- `validator` Type: `(value, callback: (err: string) => void) => void | boolean` Custom check function, `value` is the current control value, `callback` can actively call the error reporting method `optional`.
+- `pattern` Type: `RegExp | string` Expression check, error if does not match `optional`.
+- `whitespace` Type: `boolean` For type `string`, set true check space `optional`.
+- `max` Type: `number` Maximum length for string type; maximum length for number type; maximum length for array type `optional`.
+- `min` Type: `number` minimum length for string type; minimum value for number type; minimum length for array type `optional`.
 
 ### FormStore Methods
 
