@@ -9,9 +9,6 @@ export declare type FormRule = {
     message?: string;
     validator?: FormValidator;
 };
-export declare type FormRules<T = any> = {
-    [key in keyof T]?: FormRule[];
-};
 export declare type FormErrors<T = any> = {
     [key in keyof T]?: T[key];
 };
@@ -19,16 +16,24 @@ export declare type ValidateResult<T> = {
     error?: string;
     values: T;
 };
+export declare type FieldProps = {
+    rules?: FormRule[];
+    [other: string]: any;
+};
+export declare type FormFieldsProps<T = any> = {
+    [key in keyof T]: FieldProps;
+};
 export declare class FormStore<T extends Object = any> {
     private initialValues;
     private valueListeners;
     private errorListeners;
     private values;
-    private formRules;
     private formErrors;
-    constructor(values?: Partial<T>, formRules?: FormRules<T>);
-    setFieldRules(name: string, rules?: FormRule[]): void;
-    setFieldsRules(values: FormRules<T>): void;
+    private fieldsProps;
+    constructor(values?: Partial<T>, fieldsProps?: FormFieldsProps<T>);
+    getFieldProps(name?: string): FieldProps | FormFieldsProps<any>;
+    setFieldProps(name: string, field?: FieldProps, cover?: boolean): void;
+    setFieldsProps(values: FormFieldsProps<T>): void;
     private notifyValue;
     private notifyError;
     getFieldValue(name?: string | string[]): any;

@@ -2,11 +2,14 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.1.5-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.2.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `value` (or set via `valueProp`) and `onChange` methods, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
+
+# Matters
+Note: you need to import the css style file before you can use it，example：`import 'react-easy-formcore/css/main.css'`;
 
 # Form.Item
 
@@ -36,6 +39,7 @@ yarn add react-easy-formcore
 ```javascript
 import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
+import 'react-easy-formcore/css/main.css';
 import { Input, Select } from "antd";
 
 class demo extends React.Component {
@@ -96,6 +100,7 @@ class demo extends React.Component {
 ```javascript
 import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
+import 'react-easy-formcore/css/main.css';
 import { Input, Select } from "antd";
 
 class demo extends React.Component {
@@ -216,7 +221,7 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 
 ### FormStore Methods
 
-- `new FormStore(defaultValues?, rules?: FormRule[])` form manager。
+- `new FormStore(defaultValues)` form manager。
 - `store.getFieldValue()` Returns the value of the entire form.
 - `store.getFieldValue(name: string | string[])` Returns the value of a form field based on the field name. When `name` is an array, returns the value of multiple form fields
 - `store.setFieldValue(name, value)` Update the value of a form field
@@ -225,8 +230,7 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 - `store.validate()` Checks the entire form and returns error messages and form values.
 - `store.validate(name)` Checks the value of a form field against the field `name` and returns an error message and the form value.
 - `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.
-- `store.setFieldRules(name: string, rules?: FormRule[])` Update the check rules for form fields.
-- `store.setFieldsRules(values: FormRules<T>)` Set the check rule (override) for the form field.
+- `store.getFieldProps(name?: string)` Returns the `props` of a form field based on the field name
 
 ### Hooks
 

@@ -1,8 +1,8 @@
 {
   "name": "react-easy-formcore",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "轻量级form表单容器组件",
-  "main": "lib/bundle.js",
+  "main": "lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": "https://github.com/mezhanglei",
   "files": [
