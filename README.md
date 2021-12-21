@@ -2,14 +2,14 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.2.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.2.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `value` (or set via `valueProp`) and `onChange` methods, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Matters
-Note: you need to import the css style file before you can use it，example：`import 'react-easy-formcore/css/main.css'`;
+Note: you need to import the css style file before you can use it，example：`import 'react-easy-formcore/lib/css/main.css'`;
 
 # Form.Item
 
@@ -39,7 +39,7 @@ yarn add react-easy-formcore
 ```javascript
 import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
-import 'react-easy-formcore/css/main.css';
+import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
 class demo extends React.Component {
@@ -100,7 +100,7 @@ class demo extends React.Component {
 ```javascript
 import React from "react";
 import { Form, FormStore } from "react-easy-formcore";
-import 'react-easy-formcore/css/main.css';
+import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
 class demo extends React.Component {
