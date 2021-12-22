@@ -234,4 +234,4 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 
 ### Hooks
 
-- `useFormStore(defaultValues?, rules?: FormRule[])` create `FormStore`
+- `useFormStore(defaultValues)` create `FormStore`
