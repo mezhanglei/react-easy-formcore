@@ -6,7 +6,7 @@ English | [中文说明](./README_CN.md)
 
 # Introduction?
 
-Lightweight form container component where the target control only needs to provide the `value` (or set via `valueProp`) and `onChange` methods, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
+Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Matters
 Note: you need to import the css style file before you can use it，example：`import 'react-easy-formcore/lib/css/main.css'`;
@@ -16,7 +16,7 @@ Note: you need to import the css style file before you can use it，example：`i
 The smallest unit of a component in a form, and nodes as an object can be nested within each other.
 
 - [x] Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
-- [x] You can customize `onChange`, but you can only set the form value via an instance method such as `store.setFieldValue`.
+- [x] You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
 - [x] Custom form validation rules can be provided with the form validation rules property `rules`.
 
 # Form.List
