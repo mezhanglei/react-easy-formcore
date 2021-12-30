@@ -1,6 +1,6 @@
 export declare type FormListener = {
     name: string;
-    onChange: (name: string) => void;
+    onChange: (newValue?: any, oldValue?: any) => void;
 };
 export declare type FormValidatorCallBack = (message?: string) => void;
 export declare type FormValidator = (value: any, callBack?: FormValidatorCallBack) => boolean | undefined | Promise<boolean>;
@@ -29,12 +29,14 @@ export declare class FormStore<T extends Object = any> {
     private errorListeners;
     private propsListeners;
     private values;
+    private lastValues?;
     private formErrors;
     private fieldsProps;
     constructor(values?: Partial<T>, fieldsProps?: FormFieldsProps<T>);
     getFieldProps(name?: string): FieldProps | FormFieldsProps<any>;
     setFieldProps(name: string, field?: FieldProps, cover?: boolean): void;
     getFieldValue(name?: string | string[]): any;
+    getLastValue(name?: string | string[]): any;
     setFieldValue(name: string | {
         [key: string]: any;
     }, value?: any, forbidError?: boolean): Promise<void>;

@@ -1,7 +1,7 @@
 import { produce } from 'immer';
 
 // 根据路径获取目标对象中的值
-export function deepGet(obj: object, keys: string | string[], defaultVal?: any): any {
+export function deepGet(obj: object | undefined, keys: string | string[], defaultVal?: any): any {
     return (
         (!Array.isArray(keys)
             ? keys.replace(/\[/g, '.').replace(/\]/g, '').split('.')

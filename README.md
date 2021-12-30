@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.2.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.3.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -169,7 +169,9 @@ class demo extends React.Component {
 - `onSubmit` The form submit callback, `optional`.
 - `onMount` The form mounted callback `optional`.
 - ` onReset` Form reset defaults, `optional`.
-- `onFormChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
+- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
+- `onValuesChange` Listening for changes in form values.`optional`。
+- `onVisible` Callback function that listens to the form field component (`Form.Item`) being shown or hidden `optional`。
 - `inline` All Form.Field components set the inline layout, default is `false`.
 - `compact` Whether to hide error messages for all Form.
 - `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
