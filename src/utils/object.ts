@@ -1,12 +1,36 @@
 import { produce } from 'immer';
+// 判断两个值是否相等
+export function isObjectEqual(a: any, b: any) {
+    if (!(typeof a == 'object' && typeof b === 'object')) {
+        return a === b;
+    };
+    let aProps = Object.getOwnPropertyNames(a);
+    let bProps = Object.getOwnPropertyNames(b);
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+    for (let i = 0; i < aProps.length; i++) {
+        let propName = aProps[i];
+        let propA = a[propName];
+        let propB = b[propName];
+        if ((typeof (propA) === 'object')) {
+            if (!isObjectEqual(propA, propB)) {
+                return false;
+            }
+        } else if (propA !== propB) {
+            return false;
+        }
+    }
+    return true;
+}
 
 // 根据路径获取目标对象中的值
-export function deepGet(obj: object | undefined, keys: string | string[], defaultVal?: any): any {
+export function deepGet(obj: object | undefined, keys: string | string[]): any {
     return (
         (!Array.isArray(keys)
             ? keys.replace(/\[/g, '.').replace(/\]/g, '').split('.')
             : keys
-        ).reduce((o, k) => (o || {})[k], obj) || defaultVal
+        ).reduce((o, k) => (o || {})[k], obj)
     );
 }
 
