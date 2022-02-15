@@ -51,8 +51,17 @@
     display: inline-flex;
   }
 
-  &--error {
- 
+  &--error &__container &__control {
+    .ant-input,
+    .ant-select-selector {
+      border-color: #ff4d4f;
+      &:hover {
+        border-color: #ff7875;
+        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+        border-right-width: 1px !important;
+        outline: 0;
+      }
+    }
   }
 
   &--compact {
