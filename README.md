@@ -162,7 +162,17 @@ class demo extends React.Component {
 
 ## APIs
 
+### base options
+
+- `inline` All Form.Field components set the inline layout, default is `false`.
+- `compact` Whether to hide error messages for all Form.
+- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
+- `labelWidth` The custom label width for all Form.
+- `labelAlign` The align of label for all Form.
+- `gutter` The distance between all Form.Field component custom labels and form components, `optional`.
+
 ### Form Props
+Inherited base options
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
@@ -172,44 +182,29 @@ class demo extends React.Component {
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `onVisible` Callback function that listens to the form field component (`Form.Item`) being shown or hidden `optional`。
-- `inline` All Form.Field components set the inline layout, default is `false`.
-- `compact` Whether to hide error messages for all Form.
-- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
-- `labelWidth` The custom label width for all Form.
-- `labelAlign` The align of label for all Form.
-- `gutter` The distance between all Form.Field component custom labels and form components, `optional`.
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
 ### Form.Item Props
+Inherited base options
 
 - `className` Form field class name, `optional`.
 - `label` Form field label, `Optional`.
 - `name` Form field name, `optional`.
+- `suffix` Suffix node, `optional`.
 - `initialValue` Form field initial value `Optional`
 - `rules` Checksum rules for form fields `Optional`.
 - `valueProp` attribute of the form value.`Optional`
 - `valueGetter` The way to get the form value from the form event, `Optional`.
-- `suffix` Suffix node, `optional`.
-- `inline` All Form.Field components set the inline layout, default is `false`.`optional`.
-- `compact` Whether to hide error messages `optional`.
-- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
-- `labelWidth` The custom label width `optional`.
-- `labelAlign` The align of label `optional`.
-- `gutter` The distance custom labels `optional`.
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
 ### Form.List Props
+Inherited base options
 
 - `className` Form field class name, `optional`.
 - `label` Form field label, `Optional`.
 - `name` Form field name, `optional`.
+- `suffix` Suffix node, `optional`.
 - `initialValue` Form field initial value `Optional`
 - `rules` Checksum rules for form fields `Optional`.
-- `inline` All Form.Field components set the inline layout, default is `false`.`optional`.
-- `compact` Whether to hide error messages `optional`.
-- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`. `optional`.
-- `labelWidth` The custom label width `optional`.
-- `labelAlign` The align of label `optional`.
-- `gutter` The distance between all Form.Field component custom labels `optional`.
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.
