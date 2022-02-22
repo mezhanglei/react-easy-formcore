@@ -1,12 +1,5 @@
 import React from 'react';
-export interface FormOptions {
-    inline?: boolean;
-    compact?: boolean;
-    required?: boolean;
-    labelWidth?: number;
-    labelAlign?: 'left' | 'right';
-    gutter?: number;
-    errorClassName?: string;
+export interface FormFunc {
     onFieldsChange?: (obj: {
         name: string;
         value: any;
@@ -19,5 +12,13 @@ export interface FormOptions {
         name?: string;
         hidden: boolean;
     }) => void;
+}
+export interface FormOptions extends FormFunc {
+    inline?: boolean;
+    compact?: boolean;
+    required?: boolean;
+    labelWidth?: number;
+    labelAlign?: 'left' | 'right';
+    gutter?: number;
 }
 export declare const FormOptionsContext: React.Context<FormOptions>;

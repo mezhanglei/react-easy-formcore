@@ -13,6 +13,7 @@ export interface FormItemProps extends FormOptions {
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;
+    errorClassName?: string;
 }
 export declare const classes: {
     field: string;

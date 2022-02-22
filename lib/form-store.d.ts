@@ -26,6 +26,7 @@ export declare type FormFieldsProps<T = any> = {
 export declare class FormStore<T extends Object = any> {
     private initialValues;
     private valueListeners;
+    private storeValueListeners;
     private errorListeners;
     private propsListeners;
     private values;
@@ -39,7 +40,7 @@ export declare class FormStore<T extends Object = any> {
     getLastValue(name?: string | string[]): any;
     setFieldValue(name: string | {
         [key: string]: any;
-    }, value?: any, forbidError?: boolean): Promise<void>;
+    }, value?: any, isMount?: boolean): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;
     reset(): void;
     getFieldError(name?: string): any;
@@ -51,6 +52,8 @@ export declare class FormStore<T extends Object = any> {
     private notifyError;
     private notifyProps;
     subscribeValue(name: string, listener: FormListener['onChange']): () => void;
+    listenStoreValue(name: string, listener: FormListener['onChange']): () => void;
+    removeListenStoreValue(name?: string): void;
     subscribeError(name: string, listener: FormListener['onChange']): () => void;
     subscribeProps(name: string, listener: FormListener['onChange']): () => void;
 }
