@@ -1,6 +1,6 @@
 {
   "name": "react-easy-formcore",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "轻量级form表单容器组件",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
