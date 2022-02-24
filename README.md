@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.3.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.3.5-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -181,7 +181,6 @@ Inherited base options
 - ` onReset` Form reset defaults, `optional`.
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
-- `onVisible` Callback function that listens to the form field component (`Form.Item`) being shown or hidden `optional`。
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
 ### Form.Item Props
 Inherited base options
@@ -194,6 +193,8 @@ Inherited base options
 - `rules` Checksum rules for form fields `Optional`.
 - `valueProp` attribute of the form value.`Optional`
 - `valueGetter` The way to get the form value from the form event, `Optional`.
+- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
+- `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
 ### Form.List Props

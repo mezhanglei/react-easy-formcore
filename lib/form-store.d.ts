@@ -35,7 +35,7 @@ export declare class FormStore<T extends Object = any> {
     private fieldsProps;
     constructor(values?: Partial<T>, fieldsProps?: FormFieldsProps<T>);
     getFieldProps(name?: string): FieldProps | FormFieldsProps<any>;
-    setFieldProps(name: string, field?: FieldProps, cover?: boolean): void;
+    setFieldProps(name: string, field?: FieldProps): void;
     getFieldValue(name?: string | string[]): any;
     getLastValue(name?: string | string[]): any;
     setFieldValue(name: string | {
@@ -47,8 +47,9 @@ export declare class FormStore<T extends Object = any> {
     private setFieldError;
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
-    validate(name: string, forbidError?: boolean): Promise<string>;
+    validate(name: string, isMount?: boolean): Promise<string>;
     private notifyValue;
+    private notifyStoreValue;
     private notifyError;
     private notifyProps;
     subscribeValue(name: string, listener: FormListener['onChange']): () => void;

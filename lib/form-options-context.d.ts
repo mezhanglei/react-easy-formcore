@@ -8,10 +8,6 @@ export interface FormFunc {
         name?: string;
         value: any;
     }) => void;
-    onVisible?: (obj: {
-        name?: string;
-        hidden: boolean;
-    }) => void;
 }
 export interface FormOptions extends FormFunc {
     inline?: boolean;
