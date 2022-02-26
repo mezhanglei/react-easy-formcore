@@ -65,7 +65,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
   } = fieldProps;
 
   const currentPath = path && name ? `${path}.${name}` : name;
-  initialValue = initialValues?.[currentPath as string] ?? initialValue;
+  initialValue = initialValue ?? initialValues?.[currentPath as string];
   const [value, setValue] = useState(currentPath && store ? store.getFieldValue(currentPath) : undefined);
   const [error, setError] = useState(currentPath && store ? store.getFieldError(currentPath) : undefined);
 
