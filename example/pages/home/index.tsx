@@ -26,7 +26,7 @@ class demo extends React.Component {
 
     render() {
         return (
-            <Form store={this.store} onSubmit={this.onSubmit}>
+            <Form initialValues={{name1: 1111}} store={this.store} onSubmit={this.onSubmit}>
                 <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: this.validator, message: '自定义校验' }]}>
                     <input />
                 </Form.Item>

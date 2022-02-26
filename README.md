@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.3.5-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.3.6-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -176,6 +176,7 @@ Inherited base options
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
+- `initialValues` The initial value of the form field overrides the `initialValue` of the form field, note that it cannot be listened to for value changes `optional`.
 - `onSubmit` The form submit callback, `optional`.
 - `onMount` The form mounted callback `optional`.
 - ` onReset` Form reset defaults, `optional`.

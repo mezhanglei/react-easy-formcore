@@ -8,6 +8,7 @@ export interface FormProps extends FormOptions {
     store?: FormStore;
     style?: CSSProperties;
     children?: React.ReactNode;
+    initialValues?: Partial<unknown>;
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
     onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
     onMount?: () => void;
