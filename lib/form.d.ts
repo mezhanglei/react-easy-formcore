@@ -2,7 +2,6 @@ import './style.less';
 import React, { CSSProperties } from 'react';
 import { FormStore } from './form-store';
 import { FormOptions } from './form-options-context';
-export declare const formListPath: string[];
 export interface FormProps extends FormOptions {
     className?: string;
     store?: FormStore;

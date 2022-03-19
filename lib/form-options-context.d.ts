@@ -1,15 +1,16 @@
 import React from 'react';
 export interface FormFunc {
     onFieldsChange?: (obj: {
-        name: string;
+        path: string;
         value: any;
     }) => void;
     onValuesChange?: (obj: {
-        name?: string;
+        path?: string;
         value: any;
     }) => void;
 }
 export interface FormOptions extends FormFunc {
+    initialValues?: Partial<unknown>;
     inline?: boolean;
     compact?: boolean;
     required?: boolean;

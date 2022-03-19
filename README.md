@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.3.7-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-0.3.8-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -176,7 +176,7 @@ Inherited base options
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
-- `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, note that it cannot be listened to for value changes `optional`.
+- `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, Note that this value can only initialise the form `optional`.
 - `onSubmit` The form submit callback, `optional`.
 - `onMount` The form mounted callback `optional`.
 - ` onReset` Form reset defaults, `optional`.
@@ -187,13 +187,13 @@ Inherited base options
 Inherited base options
 
 - `className` Form field class name, `optional`.
-- `label` Form field label, `Optional`.
+- `label` Form field label, `optional`.
 - `name` Form field name, `optional`.
 - `suffix` Suffix node, `optional`.
-- `initialValue` Form field initial value `Optional`
-- `rules` Checksum rules for form fields `Optional`.
-- `valueProp` attribute of the form value.`Optional`
-- `valueGetter` The way to get the form value from the form event, `Optional`.
+- `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
+- `rules` Checksum rules for form fields `optional`.
+- `valueProp` attribute of the form value.`optional`
+- `valueGetter` The way to get the form value from the form event, `optional`.
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
@@ -202,11 +202,11 @@ Inherited base options
 Inherited base options
 
 - `className` Form field class name, `optional`.
-- `label` Form field label, `Optional`.
+- `label` Form field label, `optional`.
 - `name` Form field name, `optional`.
 - `suffix` Suffix node, `optional`.
-- `initialValue` Form field initial value `Optional`
-- `rules` Checksum rules for form fields `Optional`.
+- `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
+- `rules` Checksum rules for form fields `optional`.
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.

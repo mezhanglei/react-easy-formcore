@@ -1,5 +1,5 @@
 export declare type FormListener = {
-    name: string;
+    path: string;
     onChange: (newValue?: any, oldValue?: any) => void;
 };
 export declare type FormValidatorCallBack = (message?: string) => void;
@@ -33,28 +33,30 @@ export declare class FormStore<T extends Object = any> {
     private lastValues?;
     private formErrors;
     private fieldsProps;
+    formListPath: string[];
     constructor(values?: Partial<T>, fieldsProps?: FormFieldsProps<T>);
-    getFieldProps(name?: string): FieldProps | FormFieldsProps<any>;
-    setFieldProps(name: string, field?: FieldProps): void;
-    getFieldValue(name?: string | string[]): any;
-    getLastValue(name?: string | string[]): any;
-    setFieldValue(name: string | {
+    getFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
+    setFieldProps(path: string, field?: FieldProps): void;
+    getFieldValue(path?: string | string[]): any;
+    getLastValue(path?: string | string[]): any;
+    setInitialValues(path: string, initialValue: any): void;
+    setFieldValue(path: string | {
         [key: string]: any;
     }, value?: any, isMount?: boolean): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;
     reset(): void;
-    getFieldError(name?: string): any;
+    getFieldError(path?: string): any;
     private setFieldError;
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
-    validate(name: string, isMount?: boolean): Promise<string>;
+    validate(path: string, isMount?: boolean): Promise<string>;
     private notifyValue;
     private notifyStoreValue;
     private notifyError;
     private notifyProps;
-    subscribeValue(name: string, listener: FormListener['onChange']): () => void;
-    listenStoreValue(name: string, listener: FormListener['onChange']): () => void;
-    removeListenStoreValue(name?: string): void;
-    subscribeError(name: string, listener: FormListener['onChange']): () => void;
-    subscribeProps(name: string, listener: FormListener['onChange']): () => void;
+    subscribeValue(path: string, listener: FormListener['onChange']): () => void;
+    listenStoreValue(path: string, listener: FormListener['onChange']): () => void;
+    removeListenStoreValue(path?: string): void;
+    subscribeError(path: string, listener: FormListener['onChange']): () => void;
+    subscribeProps(path: string, listener: FormListener['onChange']): () => void;
 }
