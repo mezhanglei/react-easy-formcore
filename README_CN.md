@@ -88,7 +88,9 @@ class demo extends React.Component {
           name="name1"
           rules={[{ required: true, message: "name1不能为空" }, { validator: this.validator, message: "自定义校验固定提示" }]}
         >
+        <div data-type="fragment">
           <Input />
+        </div>
         </Form.Item>
         <Form.Item
           label="Name2"
