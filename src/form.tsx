@@ -7,21 +7,22 @@ import { FormStoreContext, FormValuesContext } from './form-store-context'
 import { FormOptions, FormOptionsContext } from './form-options-context'
 import { FormList } from './form-list'
 
+// 缓存数组类型的组件的路径
 export interface FormProps extends FormOptions {
-  className?: string
-  store?: FormStore
-  style?: CSSProperties
-  children?: React.ReactNode
-  initialValues?: Partial<unknown>,
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
-  onReset?: (e: React.FormEvent<HTMLFormElement>) => void
-  onMount?: () => void
+  className?: string;
+  store?: FormStore;
+  style?: CSSProperties;
+  children?: React.ReactNode;
+  initialValues?: Partial<unknown>;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onMount?: () => void;
 }
 
 export function Form(props: FormProps) {
-  const { className = '', style, children, store, initialValues, onSubmit, onReset, onMount, ...options } = props
+  const { className = '', style, children, store, initialValues, onSubmit, onReset, onMount, ...options } = props;
 
-  const classNames = 'rh-form ' + className
+  const classNames = 'rh-form ' + className;
 
   useEffect(() => {
     onMount && onMount();

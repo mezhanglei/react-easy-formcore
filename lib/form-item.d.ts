@@ -17,7 +17,6 @@ export interface FormItemProps extends FormOptions {
 }
 export declare const classes: {
     field: string;
-    inline: string;
     compact: string;
     required: string;
     error: string;

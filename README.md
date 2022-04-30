@@ -2,14 +2,23 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-0.3.8-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
+# Version changelog
+ - Version 1.x: 
+   - labelWidth and labelAlign have been changed to labelStyle, allowing you to customize your own label label-related styles
+   - inline changed to layout, with three layout types.
+   - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
+   - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls by add `data-type="fragment"` to the control's outer non-form node
+ - 0.3.8 Initial release
+
 # Matters
-Note: you need to import the css style file before you can use it，example：`import 'react-easy-formcore/lib/css/main.css'`;
+- The css style file needs to be introduced before it can be used, for example: `import 'react-easy-formcore/lib/css/main.css'`;
+- When non-form components or node is added outside the input control, the node or component needs to be manually added with `data-type="fragment"` to enhance the binding depth of the form field to reach the target control
 
 # Form.Item
 
@@ -164,12 +173,11 @@ class demo extends React.Component {
 
 ### base options
 
-- `inline` All Form.Field components set the inline layout, default is `false`.
+- `layout` `'horizontal'|'vertical'|'inline'` All field components set the layout type, the default value is `horizontal`.
 - `compact` Whether to hide error messages for all Form.
-- `required` Indicates if all Form.Field components display asterisks, not form checks, for display only, default is `false`.
-- `labelWidth` The custom label width for all Form.
-- `labelAlign` The align of label for all Form.
-- `gutter` The distance between all Form.Field component custom labels and form components, `optional`.
+- `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
+- `labelStyle` Custom `label` style for all field components, `optional`.
+- `gutter` The distance between all field component custom labels and form components, `optional`.
 
 ### Form Props
 Inherited base options

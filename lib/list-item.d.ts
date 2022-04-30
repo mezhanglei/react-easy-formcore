@@ -1,12 +1,12 @@
 import React, { CSSProperties } from 'react';
 import './list-item.less';
+import { LayoutEnum } from './form-options-context';
 export interface ListItemProps {
     label?: any;
+    layout?: LayoutEnum;
+    labelStyle?: CSSProperties;
     suffix?: React.ReactNode;
-    inline?: boolean;
     required?: boolean;
-    labelWidth?: number;
-    labelAlign?: 'left' | 'right';
     gutter?: number;
     className?: string;
     children?: React.ReactNode;
@@ -14,7 +14,6 @@ export interface ListItemProps {
 }
 export declare const classes_item: {
     field: string;
-    inline: string;
     required: string;
     header: string;
     container: string;

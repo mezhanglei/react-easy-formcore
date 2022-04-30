@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 export interface FormFunc {
     onFieldsChange?: (obj: {
         path: string;
@@ -9,13 +9,17 @@ export interface FormFunc {
         value: any;
     }) => void;
 }
+export declare enum LayoutEnum {
+    Horizontal = "horizontal",
+    Vertical = "vertical",
+    Inline = "inline"
+}
 export interface FormOptions extends FormFunc {
+    layout?: LayoutEnum;
+    labelStyle?: CSSProperties;
     initialValues?: Partial<unknown>;
-    inline?: boolean;
     compact?: boolean;
     required?: boolean;
-    labelWidth?: number;
-    labelAlign?: 'left' | 'right';
     gutter?: number;
 }
 export declare const FormOptionsContext: React.Context<FormOptions>;

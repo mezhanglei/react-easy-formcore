@@ -14,7 +14,6 @@ export interface FormListProps extends FormOptions {
 }
 export declare const classes_list: {
     list: string;
-    inline: string;
     compact: string;
     required: string;
     error: string;

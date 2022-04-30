@@ -2,14 +2,24 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-0.3.8-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，目标控件只需要提供`props`方法：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
+# 版本更新日志
+ - 1.x版本: 
+   - labelWidth和labelAlign更改为labelStyle，可以自己自定义label标签相关的样式
+   - inline改为layout，拥有三种布局类型。
+   - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
+   - 增强了`Form.Item`和`Form.List`表单域双向绑定的能力，通过给控件外围的非表单节点添加`data-type="fragment"`,可以递归到内部包裹的控件。
+ - 0.3.8 初始版本
+    
+
 # Matters
-注意：在使用之前需要先引入css样式文件，例：`import 'react-easy-formcore/lib/css/main.css'`;
+ - 在使用之前需要先引入css样式文件，例：`import 'react-easy-formcore/lib/css/main.css'`;
+ - 当输入表单控件外面添加了非表单组件或节点，需要给节点或组件手动添加`data-type="fragment"`用来增强表单域的绑定深度以达到目标控件。
 
 # Form.Item
 
@@ -165,12 +175,11 @@ class demo extends React.Component {
 
 ### 表单基础属性-base options
 
-- `inline` 所有 Form.Item 组件设置行内布局，默认值为`false`。
-- `compact` 所有 Form.Item 组件是否隐藏错误信息，默认值为`false`。
-- `required` 所有 Form.Item 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
-- `labelWidth` 所有 Form.Item 组件自定义标签宽度，`可选`。
-- `labelAlign` 所有 Form.Item 组件 `label`的排列，`可选`。
-- `gutter` 所有 Form.Item 组件自定义标签和表单组件间的距离，`可选`。
+- `layout` `'horizontal'|'vertical'|'inline'` 所有 field 组件设置布局类型，默认值为`horizontal`。
+- `compact` 所有 field 组件是否隐藏错误信息，默认值为`false`。
+- `required` 所有 field 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
+- `labelStyle` 所有 field 组件自定义`label`样式，`可选`。
+- `gutter` 所有 field 组件自定义`label`标签和表单组件间的距离，`可选`。
    
 
 ### Form Props
