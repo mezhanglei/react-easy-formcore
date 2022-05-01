@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -13,27 +13,27 @@ Lightweight form container component where the target control only needs to prov
    - labelWidth and labelAlign have been changed to labelStyle, allowing you to customize your own label label-related styles
    - inline changed to layout, with three layout types.
    - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
-   - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls by add `data-type="fragment"` to the control's outer non-form node
+   - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls
  - 0.3.8 Initial release
 
 # Matters
 - The css style file needs to be introduced before it can be used, for example: `import 'react-easy-formcore/lib/css/main.css'`;
-- When non-form components or node is added outside the input control, the node or component needs to be manually added with `data-type="fragment"` to enhance the binding depth of the form field to reach the target control
 
 # Form.Item
 
 The smallest unit of a component in a form, and nodes as an object can be nested within each other.
 
-- [x] Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
-- [x] You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
-- [x] Custom form validation rules can be provided with the form validation rules property `rules`.
+- Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
+- You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
+- Custom form validation rules can be provided with the form validation rules property `rules`.
+- When a non-form component or node is added outside of the input form control, the node or component needs to be manually added with `data-type="fragment"` to enhance the binding depth of the form field to reach the target control.
 
 # Form.List
 
 The `Form.Item` component is combined into an array as the values in `Form.
 
-- [x]  Each item in `Form.List` is an element of an array, no need to set the `name` field
-- [x] The `rules` checksum rules provided by `Form.List` are valid for all input items in the array, but have a lower priority than the items in the array's own `rules` rules
+- Each item in `Form.List` is an element of an array, no need to set the `name` field
+- The `rules` checksum rules provided by `Form.List` are valid for all input items in the array, but have a lower priority than the items in the array's own `rules` rules
 
 ## install
 

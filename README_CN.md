@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -13,28 +13,28 @@
    - labelWidth和labelAlign更改为labelStyle，可以自己自定义label标签相关的样式
    - inline改为layout，拥有三种布局类型。
    - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
-   - 增强了`Form.Item`和`Form.List`表单域双向绑定的能力，通过给控件外围的非表单节点添加`data-type="fragment"`,可以递归到内部包裹的控件。
+   - 增强了`Form.Item`和`Form.List`表单域双向绑定的能力，可以递归到内部包裹的控件。
  - 0.3.8 初始版本
     
 
 # Matters
  - 在使用之前需要先引入css样式文件，例：`import 'react-easy-formcore/lib/css/main.css'`;
- - 当输入表单控件外面添加了非表单组件或节点，需要给节点或组件手动添加`data-type="fragment"`用来增强表单域的绑定深度以达到目标控件。
 
 # Form.Item
 
 表单中的组件最小单元，作为一个对象的节点可以相互嵌套。
 
-- [x] 提供样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
-- [x] 可以控件外部自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
-- [x] 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
+- 提供样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
+- 可以控件外部自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
+- 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
+- 当输入表单控件外面添加了非表单组件或节点，需要给节点或组件手动添加`data-type="fragment"`用来增强表单域的绑定深度以达到目标控件。
 
 # Form.List
 
 `Form.Item`组件作为`Form.List`中的值，组合形成一个数组
 
-- [x]  `Form.List`中的每一项为数组中的元素，无需设置`name`字段
-- [x] `Form.List`提供的`rules`校验规则，对数组中的所有输入项都有效，但优先级低于数组中的项自己的`rules`规则
+- `Form.List`中的每一项为数组中的元素，无需设置`name`字段
+- `Form.List`提供的`rules`校验规则，对数组中的所有输入项都有效，但优先级低于数组中的项自己的`rules`规则
 
 ## 安装
 
