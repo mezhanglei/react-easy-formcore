@@ -9,13 +9,13 @@ export interface FormFunc {
         value: any;
     }) => void;
 }
-export declare enum LayoutEnum {
+export declare enum LabelAlignEnum {
     Horizontal = "horizontal",
     Vertical = "vertical",
     Inline = "inline"
 }
 export interface FormOptions extends FormFunc {
-    layout?: LayoutEnum;
+    labelAlign?: LabelAlignEnum;
     labelStyle?: CSSProperties;
     initialValues?: Partial<unknown>;
     compact?: boolean;

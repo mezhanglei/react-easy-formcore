@@ -51,7 +51,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     path,
     className,
     style,
-    layout = 'horizontal',
+    labelAlign = 'horizontal',
     compact,
     required,
     labelStyle,
@@ -206,7 +206,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     required ? classes.required : '',
     error ? classes.error : '',
     className ? className : '',
-    `${classes.field}--${layout}`,
+    `${classes.field}--${labelAlign}`,
   )
 
   const headerStyle = {

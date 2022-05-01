@@ -44,7 +44,7 @@ export const FormList = React.forwardRef((props: FormListProps, ref: any) => {
     suffix,
     className,
     style,
-    layout = 'horizontal',
+    labelAlign = 'horizontal',
     compact,
     required,
     labelStyle,
@@ -113,7 +113,7 @@ export const FormList = React.forwardRef((props: FormListProps, ref: any) => {
     compact ? classes_list.compact : '',
     required ? classes_list.required : '',
     className ? className : '',
-    `${classes_list.list}--${layout}`
+    `${classes_list.list}--${labelAlign}`
   )
 
   const headerStyle = {

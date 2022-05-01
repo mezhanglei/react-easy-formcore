@@ -1,9 +1,9 @@
 import React, { CSSProperties } from 'react';
 import './list-item.less';
-import { LayoutEnum } from './form-options-context';
+import { LabelAlignEnum } from './form-options-context';
 export interface ListItemProps {
     label?: any;
-    layout?: LayoutEnum;
+    labelAlign?: LabelAlignEnum;
     labelStyle?: CSSProperties;
     suffix?: React.ReactNode;
     required?: boolean;
