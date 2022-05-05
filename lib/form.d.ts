@@ -2,11 +2,11 @@ import './style.less';
 import React, { CSSProperties } from 'react';
 import { FormStore } from './form-store';
 import { FormOptions } from './form-options-context';
-export interface FormProps extends FormOptions {
+export interface FormProps<S = FormStore> extends FormOptions {
     className?: string;
-    store?: FormStore;
+    store?: S;
     style?: CSSProperties;
-    children?: React.ReactNode;
+    children?: any;
     initialValues?: Partial<unknown>;
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
     onReset?: (e: React.FormEvent<HTMLFormElement>) => void;

@@ -14,7 +14,15 @@ export declare enum LabelAlignEnum {
     Vertical = "vertical",
     Inline = "inline"
 }
+export interface ColProps {
+    span?: number;
+    xs?: number;
+    sm?: number;
+    md?: number;
+    lg?: number;
+}
 export interface FormOptions extends FormFunc {
+    col?: ColProps;
     labelAlign?: LabelAlignEnum;
     labelStyle?: CSSProperties;
     initialValues?: Partial<unknown>;

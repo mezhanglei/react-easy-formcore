@@ -2,14 +2,16 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.0.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，目标控件只需要提供`props`方法：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
 # 版本更新日志
- - 1.x版本: 
+ - 1.1.0版本: 
+   - 增加`col`布局属性，可以进行栅格布局
+ - 1.0.3版本: 
    - labelWidth和labelAlign更改为labelStyle，可以自己自定义label标签相关的样式
    - inline改为labelAlign，拥有三种类型。
    - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
@@ -182,6 +184,7 @@ class demo extends React.Component {
 - `required` 所有 field 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
 - `labelStyle` 所有 field 组件自定义`label`样式，`可选`。
 - `gutter` 所有 field 组件自定义`label`标签和表单组件间的距离，`可选`。
+- `col` 栅格布局 `{span?: number, xs?: number, sm?: number, md?: number, lg?: number}`
    
 
 ### Form Props

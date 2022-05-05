@@ -2,14 +2,16 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.0.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Version changelog
- - Version 1.x: 
+ - 1.1.0: 
+   - Add `col` layout attribute to allow for raster layout
+ - Version 1.0.3: 
    - labelWidth and labelAlign have been changed to labelStyle, allowing you to customize your own label label-related styles
    - inline changed to labelAlign, with three labelAlign types.
    - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
@@ -180,6 +182,7 @@ class demo extends React.Component {
 - `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
 - `labelStyle` Custom `label` style for all field components, `optional`.
 - `gutter` The distance between all field component custom labels and form components, `optional`.
+- `col` grid layout `{span?: number, xs?: number, sm?: number, md?: number, lg?: number}`
 
 ### Form Props
 Inherited base options

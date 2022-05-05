@@ -1,9 +1,11 @@
 import React, { CSSProperties } from 'react';
 import './list-item.less';
 import { LabelAlignEnum } from './form-options-context';
+import { ColProps } from './form-options-context';
 export interface ListItemProps {
     label?: any;
     labelAlign?: LabelAlignEnum;
+    col?: ColProps;
     labelStyle?: CSSProperties;
     suffix?: React.ReactNode;
     required?: boolean;
