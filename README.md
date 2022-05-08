@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -183,6 +183,7 @@ class demo extends React.Component {
 - `labelStyle` Custom `label` style for all field components, `optional`.
 - `gutter` The distance between all field component custom labels and form components, `optional`.
 - `col` grid layout `{span?: number, xs?: number, sm?: number, md?: number, lg?: number}`
+- `colon` boolean is add colon
 
 ### Form Props
 Inherited base options

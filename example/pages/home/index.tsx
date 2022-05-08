@@ -8,7 +8,7 @@ class demo extends React.Component {
     super(props);
     this.store = new FormStore();
     this.state = {
-    }
+    };
   }
 
   onSubmit = async (e) => {

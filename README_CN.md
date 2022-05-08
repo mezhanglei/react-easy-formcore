@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -185,6 +185,7 @@ class demo extends React.Component {
 - `labelStyle` 所有 field 组件自定义`label`样式，`可选`。
 - `gutter` 所有 field 组件自定义`label`标签和表单组件间的距离，`可选`。
 - `col` 栅格布局 `{span?: number, xs?: number, sm?: number, md?: number, lg?: number}`
+- `colon` boolean 是否添加冒号
    
 
 ### Form Props

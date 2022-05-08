@@ -6,6 +6,7 @@ export interface ListItemProps {
     label?: any;
     labelAlign?: LabelAlignEnum;
     col?: ColProps;
+    colon?: boolean;
     labelStyle?: CSSProperties;
     suffix?: React.ReactNode;
     required?: boolean;
