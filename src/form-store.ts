@@ -107,7 +107,7 @@ export class FormStore<T extends Object = any> {
   }
 
   // 获取初始值
-  public getInitialValues(path?: string |string[]) {
+  public getInitialValues(path?: string | string[]) {
     return path === undefined ? (this.initialValues && { ...this.initialValues }) : deepGet(this.initialValues, path)
   }
 
@@ -240,7 +240,7 @@ export class FormStore<T extends Object = any> {
   private notifyValue(path?: string) {
     if (path) {
       this.valueListeners.forEach((listener) => {
-        if (isExitPrefix(listener?.path, path)) {
+        if (listener?.path === path) {
           listener?.onChange && listener?.onChange(this.getFieldValue(listener.path), this.getLastValue(listener.path))
         }
       })
