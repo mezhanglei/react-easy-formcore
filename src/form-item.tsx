@@ -135,7 +135,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
       // 清除该表单域的props(在设置值的前面)
       store?.setFieldProps(currentPath, undefined);
       // 清除初始值
-      store.setInitialValues(currentPath, undefined);
+      store.setInitialValues(currentPath, undefined, true);
     }
   }, [currentPath, JSON.stringify(initialValue)]);
 

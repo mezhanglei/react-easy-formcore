@@ -38,7 +38,7 @@ export declare class FormStore<T extends Object = any> {
     setFieldProps(path: string, field?: FieldProps): void;
     getFieldValue(path?: string | string[]): any;
     getLastValue(path?: string | string[]): any;
-    setInitialValues(path: string, initialValue: any): void;
+    setInitialValues(path: string, initialValue: any, isHidden?: boolean): void;
     getInitialValues(path?: string | string[]): any;
     setFieldValue(path: string | Partial<T>, value?: any): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;

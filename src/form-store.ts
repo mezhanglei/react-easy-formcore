@@ -94,20 +94,20 @@ export class FormStore<T extends Object = any> {
   }
 
   // 设置初始值
-  public setInitialValues(path: string, initialValue: any) {
+  public setInitialValues(path: string, initialValue: any, isHidden?: boolean) {
     this.initialValues = deepSet(this.initialValues, path, initialValue);
     // 旧表单值存储
     this.lastValues = klona(this.values);
     // 设置值
     this.values = deepSet(this.values, path, initialValue);
     // 同步ui
-    this.notifyValue(path);
+    this.notifyValue(path, isHidden);
     // 同时触发另一个值的监听
-    this.notifyStoreValue(path);
+    this.notifyStoreValue(path, isHidden);
   }
 
   // 获取初始值
-  public getInitialValues(path?: string | string[]) {
+  public getInitialValues(path?: string |string[]) {
     return path === undefined ? (this.initialValues && { ...this.initialValues }) : deepGet(this.initialValues, path)
   }
 
@@ -237,10 +237,10 @@ export class FormStore<T extends Object = any> {
   }
 
   // 同步值的变化
-  private notifyValue(path?: string) {
+  private notifyValue(path?: string, isHidden?: boolean) {
     if (path) {
       this.valueListeners.forEach((listener) => {
-        if (listener?.path === path) {
+        if (listener?.path === path && !isHidden) {
           listener?.onChange && listener?.onChange(this.getFieldValue(listener.path), this.getLastValue(listener.path))
         }
       })
@@ -250,10 +250,10 @@ export class FormStore<T extends Object = any> {
   }
 
   // 同步值的变化
-  private notifyStoreValue(path?: string) {
+  private notifyStoreValue(path?: string, isHidden?: boolean) {
     if (path) {
       this.storeValueListeners.forEach((listener) => {
-        if (isExitPrefix(listener?.path, path)) {
+        if (isExitPrefix(listener?.path, path) && !isHidden) {
           listener?.onChange && listener?.onChange(this.getFieldValue(listener.path), this.getLastValue(listener.path))
         }
       })
