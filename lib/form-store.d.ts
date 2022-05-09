@@ -39,14 +39,15 @@ export declare class FormStore<T extends Object = any> {
     getFieldValue(path?: string | string[]): any;
     getLastValue(path?: string | string[]): any;
     setInitialValues(path: string, initialValue: any): void;
-    setFieldValue(path: string | Partial<T>, value?: any, isMount?: boolean): Promise<void>;
+    getInitialValues(path?: string | string[]): any;
+    setFieldValue(path: string | Partial<T>, value?: any): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;
     reset(): void;
     getFieldError(path?: string): any;
     private setFieldError;
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
-    validate(path: string, isMount?: boolean): Promise<string>;
+    validate(path: string): Promise<string>;
     private notifyValue;
     private notifyStoreValue;
     private notifyError;

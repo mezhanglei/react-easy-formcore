@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.1.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.4-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -198,7 +198,7 @@ class demo extends React.Component {
 - `onMount` 表单渲染完毕的回调，`可选`。
 - `onReset` 表单重置默认值，`可选`。
 - `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
-- `onValuesChange` 监听表单值的变化。(不监听`initialValue`赋值)`可选`。
+- `onValuesChange` 监听表单值的变化。`可选`。
 
 
 ### Form.Item Props
