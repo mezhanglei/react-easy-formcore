@@ -1,4 +1,4 @@
-import React, { cloneElement, isValidElement, useCallback, useContext, useState, CSSProperties, useEffect } from 'react';
+import React, { cloneElement, useCallback, useContext, useState, CSSProperties, useEffect } from 'react';
 import { FormStoreContext, FormValuesContext } from './form-store-context';
 import { FormOptions, FormOptionsContext, LabelAlignEnum } from './form-options-context';
 import { getValuePropName, getValueFromEvent, isListItem, getColProps } from './utils/utils';
@@ -142,11 +142,11 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
       // 清除初始值
       store.setInitialValues(currentPath, undefined);
     }
-  }, [currentPath, store]);
+  }, [currentPath, JSON.stringify(initialValue)]);
 
   // 最底层才会绑定value和onChange
   const bindChild = (child: any) => {
-    if (currentPath && isValidElement(child)) {
+    if (currentPath && child) {
       const valuePropName = getValuePropName(valueProp, child && child.type);
       const childProps = child?.props as any;
       const { onChange, className } = childProps || {};
