@@ -32,13 +32,13 @@ export declare class FormStore<T extends Object = any> {
     private values;
     private lastValues?;
     private formErrors;
-    private fieldsProps;
+    private initialFieldProps;
     constructor(values?: Partial<T>);
-    getFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
-    setFieldProps(path: string, field?: FieldProps): void;
+    getInitialFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
+    setInitialFieldProps(path: string, field?: FieldProps): void;
     getFieldValue(path?: string | string[]): any;
     getLastValue(path?: string | string[]): any;
-    setInitialValues(path: string, initialValue: any, isHidden?: boolean): void;
+    setInitialValues(path: string, initialValue: any): void;
     getInitialValues(path?: string | string[]): any;
     setFieldValue(path: string | Partial<T>, value?: any): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;
@@ -48,13 +48,13 @@ export declare class FormStore<T extends Object = any> {
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
     validate(path: string): Promise<string>;
-    private notifyValue;
-    private notifyStoreValue;
+    private notifyFormItem;
+    private notifyFormGlobal;
     private notifyError;
     private notifyProps;
-    subscribeValue(path: string, listener: FormListener['onChange']): () => void;
-    listenStoreValue(path: string, listener: FormListener['onChange']): () => void;
-    removeListenStoreValue(path?: string): void;
+    subscribeFormItem(path: string, listener: FormListener['onChange']): () => void;
+    listenFormGlobal(path: string, listener: FormListener['onChange']): () => void;
+    removeListenFormGlobal(path?: string): void;
     subscribeError(path: string, listener: FormListener['onChange']): () => void;
     subscribeProps(path: string, listener: FormListener['onChange']): () => void;
 }
