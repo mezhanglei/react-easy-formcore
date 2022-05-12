@@ -1,8 +1,12 @@
 .custom-list-item {
-  margin-bottom: 16px;
+  padding: 8px;
   &--horizontal {
     display: flex;
     align-items: flex-start;
+  }
+
+  &--inline {
+    display: inline-flex;
   }
 
   &--horizontal &__header,
@@ -16,10 +20,6 @@
   &--inline &__container {
     margin-top: auto;
     margin-bottom: auto;
-  }
-
-  &--inline {
-    display: inline-flex;
   }
 
   &__header {

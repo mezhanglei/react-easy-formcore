@@ -1,16 +1,9 @@
 import React, { CSSProperties } from 'react';
 import './list-item.less';
-import { LabelAlignEnum } from './form-options-context';
-import { ColProps } from './form-options-context';
-export interface ListItemProps {
+import { FormOptions } from './form-options-context';
+export interface ListItemProps extends FormOptions {
     label?: any;
-    labelAlign?: LabelAlignEnum;
-    col?: ColProps;
-    colon?: boolean;
-    labelStyle?: CSSProperties;
     suffix?: React.ReactNode;
-    required?: boolean;
-    gutter?: number;
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;

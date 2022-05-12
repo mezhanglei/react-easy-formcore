@@ -1,5 +1,4 @@
 import './style.less'
-
 import React, { CSSProperties, useEffect } from 'react'
 import { FormItem } from './form-item'
 import { FormStore } from './form-store'
@@ -34,7 +33,7 @@ export function Form(props: FormProps) {
       <FormStoreContext.Provider value={store}>
         <FormValuesContext.Provider value={initialValues}>
           <FormOptionsContext.Provider value={options}>
-            <Row className='flex-form-row'>
+            <Row>
               {children}
             </Row>
           </FormOptionsContext.Provider>

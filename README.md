@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.1.7-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.1.8-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -12,8 +12,8 @@ Lightweight form container component where the target control only needs to prov
  - 1.1.x: 
    - Add `col` layout attribute to allow for raster layout
  - Version 1.0.3: 
-   - labelWidth and labelAlign have been changed to labelStyle, allowing you to customize your own label label-related styles
-   - inline changed to labelAlign, with three labelAlign types.
+   - labelWidth and layout have been changed to labelStyle, allowing you to customize your own label label-related styles
+   - inline changed to layout, with three layout types.
    - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
    - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls
  - 0.3.8 Initial release
@@ -177,7 +177,7 @@ class demo extends React.Component {
 
 ### base options
 
-- `labelAlign` `'horizontal'|'vertical'|'inline'` All field components set the labelAlign type, the default value is `horizontal`.
+- `layout` `'horizontal'|'vertical'|'inline'` All field components set the layout type, the default value is `horizontal`.
 - `compact` Whether to hide error messages for all Form.
 - `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
 - `labelStyle` Custom `label` style for all field components, `optional`.

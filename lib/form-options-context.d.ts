@@ -9,7 +9,7 @@ export interface FormFunc {
         value: any;
     }) => void;
 }
-export declare enum LabelAlignEnum {
+export declare enum Layout {
     Horizontal = "horizontal",
     Vertical = "vertical",
     Inline = "inline"
@@ -24,7 +24,7 @@ export interface ColProps {
 export interface FormOptions extends FormFunc {
     col?: ColProps;
     colon?: boolean;
-    labelAlign?: LabelAlignEnum;
+    layout?: Layout;
     labelStyle?: CSSProperties;
     initialValues?: Partial<unknown>;
     compact?: boolean;
