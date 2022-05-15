@@ -243,7 +243,6 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 - `store.validate()` Checks the entire form and returns error messages and form values.
 - `store.validate(name)` Checks the value of a form field against the field `name` and returns an error message and the form value.
 - `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.
-- `store.getFieldProps(name?: string)` Returns the `props` of a form field based on the field name
 
 ### Hooks
 
