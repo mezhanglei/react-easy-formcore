@@ -2,14 +2,15 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.2.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.2.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Version changelog
- - 1.1.x: 
+ - 1.x: 
+   - Add a `data-name` setting to identify controls that match the `value,onChange` requirement
    - Add `col` layout attribute to allow for raster layout
  - Version 1.0.3: 
    - labelWidth and layout have been changed to labelStyle, allowing you to customize your own label label-related styles
