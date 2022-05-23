@@ -248,7 +248,6 @@ class demo extends React.Component {
 - `store.validate()` 校验整个表单，并返回错误信息和表单值。
 - `store.validate(name)` 根据字段名校验表单域的值，并返回错误信息和表单值。
 - `store.getFieldError(name?: string)` 返回单个表单域的错误信息或表单所有的错误信息。
-- `store.getFieldProps(name?: string)` 根据字段名返回表单域的`props`
 
 ### Hooks
 
