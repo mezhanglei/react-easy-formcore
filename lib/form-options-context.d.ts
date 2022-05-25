@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react';
-export interface FormFunc {
+import { ColProps } from 'react-flexbox-grid';
+export interface FormRoot {
     onFieldsChange?: (obj: {
         path: string;
         value: any;
@@ -9,24 +10,19 @@ export interface FormFunc {
         value: any;
     }) => void;
 }
-export declare enum Layout {
-    Horizontal = "horizontal",
-    Vertical = "vertical",
-    Inline = "inline"
-}
-export interface ColProps {
+export declare type Layout = 'horizontal' | 'vertical' | 'inline' | string;
+export interface FromColProps extends ColProps {
     span?: number;
     xs?: number;
     sm?: number;
     md?: number;
     lg?: number;
 }
-export interface FormOptions extends FormFunc {
-    col?: ColProps;
+export interface FormOptions extends FormRoot {
+    col?: FromColProps;
     colon?: boolean;
     layout?: Layout;
     labelStyle?: CSSProperties;
-    initialValues?: Partial<unknown>;
     compact?: boolean;
     required?: boolean;
     gutter?: number;

@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.2.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.2.4-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -237,10 +237,10 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 
 - `new FormStore(defaultValues)` form manager。
 - `store.getFieldValue()` Returns the value of the entire form.
-- `store.getFieldValue(name: string | string[])` Returns the value of a form field based on the field name. When `name` is an array, returns the value of multiple form fields
+- `store.getFieldValue(name: string)` Returns the value of a form field based on the field name. When `name` is an array, returns the value of multiple form fields
 - `store.setFieldValue(name, value)` Update the value of a form field
 - `store.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
-- `store.reset()` Reset the form.
+- `store.reset(values?: Partial<T>)` Reset the form.The value can be passed to reset to the target value.
 - `store.validate()` Checks the entire form and returns error messages and form values.
 - `store.validate(name)` Checks the value of a form field against the field `name` and returns an error message and the form value.
 - `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.

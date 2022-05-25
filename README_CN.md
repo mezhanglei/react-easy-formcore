@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.2.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.2.4-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -241,10 +241,10 @@ class demo extends React.Component {
 
 - `new FormStore(defaultValues)` 创建表单存储。
 - `store.getFieldValue()` 返回整个表单的值。
-- `store.getFieldValue(name: string | string[])` 根据字段名返回表单域的值。当 `name` 为数组时，返回多个表单域的值
+- `store.getFieldValue(name: string)` 根据字段名返回表单域的值。当 `name` 为数组时，返回多个表单域的值
 - `store.setFieldValue(name, value)` 更新表单域的值
 - `store.setFieldsValue(obj: Partial<T>)` 设置表单域的值(覆盖)。
-- `store.reset()` 重置表单。
+- `store.reset(values?: Partial<T>)` 重置表单, 可以传值重置为目标值。
 - `store.validate()` 校验整个表单，并返回错误信息和表单值。
 - `store.validate(name)` 根据字段名校验表单域的值，并返回错误信息和表单值。
 - `store.getFieldError(name?: string)` 返回单个表单域的错误信息或表单所有的错误信息。
