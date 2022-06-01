@@ -30,14 +30,14 @@
 - 提供样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
 - 可以控件外部自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
 - 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
-- 当输入表单控件外面添加了非表单组件或节点，需要给节点或组件手动添加`data-type="fragment"`用来增强表单域的绑定深度以达到目标控件。
+- 当输入表单控件外面添加了非表单组件或节点，通过添加`data-type="fragment"`过滤非目标节点或设置`data-name`标记目标节点来绑定目标控件。
 
 # Form.List
 
-`Form.Item`组件作为`Form.List`中的值，组合形成一个数组
+`Form.Item`组件作为`Form.List`数组类型中的项，组合形成一个数组
 
-- `Form.List`中的每一项为数组中的元素，无需设置`name`字段
-- `Form.List`提供的`rules`校验规则，对数组中的所有输入项都有效，但优先级低于数组中的项自己的`rules`规则
+- `Form.List`中只识别`Form.Item`项，无需设置`name`字段。
+- `Form.List`提供的`rules`校验规则，对数组中的所有输入项都有效，但优先级低于数组中的`Form.Item`的`rules`规则
 
 ## 安装
 
@@ -240,13 +240,11 @@ class demo extends React.Component {
 ### FormStore Methods
 
 - `new FormStore(defaultValues)` 创建表单存储。
-- `store.getFieldValue()` 返回整个表单的值。
-- `store.getFieldValue(name: string)` 根据字段名返回表单域的值。当 `name` 为数组时，返回多个表单域的值
+- `store.getFieldValue(name?: string)` 返回指定`name`的表单域的值，不指定`name`返回整个表单的值。
 - `store.setFieldValue(name, value)` 更新表单域的值
 - `store.setFieldsValue(obj: Partial<T>)` 设置表单域的值(覆盖)。
 - `store.reset(values?: Partial<T>)` 重置表单, 可以传值重置为目标值。
-- `store.validate()` 校验整个表单，并返回错误信息和表单值。
-- `store.validate(name)` 根据字段名校验表单域的值，并返回错误信息和表单值。
+- `store.validate(name?: string)` 校验表单，并返回错误信息和表单值。
 - `store.getFieldError(name?: string)` 返回单个表单域的错误信息或表单所有的错误信息。
 
 ### Hooks

@@ -29,14 +29,14 @@ The smallest unit of a component in a form, and nodes as an object can be nested
 - Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
 - You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
 - Custom form validation rules can be provided with the form validation rules property `rules`.
-- When a non-form component or node is added outside of the input form control, the node or component needs to be manually added with `data-type="fragment"` to enhance the binding depth of the form field to reach the target control.
+- When a non-form component or node is added outside the input form control, bind the target control by adding `data-type="fragment"` to filter the non-target node or by setting `data-name` to mark the target input form.
 
 # Form.List
 
-The `Form.Item` component is combined into an array as the values in `Form.
+The `Form.Item` component acts as an item in the `Form.List` array type and is combined to form an array
 
-- Each item in `Form.List` is an element of an array, no need to set the `name` field
-- The `rules` checksum rules provided by `Form.List` are valid for all input items in the array, but have a lower priority than the items in the array's own `rules` rules
+- Only `Form.Item` items are recognised in `Form.List` and there is no need to set the `name` field.
+- The `rules` provided by `Form.List` are valid for all input items in the array, but have a lower priority than the `rules` of the `Form.Item` in the array
 
 ## install
 
@@ -235,14 +235,12 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 
 ### FormStore Methods
 
-- `new FormStore(defaultValues)` form manager。
-- `store.getFieldValue()` Returns the value of the entire form.
-- `store.getFieldValue(name: string)` Returns the value of a form field based on the field name. When `name` is an array, returns the value of multiple form fields
+- `new FormStore(defaultValues)` form manager.
+- `store.getFieldValue(name?: string)` Returns the value of the form field for which `name` is specified, or the value of the whole form without `name`.
 - `store.setFieldValue(name, value)` Update the value of a form field
 - `store.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
 - `store.reset(values?: Partial<T>)` Reset the form.The value can be passed to reset to the target value.
-- `store.validate()` Checks the entire form and returns error messages and form values.
-- `store.validate(name)` Checks the value of a form field against the field `name` and returns an error message and the form value.
+- `store.validate(name?: string)` Checks form and returns error messages and form values.
 - `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.
 
 ### Hooks
