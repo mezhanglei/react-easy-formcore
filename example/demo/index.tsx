@@ -1,6 +1,6 @@
 import React from 'react';
 import "./index.less";
-import { Form, FormStore } from '../../../src/index';
+import { Form, FormStore } from '../../src/index';
 
 
 class demo extends React.Component {
