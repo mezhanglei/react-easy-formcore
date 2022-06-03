@@ -10,9 +10,11 @@ export interface ListItemProps extends FormOptions {
 }
 export declare const classes_item: {
     field: string;
+    compact: string;
     required: string;
     header: string;
     container: string;
+    control: string;
     footer: string;
 };
 export declare const ListItem: React.ForwardRefExoticComponent<ListItemProps & React.RefAttributes<unknown>>;
