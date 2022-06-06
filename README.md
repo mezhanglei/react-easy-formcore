@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.2.8-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.2.9-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -10,6 +10,7 @@ Lightweight form container component where the target control only needs to prov
 
 # Version changelog
  - 1.x: 
+   - 1.2.9 Add `footer` bottom node configuration api.
    - Add a `data-name` setting to identify controls that match the `value,onChange` requirement
    - Add `col` layout attribute to allow for raster layout
  - Version 1.0.3: 
@@ -205,6 +206,7 @@ Inherited base options
 - `label` Form field label, `optional`.
 - `name` Form field name, `optional`.
 - `suffix` Suffix node, `optional`.
+- `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
 - `valueProp` attribute of the form value.`optional`
@@ -220,6 +222,7 @@ Inherited base options
 - `label` Form field label, `optional`.
 - `name` Form field name, `optional`.
 - `suffix` Suffix node, `optional`.
+- `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
 

@@ -277,3 +277,4 @@ export declare const getColProps: (option: FormOptions) => {
     md: number | false;
     lg: number | false;
 };
+export declare const getCurrentPath: (name?: string, parent?: string) => string | undefined;

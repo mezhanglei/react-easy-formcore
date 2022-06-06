@@ -1,6 +1,6 @@
 {
   "name": "react-easy-formcore",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "轻量级form表单容器组件",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
@@ -85,10 +85,11 @@
   "dependencies": {
     "antd": "^4.20.2",
     "classnames": "^2.2.6",
+    "copy-anything": "^3.0.2",
     "history": "^5.0.0",
-    "klona": "^2.0.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-fast-compare": "^3.2.0",
     "react-flexbox-grid": "^2.1.2",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^5.2.0"

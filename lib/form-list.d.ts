@@ -3,8 +3,9 @@ import { FormRule } from './form-store';
 import { FormOptions } from './form-options-context';
 export interface FormListProps extends FormOptions {
     label?: string;
-    suffix?: React.ReactNode;
     name?: string;
+    suffix?: React.ReactNode;
+    footer?: React.ReactNode;
     rules?: FormRule[];
     path?: string;
     initialValue?: any[];
@@ -21,6 +22,7 @@ export declare const classes_list: {
     container: string;
     control: string;
     message: string;
+    suffix: string;
     footer: string;
 };
 export declare const FormList: React.ForwardRefExoticComponent<FormListProps & React.RefAttributes<unknown>>;

@@ -4,9 +4,10 @@ import { FormRule } from './form-store';
 export interface FormItemProps extends FormOptions {
     label?: string;
     name?: string;
+    suffix?: React.ReactNode;
+    footer?: React.ReactNode;
     valueProp?: string | ((type: any) => string);
     valueGetter?: (...args: any[]) => any;
-    suffix?: React.ReactNode;
     rules?: FormRule[];
     path?: string;
     initialValue?: any;
@@ -24,6 +25,7 @@ export declare const classes: {
     container: string;
     control: string;
     message: string;
+    suffix: string;
     footer: string;
 };
 export declare const FormItem: React.ForwardRefExoticComponent<FormItemProps & React.RefAttributes<unknown>>;

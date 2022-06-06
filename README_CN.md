@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.2.8-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.2.9-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -10,6 +10,7 @@
 
 # 版本更新日志
  - 1.x版本: 
+   - 1.2.9 增加`footer`底部节点配置api.
    - 增加`data-name`设置，用来识别符合`value,onChange`要求的控件
    - 增加`col`布局属性，可以进行栅格布局
  - 1.0.3版本: 
@@ -209,6 +210,7 @@ class demo extends React.Component {
 - `label` 表单域标签，`可选`。
 - `name` 表单域字段名，`可选`。
 - `suffix` 后缀节点，`可选`。
+- `footer` 底部节点，`可选`。
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `rules` 表单域的校验规则 `可选`。
 - `valueProp` 填写到子组件的值属性名，默认值为`'value'`。
@@ -224,6 +226,7 @@ class demo extends React.Component {
 - `label` 表单域标签，`可选`。
 - `name` 表单域字段名，`可选`。
 - `suffix` 后缀节点，`可选`。
+- `footer` 底部节点，`可选`。
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `rules` 表单域的校验规则 `可选`。
 
