@@ -36,8 +36,10 @@ export class FormStore<T extends Object = any> {
 
   private initialFieldProps: FormFieldsProps = {};
 
-  public constructor(values: Partial<T> = {}) {
+  public constructor(values: Partial<T>) {
     this.initialValues = values
+    this.initialFieldProps = {}
+    this.formErrors = {}
     this.values = deepClone(values)
     this.getFieldValue = this.getFieldValue.bind(this)
     this.setFieldValue = this.setFieldValue.bind(this)
@@ -80,12 +82,12 @@ export class FormStore<T extends Object = any> {
 
   // 获取所有表单值，或者单个表单值,或者多个表单值
   public getFieldValue(path?: string | string[]) {
-    return path === undefined ? (this.values && { ...this.values }) : deepGet(this.values, path)
+    return path === undefined ? this.values : deepGet(this.values, path)
   }
 
   // 获取旧表单值
   public getLastValue(path?: string | string[]) {
-    return path === undefined ? (this.lastValues && { ...this.lastValues }) : deepGet(this.lastValues, path)
+    return path === undefined ? this.lastValues : deepGet(this.lastValues, path)
   }
 
   // 设置初始值(只有初始化时才进行赋值)
@@ -109,11 +111,11 @@ export class FormStore<T extends Object = any> {
 
   // 获取初始值
   public getInitialValues(path?: string | string[]) {
-    return path === undefined ? (this.initialValues && { ...this.initialValues }) : deepGet(this.initialValues, path)
+    return path === undefined ? this.initialValues : deepGet(this.initialValues, path)
   }
 
   // 更新表单值，单个表单值或多个表单值
-  public async setFieldValue(path: string | Partial<T>, value?: any) {
+  public async setFieldValue(path: string | Partial<T>, value?: any, noError?: boolean) {
     if (typeof path === 'string') {
       // 旧表单值存储
       this.lastValues = deepClone(this.values);
@@ -126,7 +128,7 @@ export class FormStore<T extends Object = any> {
       // 规则
       const fieldProps = this.getInitialFieldProps();
       const rules = fieldProps?.[path]?.['rules'];
-      if (rules?.length) {
+      if (rules?.length && !noError) {
         // 校验规则
         await this.validate(path);
       }
@@ -180,7 +182,7 @@ export class FormStore<T extends Object = any> {
   public async validate(): Promise<ValidateResult<T>>
   public async validate(path: string): Promise<string>
   public async validate(path?: string) {
-    const fieldProps = this.getInitialFieldProps();
+    const fieldProps = this.getInitialFieldProps(path);
     if (path === undefined) {
       const result = await Promise.all(Object.keys(fieldProps)?.map((n) => {
         const rules = fieldProps?.[n]?.['rules'];
@@ -197,7 +199,7 @@ export class FormStore<T extends Object = any> {
       // 清空错误信息
       this.setFieldError(path, undefined);
       const value = this.getFieldValue(path);
-      const rules = fieldProps?.[path]?.['rules'];
+      const rules = fieldProps?.['rules'];
 
       // 表单校验处理规则
       const handleRule = async (rule: FormRule) => {

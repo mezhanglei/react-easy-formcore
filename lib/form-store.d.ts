@@ -32,14 +32,14 @@ export declare class FormStore<T extends Object = any> {
     private lastValues?;
     private formErrors;
     private initialFieldProps;
-    constructor(values?: Partial<T>);
+    constructor(values: Partial<T>);
     getInitialFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
     setInitialFieldProps(path: string, field?: FieldProps): void;
     getFieldValue(path?: string | string[]): any;
     getLastValue(path?: string | string[]): any;
     setInitialValues(path: string, initialValue: any): void;
     getInitialValues(path?: string | string[]): any;
-    setFieldValue(path: string | Partial<T>, value?: any): Promise<void>;
+    setFieldValue(path: string | Partial<T>, value?: any, noError?: boolean): Promise<void>;
     setFieldsValue(values: Partial<T>): Promise<void>;
     reset(endValues?: Partial<T>): void;
     getFieldError(path?: string): any;
