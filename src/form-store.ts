@@ -21,7 +21,7 @@ export type FieldProps = { rules?: FormRule[], [other: string]: any };
 export type FormFieldsProps<T = any> = { [key in keyof T]: FieldProps }
 
 export class FormStore<T extends Object = any> {
-  private initialValues: Partial<T>
+  private initialValues?: Partial<T>
 
   private formItemListeners: FormListener[] = []
 
@@ -29,14 +29,14 @@ export class FormStore<T extends Object = any> {
 
   private errorListeners: FormListener[] = []
 
-  private values: Partial<T>
+  private values?: Partial<T>
   private lastValues?: Partial<T>
 
   private formErrors: FormErrors = {}
 
   private fieldProps: FormFieldsProps = {};
 
-  public constructor(values: Partial<T>) {
+  public constructor(values?: Partial<T>) {
     this.initialValues = values
     this.fieldProps = {}
     this.formErrors = {}
@@ -138,7 +138,7 @@ export class FormStore<T extends Object = any> {
   }
 
   // 设置表单值(覆盖更新)
-  public async setFieldsValue(values: Partial<T>) {
+  public async setFieldsValue(values?: Partial<T>) {
     this.lastValues = deepClone(this.values);
     this.values = values;
     this.notifyFormItem();
