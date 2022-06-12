@@ -31,10 +31,10 @@ export declare class FormStore<T extends Object = any> {
     private values;
     private lastValues?;
     private formErrors;
-    private initialFieldProps;
+    private fieldProps;
     constructor(values: Partial<T>);
-    getInitialFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
-    setInitialFieldProps(path: string, field?: FieldProps): void;
+    getFieldProps(path?: string): FieldProps | FormFieldsProps<any>;
+    setFieldProps(path: string, field?: FieldProps): void;
     getFieldValue(path?: string | string[]): any;
     getLastValue(path?: string | string[]): any;
     setInitialValues(path: string, initialValue: any): void;
