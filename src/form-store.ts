@@ -34,11 +34,11 @@ export class FormStore<T extends Object = any> {
 
   private formErrors: FormErrors = {}
 
-  private initialFieldProps: FormFieldsProps = {};
+  private fieldProps: FormFieldsProps = {};
 
   public constructor(values: Partial<T>) {
     this.initialValues = values
-    this.initialFieldProps = {}
+    this.fieldProps = {}
     this.formErrors = {}
     this.values = deepClone(values)
     this.getFieldValue = this.getFieldValue.bind(this)
@@ -48,8 +48,8 @@ export class FormStore<T extends Object = any> {
     this.setFieldError = this.setFieldError.bind(this)
     this.setFieldsError = this.setFieldsError.bind(this)
 
-    this.getInitialFieldProps = this.getInitialFieldProps.bind(this)
-    this.setInitialFieldProps = this.setInitialFieldProps.bind(this)
+    this.getFieldProps = this.getFieldProps.bind(this)
+    this.setFieldProps = this.setFieldProps.bind(this)
 
     this.reset = this.reset.bind(this)
     this.validate = this.validate.bind(this)
@@ -60,23 +60,23 @@ export class FormStore<T extends Object = any> {
   }
 
   // 获取
-  public getInitialFieldProps(path?: string) {
+  public getFieldProps(path?: string) {
     if (path) {
-      return this.initialFieldProps?.[path]
+      return this.fieldProps?.[path]
     } else {
-      return this.initialFieldProps
+      return this.fieldProps
     }
   }
 
   // 设置表单域
-  public setInitialFieldProps(path: string, field?: FieldProps) {
+  public setFieldProps(path: string, field?: FieldProps) {
     if (!path) return;
     if (field === undefined) {
-      delete this.initialFieldProps[path]
+      delete this.fieldProps[path]
     } else {
-      const lastField = this.initialFieldProps[path];
+      const lastField = this.fieldProps[path];
       const newField = { ...lastField, ...field };
-      this.initialFieldProps[path] = newField;
+      this.fieldProps[path] = newField;
     }
   }
 
@@ -99,7 +99,7 @@ export class FormStore<T extends Object = any> {
     this.values = deepSet(this.values, path, initialValue);
     // 异步更新, 只有组件渲染成功了，才会去同步ui操作
     setTimeout(() => {
-      const fieldProps = this.getInitialFieldProps(path);
+      const fieldProps = this.getFieldProps(path);
       if (fieldProps) {
         // 同步ui
         this.notifyFormItem(path);
@@ -126,7 +126,7 @@ export class FormStore<T extends Object = any> {
       // 同时触发另一个值的监听
       this.notifyFormGlobal(path);
       // 规则
-      const fieldProps = this.getInitialFieldProps();
+      const fieldProps = this.getFieldProps();
       const rules = fieldProps?.[path]?.['rules'];
       if (rules?.length && !noError) {
         // 校验规则
@@ -182,7 +182,7 @@ export class FormStore<T extends Object = any> {
   public async validate(): Promise<ValidateResult<T>>
   public async validate(path: string): Promise<string>
   public async validate(path?: string) {
-    const fieldProps = this.getInitialFieldProps(path);
+    const fieldProps = this.getFieldProps(path);
     if (path === undefined) {
       const result = await Promise.all(Object.keys(fieldProps)?.map((n) => {
         const rules = fieldProps?.[n]?.['rules'];

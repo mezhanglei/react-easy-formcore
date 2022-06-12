@@ -78,7 +78,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
   const [error, setError] = useState(storeError);
 
   // 初始化获取初始props
-  currentPath && store?.setInitialFieldProps(currentPath, fieldProps);
+  currentPath && store?.setFieldProps(currentPath, fieldProps);
 
   // 给子元素绑定的onChange
   const onChange = useCallback(
@@ -140,7 +140,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     }
     return () => {
       // 清除该表单域的props(在设置值的前面)
-      currentPath && store?.setInitialFieldProps(currentPath, undefined);
+      currentPath && store?.setFieldProps(currentPath, undefined);
       // 清除初始值
       currentPath && store.setInitialValues(currentPath, undefined);
     }
