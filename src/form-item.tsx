@@ -128,10 +128,6 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     });
     return () => {
       uninstall();
-      // 清除该表单域的props(在设置值的前面)
-      currentPath && store?.setFieldProps(currentPath, undefined);
-      // 清除初始值
-      currentPath && store.setInitialValues(currentPath, undefined);
     };
   }, [currentPath, store]);
 
@@ -142,7 +138,13 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     if (initialItemValue !== undefined) {
       store.setInitialValues(currentPath, initialItemValue);
     }
-  }, [currentPath, initialItemValue]);
+    return () => {
+      // 清除该表单域的props(在设置值的前面)
+      currentPath && store?.setFieldProps(currentPath, undefined);
+      // 清除初始值
+      currentPath && store.setInitialValues(currentPath, undefined);
+    }
+  }, [currentPath]);
 
   // 最底层才会绑定value和onChange
   const bindChild = (child: any) => {
