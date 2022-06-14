@@ -5,7 +5,7 @@ import { getValuePropName, getValueFromEvent, getColProps, getCurrentPath } from
 import { FormRule, FormStore } from './form-store';
 import classnames from 'classnames';
 import { AopFactory } from './utils/function-aop';
-import { isEqual } from './utils/object';
+import { deepGet, isEqual } from './utils/object';
 import { Col, Row } from 'react-flexbox-grid';
 
 export interface FormItemProps extends FormOptions {
@@ -71,7 +71,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
   } = fieldProps;
 
   const currentPath = getCurrentPath(name, path);
-  const initialItemValue = initialValue ?? (currentPath && initialValues?.[currentPath]);
+  const initialItemValue = initialValue ?? (currentPath && deepGet(initialValues, currentPath));
   const storeValue = currentPath && store?.getFieldValue(currentPath);
   const storeError = currentPath && store.getFieldError(currentPath);
   const [value, setValue] = useState(storeValue);
@@ -128,6 +128,10 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     });
     return () => {
       uninstall();
+      // 清除该表单域的props(在设置值的前面)
+      currentPath && store?.setFieldProps(currentPath, undefined);
+      // 清除初始值
+      currentPath && store.setInitialValues(currentPath, undefined);
     };
   }, [currentPath, store]);
 
@@ -138,13 +142,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
     if (initialItemValue !== undefined) {
       store.setInitialValues(currentPath, initialItemValue);
     }
-    return () => {
-      // 清除该表单域的props(在设置值的前面)
-      currentPath && store?.setFieldProps(currentPath, undefined);
-      // 清除初始值
-      currentPath && store.setInitialValues(currentPath, undefined);
-    }
-  }, [currentPath]);
+  }, [currentPath, initialItemValue]);
 
   // 最底层才会绑定value和onChange
   const bindChild = (child: any) => {
