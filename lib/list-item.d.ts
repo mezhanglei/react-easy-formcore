@@ -3,8 +3,8 @@ import './list-item.less';
 import { FormOptions } from './form-options-context';
 export interface ListItemProps extends FormOptions {
     label?: any;
-    suffix?: React.ReactNode;
-    footer?: React.ReactNode;
+    suffix?: React.ReactNode | any;
+    footer?: React.ReactNode | any;
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;

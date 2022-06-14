@@ -11,8 +11,8 @@ import { Col, Row } from 'react-flexbox-grid';
 export interface FormItemProps extends FormOptions {
   label?: string;
   name?: string;
-  suffix?: React.ReactNode; // 右边节点
-  footer?: React.ReactNode; // 底部节点
+  suffix?: React.ReactNode | any; // 右边节点
+  footer?: React.ReactNode | any; // 底部节点
   valueProp?: string | ((type: any) => string);
   valueGetter?: (...args: any[]) => any;
   rules?: FormRule[];

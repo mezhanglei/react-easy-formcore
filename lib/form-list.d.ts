@@ -4,8 +4,8 @@ import { FormOptions } from './form-options-context';
 export interface FormListProps extends FormOptions {
     label?: string;
     name?: string;
-    suffix?: React.ReactNode;
-    footer?: React.ReactNode;
+    suffix?: React.ReactNode | any;
+    footer?: React.ReactNode | any;
     rules?: FormRule[];
     path?: string;
     initialValue?: any[];

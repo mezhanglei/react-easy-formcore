@@ -4,8 +4,8 @@ import { FormRule } from './form-store';
 export interface FormItemProps extends FormOptions {
     label?: string;
     name?: string;
-    suffix?: React.ReactNode;
-    footer?: React.ReactNode;
+    suffix?: React.ReactNode | any;
+    footer?: React.ReactNode | any;
     valueProp?: string | ((type: any) => string);
     valueGetter?: (...args: any[]) => any;
     rules?: FormRule[];
