@@ -10,14 +10,18 @@ export interface FormItemProps extends FormOptions {
     valueGetter?: (...args: any[]) => any;
     rules?: FormRule[];
     path?: string;
+    index?: number;
     initialValue?: any;
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;
     errorClassName?: string;
+    customInner?: any;
 }
 export declare const classes: {
     field: string;
+    inner: string;
+    inline: string;
     compact: string;
     required: string;
     error: string;

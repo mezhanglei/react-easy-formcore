@@ -2,20 +2,23 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.2.16-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.3.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，目标控件只需要提供`props`方法：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
 # 版本更新日志
- - 1.x版本: 
+ - 1.3.x版本: 
+   - 增加`inline`行内布局属性，配合`col`属性使用
+   - 增加`customInner`属性，可以自定义展示容器
+ - 1.2.x版本: 
    - 1.2.9 增加`footer`底部节点配置api.
    - 增加`data-name`设置，用来识别符合`value,onChange`要求的控件
    - 增加`col`布局属性，可以进行栅格布局
  - 1.0.3版本: 
    - labelWidth和labelAlign更改为labelStyle，可以自己自定义label标签相关的样式
-   - 增加layout，拥有三种类型。
+   - 增加layout，拥有`'horizontal' | 'vertical'`两种类型。
    - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
    - 增强了`Form.Item`和`Form.List`表单域双向绑定的能力，可以递归到内部包裹的控件。
  - 0.3.8 初始版本
@@ -181,7 +184,9 @@ class demo extends React.Component {
 
 ### 表单基础属性-base options
 
-- `layout` `'horizontal'|'vertical'|'inline'` 所有 field 组件设置布局类型，默认值为`horizontal`。
+- `layout` `'horizontal'|'vertical'` 所有 field 组件设置布局类型，默认值为`horizontal`。
+- `inline` boolean, 所有 field 组件是否设置行内布局。
+- `labelWidth` numbr, label标签的宽度。
 - `compact` 所有 field 组件是否隐藏错误信息，默认值为`false`。
 - `required` 所有 field 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
 - `labelStyle` 所有 field 组件自定义`label`样式，`可选`。
@@ -218,6 +223,7 @@ class demo extends React.Component {
 - `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 - `errorClassName` 控件当有错误信息时，添加一个自定义类名，`可选`。
+- `customInner` 自定义展示容器 `可选`。
 
 ### Form.List Props
 继承表单基础属性（base options）
@@ -229,6 +235,7 @@ class demo extends React.Component {
 - `footer` 底部节点，`可选`。
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `rules` 表单域的校验规则 `可选`。
+- `customInner` 自定义展示容器 `可选`。
 
 ### 表单的rules中的校验字段
 `rules`中的值的字段中的规则会按照顺序执行校验，`rules`中每一项只能设置一种规则。

@@ -8,13 +8,17 @@ export interface FormListProps extends FormOptions {
     footer?: React.ReactNode | any;
     rules?: FormRule[];
     path?: string;
+    index?: number;
     initialValue?: any[];
     className?: string;
     style?: CSSProperties;
     children?: React.ReactNode;
+    customInner?: any;
 }
 export declare const classes_list: {
     list: string;
+    inner: string;
+    inline: string;
     compact: string;
     required: string;
     error: string;

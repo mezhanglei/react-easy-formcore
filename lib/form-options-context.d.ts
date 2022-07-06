@@ -10,7 +10,7 @@ export interface FormRoot {
         value: any;
     }) => void;
 }
-export declare type Layout = 'horizontal' | 'vertical' | 'inline' | string;
+export declare type Layout = 'horizontal' | 'vertical' | string;
 export interface FromColProps extends ColProps {
     span?: number;
     xs?: number;
@@ -22,6 +22,8 @@ export interface FormOptions extends FormRoot {
     col?: FromColProps;
     colon?: boolean;
     layout?: Layout;
+    labelWidth?: number;
+    inline?: boolean;
     labelStyle?: CSSProperties;
     compact?: boolean;
     required?: boolean;

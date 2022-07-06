@@ -2,20 +2,23 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.2.16-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.3.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Version changelog
- - 1.x: 
+ - 1.3.x: 
+   - Add `inline` in-line layout attribute, used with `col` attribute
+   - Add `customInner` property to customize the display container
+ - 1.2.x: 
    - 1.2.9 Add `footer` bottom node configuration api.
    - Add a `data-name` setting to identify controls that match the `value,onChange` requirement
    - Add `col` layout attribute to allow for raster layout
  - Version 1.0.3: 
    - labelWidth and layout have been changed to labelStyle, allowing you to customize your own label label-related styles
-   - inline changed to layout, with three layout types.
+   - inline changed to layout, with `'horizontal' | 'vertical'`.
    - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
    - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls
  - 0.3.8 Initial release
@@ -180,6 +183,8 @@ class demo extends React.Component {
 ### base options
 
 - `layout` `'horizontal'|'vertical'|'inline'` All field components set the layout type, the default value is `horizontal`.
+- `inline` boolea, Whether or not all field components have inline layout.
+- `labelWidth` number, width of label。
 - `compact` Whether to hide error messages for all Form.
 - `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
 - `labelStyle` Custom `label` style for all field components, `optional`.
@@ -199,6 +204,7 @@ Inherited base options
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
+
 ### Form.Item Props
 Inherited base options
 
@@ -214,6 +220,7 @@ Inherited base options
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
+- `customInner` Custom display container `optional`.
 
 ### Form.List Props
 Inherited base options
@@ -225,6 +232,7 @@ Inherited base options
 - `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
+- `customInner` Custom display container `optional`.
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.

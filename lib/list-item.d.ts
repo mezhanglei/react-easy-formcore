@@ -8,9 +8,13 @@ export interface ListItemProps extends FormOptions {
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;
+    customInner?: any;
+    index?: number;
 }
 export declare const classes_item: {
     field: string;
+    inner: string;
+    inline: string;
     compact: string;
     required: string;
     header: string;

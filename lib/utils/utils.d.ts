@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { FormOptions } from "../form-options-context";
-import { handleListPath, pathToArr } from "./object";
-export { handleListPath, pathToArr };
+import { formatPath, pathToArr } from "./object";
+export { formatPath, pathToArr };
 export declare function isExitPrefix(prefix: string, path: string | string[]): boolean;
 export declare function getValuePropName(valueProp: string | ((type: any) => string), type: any): string;
 export declare function getValueFromEvent(...args: any[]): any;
@@ -272,9 +272,9 @@ export declare const getColProps: (option: FormOptions) => {
     onAnimationIterationCapture?: import("react").AnimationEventHandler<HTMLDivElement> | undefined;
     onTransitionEnd?: import("react").TransitionEventHandler<HTMLDivElement> | undefined;
     onTransitionEndCapture?: import("react").TransitionEventHandler<HTMLDivElement> | undefined;
-    xs: number | false;
-    sm: number | false;
-    md: number | false;
-    lg: number | false;
+    xs: number | undefined;
+    sm: number | undefined;
+    md: number | undefined;
+    lg: number | undefined;
 };
 export declare const getCurrentPath: (name?: string, parent?: string) => string | undefined;
