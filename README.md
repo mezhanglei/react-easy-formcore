@@ -182,7 +182,7 @@ class demo extends React.Component {
 
 ### base options
 
-- `layout` `'horizontal'|'vertical'|'inline'` All field components set the layout type, the default value is `horizontal`.
+- `layout` `'horizontal'|'vertical'` All field components set the layout type, the default value is `horizontal`.
 - `inline` boolea, Whether or not all field components have inline layout.
 - `labelWidth` number, width of label。
 - `compact` Whether to hide error messages for all Form.
