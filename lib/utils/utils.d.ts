@@ -22,7 +22,7 @@ export declare const getColProps: (option: FormOptions) => {
     suppressContentEditableWarning?: boolean | undefined;
     suppressHydrationWarning?: boolean | undefined;
     accessKey?: string | undefined;
-    contentEditable?: (boolean | "true" | "false") | "inherit" | undefined;
+    contentEditable?: "inherit" | (boolean | "true" | "false") | undefined;
     contextMenu?: string | undefined;
     dir?: string | undefined;
     draggable?: (boolean | "true" | "false") | undefined;

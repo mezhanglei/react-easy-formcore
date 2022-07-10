@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.3.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.3.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -12,6 +12,8 @@
  - 1.3.x版本: 
    - 增加`inline`行内布局属性，配合`col`属性使用
    - 增加`customInner`属性，可以自定义展示容器
+   - 增加`labelAlign`和`labelWidth`属性
+   - 增加`valueSetter`属性,和`valueGetter`属性配合使用，格式化输入项和输出项。
  - 1.2.x版本: 
    - 1.2.9 增加`footer`底部节点配置api.
    - 增加`data-name`设置，用来识别符合`value,onChange`要求的控件
@@ -219,7 +221,8 @@ class demo extends React.Component {
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `rules` 表单域的校验规则 `可选`。
 - `valueProp` 填写到子组件的值属性名，默认值为`'value'`。
-- `valueGetter` 从表单事件中获取表单值的方式，`可选`。
+- `valueGetter` 格式化输出表单值的函数，配合`valueSetter`使用, `可选`。
+- `valueSetter` 格式化输入表单值的函数，配合`valueGetter`使用, `可选`。
 - `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 - `errorClassName` 控件当有错误信息时，添加一个自定义类名，`可选`。

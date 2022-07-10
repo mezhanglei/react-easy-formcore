@@ -8,6 +8,7 @@ export interface FormItemProps extends FormOptions {
     footer?: React.ReactNode | any;
     valueProp?: string | ((type: any) => string);
     valueGetter?: (...args: any[]) => any;
+    valueSetter?: (value: any) => any;
     rules?: FormRule[];
     path?: string;
     index?: number;

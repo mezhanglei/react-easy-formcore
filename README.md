@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.3.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.3.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -10,8 +10,10 @@ Lightweight form container component where the target control only needs to prov
 
 # Version changelog
  - 1.3.x: 
-   - Add `inline` in-line layout attribute, used with `col` attribute
-   - Add `customInner` property to customize the display container
+   - Added `inline` inline layout attribute, used with `col` attribute
+   - Add `customInner` property, you can customize the display container
+   - Added `labelAlign` and `labelWidth` properties
+   - Added `valueSetter` property, used in conjunction with `valueGetter` property to format input and output items.
  - 1.2.x: 
    - 1.2.9 Add `footer` bottom node configuration api.
    - Add a `data-name` setting to identify controls that match the `value,onChange` requirement
@@ -215,8 +217,9 @@ Inherited base options
 - `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
-- `valueProp` attribute of the form value.`optional`
-- `valueGetter` The way to get the form value from the form event, `optional`.
+- `valueProp` attribute of the form value.`optional`.
+- `valueGetter` A function to format the output form value, used with `valueSetter`, `optional`.
+- `valueSetter` function to format input form value, used with `valueGetter`, `optional`.
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
