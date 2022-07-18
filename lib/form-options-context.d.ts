@@ -3,10 +3,12 @@ import { ColProps } from 'react-flexbox-grid';
 export interface FormRoot {
     onFieldsChange?: (obj: {
         path: string;
+        name?: string;
         value: any;
     }) => void;
     onValuesChange?: (obj: {
         path?: string;
+        name?: string;
         value: any;
     }) => void;
 }
