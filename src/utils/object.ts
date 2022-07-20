@@ -12,7 +12,7 @@ export function isEqual(a: any, b: any) {
 
 // 路径根据规则分割成数组
 export function pathToArr(path: string) {
-  return path?.replace(/\.\[/g, '.')?.replace?.(/\[/g, '.')?.replace(/\]\./g, '.')?.replace(/\]/g, '')?.split('.');
+  return path?.replace(/\.\[/g, '.')?.replace?.(/\[/g, '.')?.replace(/\]\./g, '.')?.replace(/\]/g, '.')?.replace(/\.$/g, '')?.split('.');
 }
 
 // 处理将路径中的数组项转换成普通字符串
@@ -37,7 +37,7 @@ export function deepSet(obj: any, path: string | string[], value: any) {
   const parts = !Array.isArray(path) ? pathToArr(path) : path;
   const length = parts.length;
   // 过滤出其中的数组项
-  const listItems = !Array.isArray(path) ? path.match(/\[(\d+?)\]/gi) : path;
+  const listItems = !Array.isArray(path) ? path.match(/\[(\d+)\]/gi) : path;
 
   for (let i = 0; i < length; i++) {
     const p = parts[i];
