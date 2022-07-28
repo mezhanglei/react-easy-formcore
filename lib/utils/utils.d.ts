@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { FormOptions } from "../form-options-context";
-import { formatPath, pathToArr, deepGet, deepSet } from "./object";
-export { formatPath, pathToArr, deepGet, deepSet };
+import { formatName, pathToArr, deepGet, deepSet } from "./object";
+export { formatName, pathToArr, deepGet, deepSet };
 export declare function isExitPrefix(prefix: string, path: string | string[]): boolean;
 export declare function getValuePropName(valueProp: string | ((type: any) => string), type: any): string;
 export declare function getValueFromEvent(...args: any[]): any;
