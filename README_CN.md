@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-1.3.6-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-1.3.7-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -82,11 +82,10 @@ class demo extends React.Component {
   // }
 
   // 自定义校验
-  validator = (value, callError) => {
+  validator = (value) => {
     if (value?.length > 5) {
-      callError("name1字段长度超过了5");
+      return "name1字段长度超过了5";
     }
-    callError();
   };
 
   render() {
@@ -145,12 +144,11 @@ class demo extends React.Component {
   //   return true;
   // }
 
-  // 忽略message，通过callError方法自定义校验提示
-  validator = (value, callError) => {
+  // 忽略message
+  validator = (value) => {
     if (value?.length > 5) {
-      callError("name1字段长度超过了5");
+      return "name1字段长度超过了5";
     }
-    callError();
   };
 
 
@@ -244,7 +242,7 @@ class demo extends React.Component {
 `rules`中的值的字段中的规则会按照顺序执行校验，`rules`中每一项只能设置一种规则。
 - `message` 校验规则报错时，默认的报错信息 `可选`。
 - `required` 表示控件值为必填 `可选`。
-- `validator` 类型：`(value, callback: (err: string) => void) => void | boolean` 自定义校验函数, `value`为当前控件值, `callback`可以主动调用报错方法 `可选`。
+- `validator` 类型：`(value) => void | boolean` 自定义校验函数, `value`为当前控件值 `可选`。
 - `pattern` 类型：`RegExp | string` 表达式校验，不符合则报错 `可选`。
 - `whitespace` 类型：`boolean` 针对`string`类型, 设置true校验空格 `可选`。
 - `max` 类型：`number` 表单值为string类型时字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度 `可选`。

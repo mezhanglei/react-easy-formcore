@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
-import { FormRule } from './form-store';
 import { FormOptions } from './form-options-context';
+import { FormRule } from './validator';
 export interface FormListProps extends FormOptions {
     label?: string;
     name?: string;

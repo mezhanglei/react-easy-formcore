@@ -1,14 +1,14 @@
 import React, { CSSProperties } from 'react';
 import { FormOptions } from './form-options-context';
-import { FormRule } from './form-store';
+import { FormRule } from './validator';
 export interface FormItemProps extends FormOptions {
     label?: string;
     name?: string;
     suffix?: React.ReactNode | any;
     footer?: React.ReactNode | any;
     valueProp?: string | ((type: any) => string);
-    valueGetter?: (...args: any[]) => any;
-    valueSetter?: (value: any) => any;
+    valueGetter?: ((...args: any[]) => any);
+    valueSetter?: ((value: any) => any);
     rules?: FormRule[];
     path?: string;
     index?: number;

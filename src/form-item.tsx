@@ -2,11 +2,12 @@ import React, { cloneElement, useCallback, useContext, useState, CSSProperties, 
 import { FormStoreContext, FormValuesContext } from './form-store-context';
 import { FormOptions, FormOptionsContext } from './form-options-context';
 import { getValuePropName, getValueFromEvent, getColProps, getCurrentPath } from './utils/utils';
-import { FormRule, FormStore } from './form-store';
+import { FormStore } from './form-store';
 import classnames from 'classnames';
 import { AopFactory } from './utils/function-aop';
 import { deepGet, isEqual } from './utils/object';
 import { Col, Row } from 'react-flexbox-grid';
+import { FormRule } from './validator';
 
 export interface FormItemProps extends FormOptions {
   label?: string;
@@ -14,8 +15,8 @@ export interface FormItemProps extends FormOptions {
   suffix?: React.ReactNode | any; // 右边节点
   footer?: React.ReactNode | any; // 底部节点
   valueProp?: string | ((type: any) => string);
-  valueGetter?: (...args: any[]) => any;
-  valueSetter?: (value: any) => any;
+  valueGetter?: ((...args: any[]) => any);
+  valueSetter?: ((value: any) => any);
   rules?: FormRule[];
   path?: string;
   index?: number;
