@@ -22,11 +22,5 @@ export declare const classes_list: {
     compact: string;
     required: string;
     error: string;
-    header: string;
-    container: string;
-    control: string;
-    message: string;
-    suffix: string;
-    footer: string;
 };
 export declare const FormList: React.ForwardRefExoticComponent<FormListProps & React.RefAttributes<unknown>>;

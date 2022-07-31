@@ -26,11 +26,5 @@ export declare const classes: {
     compact: string;
     required: string;
     error: string;
-    header: string;
-    container: string;
-    control: string;
-    message: string;
-    suffix: string;
-    footer: string;
 };
 export declare const FormItem: React.ForwardRefExoticComponent<FormItemProps & React.RefAttributes<unknown>>;
