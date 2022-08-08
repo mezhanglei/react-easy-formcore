@@ -17,22 +17,21 @@ class demo extends React.Component {
     console.log(error, values, 'error ang values');
   };
 
-  validator = (value, callError) => {
+  validator = (value) => {
     if (value?.length < 2) {
-      callError('length is < 2');
+      return 'length is < 2';
     }
-    callError();
   }
 
   render() {
     return (
       <Form initialValues={{ name1: 1111 }} store={this.store} onSubmit={this.onSubmit}>
-        <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: this.validator, message: '自定义校验' }]}>
+        <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: this.validator, message: '自定义校验' }]}>
           <div data-type="fragment">
             <input />
           </div>
         </Form.Item>
-        <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
+        <Form.Item label="Name2" name="name2" required rules={[{ required: true, message: 'name2 is empty' }]}>
           <input />
         </Form.Item>
         <Form.Item label="">

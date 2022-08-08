@@ -2,13 +2,15 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-1.3.7-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-2.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Version changelog
+ - 2.x
+   - Major version update, `col` and `customInner` deprecated.
  - 1.3.x: 
    - Added `inline` inline layout attribute, used with `col` attribute
    - Add `customInner` property, you can customize the display container
@@ -75,9 +77,8 @@ class demo extends React.Component {
   // 自定义校验
   // validator = (value) => {
   //   if(!value) {
-  //     return false
+  //     return true
   //   }
-  //   return true;
   // }
 
   // 自定义校验
@@ -137,9 +138,8 @@ class demo extends React.Component {
   // validator
   // validator = (value) => {
   //   if(!value) {
-  //     return false
+  //     return true
   //   }
-  //   return true;
   // }
 
   // validator
@@ -148,8 +148,6 @@ class demo extends React.Component {
       return "Name1 is more than 5";
     }
   };
-
-
 
   render() {
     return (
@@ -189,7 +187,6 @@ class demo extends React.Component {
 - `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
 - `labelStyle` Custom `label` style for all field components, `optional`.
 - `gutter` The distance between all field component custom labels and form components, `optional`.
-- `col` grid layout `{span?: number, xs?: number, sm?: number, md?: number, lg?: number}`
 - `colon` boolean is add colon
 
 ### Form Props
@@ -221,7 +218,6 @@ Inherited base options
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
-- `customInner` Custom display container `optional`.
 
 ### Form.List Props
 Inherited base options
@@ -233,7 +229,6 @@ Inherited base options
 - `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
-- `customInner` Custom display container `optional`.
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.
@@ -258,3 +253,4 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 ### Hooks
 
 - `useFormStore(defaultValues)` create `FormStore`
+- `useValidator()` create `validator`

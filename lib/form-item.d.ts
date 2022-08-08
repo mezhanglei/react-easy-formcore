@@ -17,14 +17,5 @@ export interface FormItemProps extends FormOptions {
     children?: React.ReactNode;
     style?: CSSProperties;
     errorClassName?: string;
-    customInner?: any;
 }
-export declare const classes: {
-    field: string;
-    inner: string;
-    inline: string;
-    compact: string;
-    required: string;
-    error: string;
-};
 export declare const FormItem: React.ForwardRefExoticComponent<FormItemProps & React.RefAttributes<unknown>>;
