@@ -1,17 +1,15 @@
 import React, { CSSProperties } from 'react';
-import { FormOptions } from './form-options-context';
-import { FormRule } from './validator';
-export interface FormListProps extends FormOptions {
-    label?: string;
-    name?: string;
-    suffix?: React.ReactNode | any;
-    footer?: React.ReactNode | any;
-    rules?: FormRule[];
-    path?: string;
-    index?: number;
-    initialValue?: any[];
+import { ItemProps } from './components/item';
+import { ListCoreProps } from './list-core';
+export declare type FormListProps<T = ItemProps> = T & ListCoreProps & {
     className?: string;
-    style?: CSSProperties;
     children?: React.ReactNode;
-}
-export declare const FormList: React.ForwardRefExoticComponent<FormListProps & React.RefAttributes<unknown>>;
+    style?: CSSProperties;
+    component?: any;
+};
+export declare const FormList: React.ForwardRefExoticComponent<ItemProps & ListCoreProps & {
+    className?: string | undefined;
+    children?: React.ReactNode;
+    style?: React.CSSProperties | undefined;
+    component?: any;
+} & React.RefAttributes<unknown>>;

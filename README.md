@@ -2,13 +2,18 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-2.0.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
 
 # Version changelog
+- 3.x
+   - Re-architected, need to remove the old package and install the new version
+   - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components
+   - Some properties of the `component` component can be set either globally on `Form` or locally on `Form.Item` or `Form.List`.
+   - `onFieldsChange` and `onValuesChange` changed
  - 2.x
    - Major version update, `col` and `customInner` deprecated.
  - 1.3.x: 
@@ -75,14 +80,14 @@ class demo extends React.Component {
   };
 
   // 自定义校验
-  // validator = (value) => {
+  // validator = async (value) => {
   //   if(!value) {
   //     return true
   //   }
   // }
 
   // 自定义校验
-  validator = (value) => {
+  validator = async (value) => {
     if (value?.length > 5) {
       return "name1 is more than 5";
     }
@@ -136,14 +141,14 @@ class demo extends React.Component {
   };
 
   // validator
-  // validator = (value) => {
+  // validator = async (value) => {
   //   if(!value) {
   //     return true
   //   }
   // }
 
   // validator
-  validator = (value) => {
+  validator = async (value) => {
     if (value?.length > 5) {
       return "Name1 is more than 5";
     }
@@ -178,55 +183,56 @@ class demo extends React.Component {
 
 ## APIs
 
-### base options
+### Default field display component
 
-- `layout` `'horizontal'|'vertical'` All field components set the layout type, the default value is `horizontal`.
-- `inline` boolea, Whether or not all field components have inline layout.
-- `labelWidth` number, width of label。
-- `compact` Whether to hide error messages for all Form.
-- `required` Indicates if all field components display asterisks, not form checks, for display only, default is `false`.
-- `labelStyle` Custom `label` style for all field components, `optional`.
-- `gutter` The distance between all field component custom labels and form components, `optional`.
-- `colon` boolean is add colon
+- `className` class name, `optional`.
+- `label` label, `optional`.
+- `labelStyle` custom label's style, `optional`.
+- `labelWidth` numbr, the width of the label label.
+- `labelAlign` numbr, the label label's textAlign property.
+- `inline` boolea, Whether or not field display components have inline layout.
+- `layout` `'horizontal'|'vertical'` field’s display components set the layout type, the default value is `horizontal`.
+- `colon` boolean whether add colon
+- `required` Indicates that the value of the field is required `optional`。
+- `gutter` The distance between field's display component custom labels and form components, `optional`.
+- `compact` Whether to hide error messages for field's display component.
+- `error` form field displays the component's error message field.
+- `suffix` Suffix node, `optional`.
+- `footer` bootom node, `optional`.
 
 ### Form Props
-Inherited base options
+Inherited field display component
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
 - `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, Note that this value can only initialise the form `optional`.
 - `onSubmit` The form submit callback, `optional`.
 - `onMount` The form mounted callback `optional`.
-- ` onReset` Form reset defaults, `optional`.
-- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
-- `onValuesChange` Listening for changes in form values.`optional`。
-- `errorClassName` All Form.Field components add a custom class name when there is an error message, `optional`.
+- `onReset` Form reset defaults, `optional`.
+- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`.
+- `onValuesChange` Listening for changes in form values.`optional`.
 
 ### Form.Item Props
-Inherited base options
+Inherited field display component
 
 - `className` Form field class name, `optional`.
-- `label` Form field label, `optional`.
+- `component` field display component. 
 - `name` Form field name, `optional`.
-- `suffix` Suffix node, `optional`.
-- `footer` bootom node, `optional`.
-- `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
-- `rules` Checksum rules for form fields `optional`.
 - `valueProp` attribute of the form value.`optional`.
 - `valueGetter` A function to format the output form value, used with `valueSetter`, `optional`.
 - `valueSetter` function to format input form value, used with `valueGetter`, `optional`.
-- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`。
+- `rules` Checksum rules for form fields `optional`.
+- `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
+- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`.
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
 ### Form.List Props
-Inherited base options
+Inherited field display component
 
 - `className` Form field class name, `optional`.
-- `label` Form field label, `optional`.
+- `component` field display component. 
 - `name` Form field name, `optional`.
-- `suffix` Suffix node, `optional`.
-- `footer` bootom node, `optional`.
 - `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
 - `rules` Checksum rules for form fields `optional`.
 
@@ -253,4 +259,5 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 ### Hooks
 
 - `useFormStore(defaultValues)` create `FormStore`
+- `useFormError(store: FormStore, path?: string)` Use hooks to get the error message for the current path.
 - `useValidator()` create `validator`

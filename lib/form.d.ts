@@ -1,8 +1,8 @@
-import './style.less';
 import React, { CSSProperties } from 'react';
 import { FormStore } from './form-store';
-import { FormOptions } from './form-options-context';
-export interface FormProps<S = FormStore> extends FormOptions {
+import { ItemCoreProps } from './item-core';
+import { ItemProps } from './components/item';
+export declare type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
     className?: string;
     store?: S;
     style?: CSSProperties;
@@ -11,9 +11,19 @@ export interface FormProps<S = FormStore> extends FormOptions {
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
     onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
     onMount?: () => void;
-}
+};
 export declare function Form(props: FormProps): JSX.Element;
 export declare namespace Form {
-    var Item: React.ForwardRefExoticComponent<import("./form-item").FormItemProps & React.RefAttributes<unknown>>;
-    var List: React.ForwardRefExoticComponent<import("./form-list").FormListProps & React.RefAttributes<unknown>>;
+    var Item: React.ForwardRefExoticComponent<ItemProps & ItemCoreProps & {
+        className?: string | undefined;
+        children?: React.ReactNode;
+        style?: React.CSSProperties | undefined;
+        component?: any;
+    } & React.RefAttributes<unknown>>;
+    var List: React.ForwardRefExoticComponent<ItemProps & import("./list-core").ListCoreProps & {
+        className?: string | undefined;
+        children?: React.ReactNode;
+        style?: React.CSSProperties | undefined;
+        component?: any;
+    } & React.RefAttributes<unknown>>;
 }

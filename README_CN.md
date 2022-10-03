@@ -2,13 +2,18 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-2.0.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，目标控件只需要提供`props`方法：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
 # 版本更新日志
+ - 3.x版本
+   - 重新进行了架构，需要删除旧包，再安装新版本的包
+   - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件
+   - `component`组件的部分属性既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
+   - `onFieldsChange` and `onValuesChange` 更改回调参数
  - 2.x版本
    - 大版本更新，`col`和`customInner`废弃。
  - 1.3.x版本: 
@@ -76,14 +81,14 @@ class demo extends React.Component {
   };
 
   // 自定义校验
-  // validator = (value) => {
+  // validator = async (value) => {
   //   if(!value) {
   //     return true
   //   }
   // }
 
   // 自定义校验
-  validator = (value) => {
+  validator = async (value) => {
     if (value?.length > 5) {
       return "name1字段长度超过了5";
     }
@@ -138,14 +143,14 @@ class demo extends React.Component {
   };
 
   // 使用rule里的message字段校验提示
-  // validator = (value) => {
+  // validator = async (value) => {
   //   if(!value) {
   //     return true
   //   }
   // }
 
   // 忽略message
-  validator = (value) => {
+  validator = async (value) => {
     if (value?.length > 5) {
       return "name1字段长度超过了5";
     }
@@ -180,20 +185,24 @@ class demo extends React.Component {
 
 ## APIs
 
-### 表单基础属性-base options
-
-- `layout` `'horizontal'|'vertical'` 所有 field 组件设置布局类型，默认值为`horizontal`。
-- `inline` boolean, 所有 field 组件是否设置行内布局。
+### 默认的表单域显示组件的属性
+- `className` 类名，`可选`。
+- `label` 标签，`可选`。
+- `labelStyle` 自定义`label`样式，`可选`。
 - `labelWidth` numbr, label标签的宽度。
-- `compact` 所有 field 组件是否隐藏错误信息，默认值为`false`。
-- `required` 所有 field 组件是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
-- `labelStyle` 所有 field 组件自定义`label`样式，`可选`。
-- `gutter` 所有 field 组件自定义`label`标签和表单组件间的距离，`可选`。
+- `labelAlign` numbr, label标签的textAlign属性。
+- `inline` boolean, 是否设置行内布局。
+- `layout` `'horizontal'|'vertical'` 设置布局类型，默认值为`horizontal`。
 - `colon` boolean 是否添加冒号
-   
+- `required` 是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
+- `gutter` 自定义`label`标签和表单组件间的距离，`可选`。
+- `compact` 是否隐藏错误信息，默认值为`false`。
+- `error` 表单域显示组件的报错信息字段。
+- `suffix` 后缀节点，`可选`。
+- `footer` 底部节点，`可选`。
 
 ### Form Props
-继承表单基础属性（base options）
+继承表单域显示组件(`component`)的props
 
 - `className` 表单元素类名，`可选`。
 - `store` 表单数据存储，`必须`。
@@ -206,30 +215,26 @@ class demo extends React.Component {
 
 
 ### Form.Item Props
-继承表单基础属性（base options）
+继承表单域显示组件(`component`)的props
 
 - `className` 表单域类名，`可选`。
-- `label` 表单域标签，`可选`。
+- `component` 表单域显示组件。
 - `name` 表单域字段名，`可选`。
-- `suffix` 后缀节点，`可选`。
-- `footer` 底部节点，`可选`。
-- `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
-- `rules` 表单域的校验规则 `可选`。
 - `valueProp` 填写到子组件的值属性名，默认值为`'value'`。
 - `valueGetter` 格式化输出表单值的函数，配合`valueSetter`使用, `可选`。
 - `valueSetter` 格式化输入表单值的函数，配合`valueGetter`使用, `可选`。
+- `rules` 表单域的校验规则 `可选`。
+- `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 - `errorClassName` 控件当有错误信息时，添加一个自定义类名，`可选`。
 
 ### Form.List Props
-继承表单基础属性（base options）
+继承表单域显示组件(`component`)的props
 
 - `className` 表单域类名，`可选`。
-- `label` 表单域标签，`可选`。
+- `component` 表单域显示组件。
 - `name` 表单域字段名，`可选`。
-- `suffix` 后缀节点，`可选`。
-- `footer` 底部节点，`可选`。
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
 - `rules` 表单域的校验规则 `可选`。
 
@@ -256,6 +261,7 @@ class demo extends React.Component {
 ### Hooks
 
 - `useFormStore(defaultValues)` 使用 hooks 创建 FormStore。
+- `useFormError(store: FormStore, path?: string)` 使用 hooks 获取当前路径的报错信息。
 - `useValidator()` hook创建 `validator`校验实例
 
 # Contribute
