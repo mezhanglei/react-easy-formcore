@@ -6,12 +6,12 @@ export declare type FormListProps<T = ItemProps> = T & ListCoreProps & {
     children?: React.ReactNode;
     style?: CSSProperties;
     component?: any;
-    readOnly?: boolean;
+    isContainer?: boolean;
 };
 export declare const FormList: React.ForwardRefExoticComponent<ItemProps & ListCoreProps & {
     className?: string | undefined;
     children?: React.ReactNode;
     style?: React.CSSProperties | undefined;
     component?: any;
-    readOnly?: boolean | undefined;
+    isContainer?: boolean | undefined;
 } & React.RefAttributes<unknown>>;

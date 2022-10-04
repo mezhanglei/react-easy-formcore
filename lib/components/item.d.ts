@@ -5,7 +5,6 @@ import './item.less';
 export declare type Layout = 'horizontal' | 'vertical' | string;
 export interface ItemProps extends LabelBaseProps, ControlBaseProps {
     label?: string;
-    labelStyle?: CSSProperties;
     inline?: boolean;
     layout?: Layout;
     className?: string;
