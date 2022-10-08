@@ -14,6 +14,7 @@
    - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件
    - `component`组件的部分属性既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
+   - 3.0.3 `data-type="fragment"` 需要改成 `data-type="ignore"`
  - 2.x版本
    - 大版本更新，`col`和`customInner`废弃。
  - 1.3.x版本: 
