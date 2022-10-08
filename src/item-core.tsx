@@ -128,7 +128,8 @@ export const ItemCore = (props: ItemCoreProps) => {
   const isFormNode = (child: any) => {
     const displayName = child?.type?.displayName;
     const formFields = ['Form.Item', 'Form.List','ListCore', 'ItemCore'];
-    return formFields?.includes(displayName)
+    const dataName = child?.props?.['data-name']; // 忽略当前节点
+    return formFields?.includes(displayName) && dataName !== 'ignore'
   };
 
   // 渲染子元素
