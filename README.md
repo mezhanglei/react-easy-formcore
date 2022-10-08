@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.0.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.3-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -14,6 +14,7 @@ Lightweight form container component where the target control only needs to prov
    - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components
    - Some properties of the `component` component can be set either globally on `Form` or locally on `Form.Item` or `Form.List`.
    - `onFieldsChange` and `onValuesChange` changed
+   - 3.0.3 `data-type="ignore"` changed to `data-type="ignore"`
  - 2.x
    - Major version update, `col` and `customInner` deprecated.
  - 1.3.x: 
@@ -42,7 +43,7 @@ The smallest unit of a component in a form, and nodes as an object can be nested
 - Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
 - You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
 - Custom form validation rules can be provided with the form validation rules property `rules`.
-- When a non-form component or node is added outside the input form control, bind the target control by adding `data-type="fragment"` to filter the non-target node or by setting `data-name` to mark the target input form.
+- When a non-form component or node is added outside the input form control, bind the target control by adding `data-type="ignore"` to filter the non-target node or by setting `data-name` to mark the target input form.
 
 # Form.List
 
@@ -101,7 +102,7 @@ class demo extends React.Component {
           name="name1"
           rules={[{ required: true, message: "name1 is empty" }, { validator: this.validator, message: "custome tips" }]}
         >
-        <div data-type="fragment">
+        <div data-type="ignore">
           <Input />
         </div>
         </Form.Item>

@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.0.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.3-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -43,7 +43,7 @@
 - 提供样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
 - 可以控件外部自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
 - 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
-- 当输入表单控件外面添加了非表单组件或节点，通过添加`data-type="fragment"`过滤非目标节点或设置`data-name`标记目标节点来绑定目标控件。
+- 当输入表单控件外面添加了非表单组件或节点，通过添加`data-type="ignore"`过滤非目标节点或设置`data-name`标记目标节点来绑定目标控件。
 
 # Form.List
 
@@ -102,7 +102,7 @@ class demo extends React.Component {
           name="name1"
           rules={[{ required: true, message: "name1不能为空" }, { validator: this.validator, message: "自定义校验固定提示" }]}
         >
-        <div data-type="fragment">
+        <div data-type="ignore">
           <Input />
         </div>
         </Form.Item>
