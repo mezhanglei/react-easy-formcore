@@ -11,15 +11,15 @@ export interface ItemCoreProps {
     initialValue?: any;
     errorClassName?: string;
     onFieldsChange?: (obj: {
-        parent?: string;
+        parent: string;
         name?: string;
         value: any;
-    }) => void;
+    }, values?: unknown) => void;
     onValuesChange?: (obj: {
         parent?: string;
         name?: string;
         value: any;
-    }) => void;
+    }, values?: unknown) => void;
     children?: any;
 }
 export declare const ItemCore: {
