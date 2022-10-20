@@ -5,3 +5,4 @@ export declare function getValuePropName(valueProp: string | ((type: any) => str
 export declare function getValueFromEvent(...args: any[]): any;
 export declare const isListItem: (item: string) => boolean;
 export declare const getCurrentPath: (name?: string, parent?: string) => string | undefined;
+export declare const isFormNode: (child: any) => boolean;

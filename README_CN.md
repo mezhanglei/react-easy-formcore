@@ -2,11 +2,11 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.0.5-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.6-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
-轻量级表单容器双向绑定组件，目标控件只需要提供`props`方法：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
+轻量级表单容器双向绑定组件，目标控件只需要提供`props`：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
 
 # 版本更新日志
  - 3.x版本
