@@ -11,8 +11,8 @@ export function isEqual(a: any, b: any) {
 }
 
 // 路径根据规则分割成数组
-export function pathToArr(path: string) {
-  return path?.replace(/\.\[/g, '.')?.replace?.(/\[/g, '.')?.replace(/\]\./g, '.')?.replace(/\]/g, '.')?.replace(/\.$/g, '')?.split('.');
+export function pathToArr(path?: string) {
+  return path ? path.replace(/\]$/,'').split(/\.\[|\[\]|\]\[|\[|\]\.|\]|\./g) : [];
 }
 
 // 处理将路径中的数组项转换成普通字符串
