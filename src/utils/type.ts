@@ -110,3 +110,9 @@ export function isBlob(data: any) {
 export function isStream(val: any) {
   return isObject(val) && isFunction(val.pipe);
 }
+
+// 是否为字符串形式的数字
+export const isNumberStr = (str?: string) => {
+  const target = Number(str)
+  if (!isNaN(target) && str) return true
+}

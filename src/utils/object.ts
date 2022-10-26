@@ -1,5 +1,6 @@
 import { copy } from 'copy-anything';
 import compare from 'react-fast-compare';
+import { isNumberStr } from './type';
 
 export function deepClone<T = any>(value: T) {
   return copy(value);
@@ -37,22 +38,16 @@ export function deepSet(obj: any, path: string | string[], value: any) {
   let root = temp;
   const parts = !Array.isArray(path) ? pathToArr(path) : path;
   const length = parts.length;
-  // 过滤出其中的数组项
-  const listItems = !Array.isArray(path) ? path.match(/\[(\d+)\]/gi) : path;
 
   for (let i = 0; i < length; i++) {
-    const p = parts[i];
+    const current = parts[i];
     const next = parts[i + 1];
+    const currentWithBracket = isNumberStr(current) ? `[${current}]` : undefined
+    const nextWithBracket = isNumberStr(next) ? `[${next}]` : undefined
+    // 当前字符是否为数组项
+    const isListItem = currentWithBracket ? path?.indexOf(currentWithBracket) > -1 : false
     // 下个字段是否为数组项
-    const nextIsListItem = listItems?.some((item) => {
-      const listItem = formatName(item);
-      return listItem === next;
-    });
-    // 当前字段是否为数组项
-    const isListItem = listItems?.some((item) => {
-      const listItem = formatName(item);
-      return listItem === p;
-    });
+    const nextIsListItem = nextWithBracket ? path?.indexOf(nextWithBracket) > -1 : false
 
     // 当传入的值为空赋值初始值
     if (typeof obj !== 'object' && i === 0) {
@@ -68,20 +63,20 @@ export function deepSet(obj: any, path: string | string[], value: any) {
     if (i === length - 1) {
       if (value === undefined) {
         if (isListItem) {
-          const index = +p;
+          const index = +current;
           temp?.splice(index, 1);
         } else {
-          delete temp[p];
+          delete temp[current];
         }
       } else {
-        temp[p] = value;
+        temp[current] = value;
       }
-    } else if (typeof temp[p] !== 'object' && nextIsListItem) {
-      temp[p] = [];
-    } else if (typeof temp[p] !== 'object') {
-      temp[p] = {};
+    } else if (typeof temp[current] !== 'object' && nextIsListItem) {
+      temp[current] = [];
+    } else if (typeof temp[current] !== 'object') {
+      temp[current] = {};
     }
-    temp = temp[p];
+    temp = temp[current];
   }
   return root;
 }
