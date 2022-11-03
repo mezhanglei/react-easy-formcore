@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { FormRule } from './validator';
 export interface ItemCoreProps {
-    name?: string;
+    name?: string | number;
     parent?: string;
     index?: number;
     valueProp?: string | ((type: any) => string);

@@ -1,8 +1,11 @@
-import { formatName, pathToArr, deepGet, deepSet } from "./object";
-export { formatName, pathToArr, deepGet, deepSet };
+import { pathToArr, deepGet, deepSet } from "./object";
+export { pathToArr, deepGet, deepSet };
 export declare function isExitPrefix(prefix: string, path: string | string[]): boolean;
 export declare function getValuePropName(valueProp: string | ((type: any) => string), type: any): string;
 export declare function getValueFromEvent(...args: any[]): any;
-export declare const isListItem: (item: string) => boolean;
-export declare const getCurrentPath: (name?: string, parent?: string) => string | undefined;
+export declare function formatName(str?: string | number, isList?: boolean): string | number | undefined;
+export declare const isWithBracket: (part?: any) => boolean;
+export declare const isListIndex: (item?: any) => boolean;
+export declare function joinPath(name?: string | number, parent?: string): string | undefined;
+export declare function getCurrentPath(name?: string | number, parent?: string): string | undefined;
 export declare const isFormNode: (child: any) => boolean;

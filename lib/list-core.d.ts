@@ -1,6 +1,6 @@
 import { FormRule } from './validator';
 export interface ListCoreProps {
-    name?: string;
+    name?: string | number;
     parent?: string;
     rules?: FormRule[];
     initialValue?: any[];
