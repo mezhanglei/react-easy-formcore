@@ -26,7 +26,7 @@
    - 增加`data-name`设置，用来标记符合`value,onChange`要求的控件
    - ~~增加`col`布局属性，可以进行栅格布局~~
  - 1.0.x版本: 
-   - ~~`labelWidth`和`labelAlign`更改为labelStyle, 可以自己自定义label标签相关的样式~
+   - ~~`labelWidth`和`labelAlign`更改为labelStyle, 可以自己自定义label标签相关的样式~~
    - 增加layout, 拥有`'horizontal' | 'vertical'`两种类型。
    - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
  - 0.3.8 初始版本
