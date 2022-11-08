@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.12-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -10,27 +10,25 @@ Lightweight form container component where the target control only needs to prov
 
 # Version changelog
 - 3.x
-   - Re-architected, need to remove the old package and install the new version
-   - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components
-   - Some properties of the `component` component can be set either globally on `Form` or locally on `Form.Item` or `Form.List`.
+   Important architecture update, you need to delete the old package and install the new version again
+   - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, The components rendered by the `component` property can be set props either globally on `Form` or locally on `Form.Item` or `Form.List`.
    - `onFieldsChange` and `onValuesChange` changed
    - 3.0.3 `data-type="fragment"` changed to `data-type="ignore"`
  - 2.x
-   - Major version update, `col` and `customInner` deprecated.
+   - ~~`col` and `customInner` deprecated~~.
  - 1.3.x: 
-   - Added `inline` inline layout attribute, used with `col` attribute
-   - Add `customInner` property, you can customize the display container
+   - ~~Added `inline` inline layout attribute, used with `col` attribute~~
+   - ~~Add `customInner` property, you can customize the display container~~
    - Added `labelAlign` and `labelWidth` properties
    - Added `valueSetter` property, used in conjunction with `valueGetter` property to format input and output items.
  - 1.2.x: 
-   - 1.2.9 Add `footer` bottom node configuration api.
-   - Add a `data-name` setting to identify controls that match the `value,onChange` requirement
-   - Add `col` layout attribute to allow for raster layout
- - Version 1.0.3: 
-   - labelWidth and layout have been changed to labelStyle, allowing you to customize your own label label-related styles
+   - 1.2.9 add `footer` props
+   - add `data-name` setting to mark controls that match the `value,onChange` requirement
+   - ~~Add `col` layout attribute to allow for raster layout~~
+ - Version 1.0.x: 
+   - ~~`labelWidth` and `layout` have been changed to labelStyle, allowing you to customize your own label label-related styles~~
    - inline changed to layout, with `'horizontal' | 'vertical'`.
    - Changes to the form char rule in forms: where the path contained an array of items, for example `a.b.0`, this has now been changed to `a.b[0]`.
-   - Enhanced the ability to bind `Form.Item` and `Form.List` form fields in both directions, recursively to internally wrapped controls
  - 0.3.8 Initial release
 
 # Matters
@@ -64,62 +62,44 @@ yarn add react-easy-formcore
 
 ```javascript
 import React from "react";
-import { Form, FormStore } from "react-easy-formcore";
+import { Form, useFormStore, useFormValues } from "react-easy-formcore";
 import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
-class demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.store = new FormStore({ name1: "初始值设置" });
-    this.state = {};
-  }
+export default function Demo() {
 
-  onSubmit = async (e) => {
-    const { error, values } = await this.store.validate();
-    console.log(error, values, "error ang values");
+  const form = useFormStore();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { error, values } = await form.validate();
+    console.log(error, values, 'error ang values');
   };
 
-  // 自定义校验
-  // validator = async (value) => {
-  //   if(!value) {
-  //     return true
-  //   }
-  // }
-
-  // 自定义校验
-  validator = async (value) => {
-    if (value?.length > 5) {
-      return "name1 is more than 5";
+  const validator = async (value) => {
+    if (value?.length < 2) {
+      return 'length is < 2';
     }
-  };
-
-  render() {
-    return (
-      <Form store={this.store} onSubmit={this.onSubmit}>
-        <Form.Item
-          label="Name1"
-          name="name1"
-          rules={[{ required: true, message: "name1 is empty" }, { validator: this.validator, message: "custome tips" }]}
-        >
-        <div data-type="ignore">
-          <Input />
-        </div>
-        </Form.Item>
-        <Form.Item
-          label="Name2"
-          name="name2"
-          rules={[{ required: true, message: "name2 is empty" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label="">
-          <button>Submit</button>
-        </Form.Item>
-      </Form>
-    );
   }
-}
+
+  const formvalues = useFormValues(form, ['name1', 'name2'])
+  console.log(formvalues, '监听表单值变化')
+  return (
+    <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
+      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+        <div data-type="ignore">
+          <input />
+        </div>
+      </Form.Item>
+      <Form.Item label="Name2" name="name2" required rules={[{ required: true, message: 'name2 is empty' }]}>
+        <input />
+      </Form.Item>
+      <Form.Item label="">
+        <button>Submit</button>
+      </Form.Item>
+    </Form>
+  );
+};
 ```
 ## Form.List
 
@@ -129,57 +109,46 @@ import { Form, FormStore } from "react-easy-formcore";
 import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
-class demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.store = new FormStore({ name1: "initialvalue" });
-    this.state = {};
-  }
+export default function Demo() {
 
-  onSubmit = async (e) => {
-    const { error, values } = await this.store.validate();
-    console.log(error, values, "error ang values");
+  const form = useFormStore();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { error, values } = await form.validate();
+    console.log(error, values, 'error ang values');
   };
 
-  // validator
-  // validator = async (value) => {
-  //   if(!value) {
-  //     return true
-  //   }
-  // }
-
-  // validator
-  validator = async (value) => {
-    if (value?.length > 5) {
-      return "Name1 is more than 5";
+  const validator = async (value) => {
+    if (value?.length < 2) {
+      return 'length is < 2';
     }
-  };
-
-  render() {
-    return (
-      <Form store={this.store} onSubmit={this.onSubmit}>
-        <Form.List name="list">
-          <Form.Item
-            rules={[
-              { required: true, message: "list's one is Empty" },
-              { validator: this.validator, message: "custome tips" },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            rules={[{ required: true, message: "list's two is Empty" }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form.List>
-        <Form.Item label="">
-          <button>Submit</button>
-        </Form.Item>
-      </Form>
-    );
   }
-}
+
+  return (
+    <Form store={form} onSubmit={onSubmit}>
+      <Form.List name="list">
+        <Form.Item
+          rules={[
+            { required: true, message: "list's one is Empty" },
+            { validator: validator, message: "custome tips" },
+          ]}
+          >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          rules={[{ required: true, message: "list's two is Empty" }]}
+        >
+          <Input />
+        </Form.Item>
+      </Form.List>
+      <Form.Item label="">
+        <button>Submit</button>
+      </Form.Item>
+    </Form>
+  );
+};
+
 ```
 
 ## APIs
@@ -260,5 +229,6 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 ### Hooks
 
 - `useFormStore(defaultValues)` create `FormStore`
-- `useFormError(store: FormStore, path?: string)` Use hooks to get the error message for the current path.
+- `useFormError(store: FormStore, path?: string)` Use hooks to get the specified form error.
+- 3.0.12 `useFormValues(store: FormStore, path?: string | string[])` Use hooks to get the specified form values.
 - `useValidator()` create `validator`

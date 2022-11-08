@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.0.12-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -10,27 +10,25 @@
 
 # 版本更新日志
  - 3.x版本
-   - 重新进行了架构，需要删除旧包，再安装新版本的包
-   - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件
-   - `component`组件的部分属性既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
+   重要架构更新，需要删除旧包，再安装新版本的包
+   - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, `component`属性渲染的组件既可以在`Form`上全局设置props，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
    - 3.0.3 `data-type="fragment"` 需要改成 `data-type="ignore"`
  - 2.x版本
-   - 大版本更新，`col`和`customInner`废弃。
+   - ~~`col`和`customInner`废弃~~.
  - 1.3.x版本: 
-   - 增加`inline`行内布局属性，配合`col`属性使用
-   - 增加`customInner`属性，可以自定义展示容器
+   - ~~增加`inline`行内布局属性，配合`col`属性使用~~
+   - ~~增加`customInner`属性，可以自定义展示容器~~
    - 增加`labelAlign`和`labelWidth`属性
    - 增加`valueSetter`属性,和`valueGetter`属性配合使用，格式化输入项和输出项。
  - 1.2.x版本: 
-   - 1.2.9 增加`footer`底部节点配置api.
-   - 增加`data-name`设置，用来识别符合`value,onChange`要求的控件
-   - 增加`col`布局属性，可以进行栅格布局
- - 1.0.3版本: 
-   - labelWidth和labelAlign更改为labelStyle，可以自己自定义label标签相关的样式
-   - 增加layout，拥有`'horizontal' | 'vertical'`两种类型。
+   - 1.2.9 增加`footer`属性
+   - 增加`data-name`设置，用来标记符合`value,onChange`要求的控件
+   - ~~增加`col`布局属性，可以进行栅格布局~~
+ - 1.0.x版本: 
+   - ~~`labelWidth`和`labelAlign`更改为labelStyle, 可以自己自定义label标签相关的样式~
+   - 增加layout, 拥有`'horizontal' | 'vertical'`两种类型。
    - 表单中关于表单变量路径规则的更改：原路径含有数组项时，举例`a.b.0`, 现在更改为`a.b[0]`。
-   - 增强了`Form.Item`和`Form.List`表单域双向绑定的能力，可以递归到内部包裹的控件。
  - 0.3.8 初始版本
     
 
@@ -65,123 +63,94 @@ yarn add react-easy-formcore
 
 ```javascript
 import React from "react";
-import { Form, FormStore } from "react-easy-formcore";
+import { Form, useFormStore, useFormValues } from "react-easy-formcore";
 import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
-class demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.store = new FormStore({ name1: "初始值设置" });
-    this.state = {};
-  }
+export default function Demo() {
 
-  onSubmit = async (e) => {
-    const { error, values } = await this.store.validate();
-    console.log(error, values, "error ang values");
+  const form = useFormStore();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { error, values } = await form.validate();
+    console.log(error, values, 'error ang values');
   };
 
-  // 自定义校验
-  // validator = async (value) => {
-  //   if(!value) {
-  //     return true
-  //   }
-  // }
-
-  // 自定义校验
-  validator = async (value) => {
-    if (value?.length > 5) {
-      return "name1字段长度超过了5";
+  const validator = async (value) => {
+    if (value?.length < 2) {
+      return 'length is < 2';
     }
-  };
-
-  render() {
-    return (
-      <Form store={this.store} onSubmit={this.onSubmit}>
-        <Form.Item
-          label="Name1"
-          name="name1"
-          rules={[{ required: true, message: "name1不能为空" }, { validator: this.validator, message: "自定义校验固定提示" }]}
-        >
-        <div data-type="ignore">
-          <Input />
-        </div>
-        </Form.Item>
-        <Form.Item
-          label="Name2"
-          name="name2"
-          rules={[{ required: true, message: "name2不能为空" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label="">
-          <button>Submit</button>
-        </Form.Item>
-      </Form>
-    );
   }
-}
+
+  const formvalues = useFormValues(form, ['name1', 'name2'])
+  console.log(formvalues, 'form values')
+
+  return (
+    <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
+      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+        <div data-type="ignore">
+          <input />
+        </div>
+      </Form.Item>
+      <Form.Item label="Name2" name="name2" required rules={[{ required: true, message: 'name2 is empty' }]}>
+        <input />
+      </Form.Item>
+      <Form.Item label="">
+        <button>Submit</button>
+      </Form.Item>
+    </Form>
+  );
+};
 ```
 
 ## 数组管理
 
 ```javascript
 import React from "react";
-import { Form, FormStore } from "react-easy-formcore";
+import { Form, useFormStore } from "react-easy-formcore";
 import 'react-easy-formcore/lib/css/main.css';
 import { Input, Select } from "antd";
 
-class demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.store = new FormStore({ name1: "初始值设置" });
-    this.state = {};
-  }
+export default function Demo() {
 
-  onSubmit = async (e) => {
-    const { error, values } = await this.store.validate();
-    console.log(error, values, "error ang values");
+  const form = useFormStore();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { error, values } = await form.validate();
+    console.log(error, values, 'error ang values');
   };
 
-  // 使用rule里的message字段校验提示
-  // validator = async (value) => {
-  //   if(!value) {
-  //     return true
-  //   }
-  // }
-
-  // 忽略message
-  validator = async (value) => {
-    if (value?.length > 5) {
-      return "name1字段长度超过了5";
+  const validator = async (value) => {
+    if (value?.length < 2) {
+      return 'length is < 2';
     }
-  };
-
-  render() {
-    return (
-      <Form store={this.store} onSubmit={this.onSubmit}>
-        <Form.List label="list" name="list">
-          <Form.Item
-            rules={[
-              { required: true, message: "list's one不能为空" },
-              { validator: this.validator, message: "自定义校验固定提示" },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            rules={[{ required: true, message: "list's two不能为空" }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form.List>
-        <Form.Item label="">
-          <button>Submit</button>
-        </Form.Item>
-      </Form>
-    );
   }
-}
+
+  return (
+    <Form store={form} onSubmit={onSubmit}>
+      <Form.List name="list">
+        <Form.Item
+          rules={[
+            { required: true, message: "list's one is Empty" },
+            { validator: validator, message: "custome tips" },
+          ]}
+          >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          rules={[{ required: true, message: "list's two is Empty" }]}
+        >
+          <Input />
+        </Form.Item>
+      </Form.List>
+      <Form.Item label="">
+        <button>Submit</button>
+      </Form.Item>
+    </Form>
+  );
+};
 ```
 
 ## APIs
@@ -262,7 +231,8 @@ class demo extends React.Component {
 ### Hooks
 
 - `useFormStore(defaultValues)` 使用 hooks 创建 FormStore。
-- `useFormError(store: FormStore, path?: string)` 使用 hooks 获取当前路径的报错信息。
+- `useFormError(store: FormStore, path?: string)` 使用 hooks 获取指定的报错信息。
+- 3.0.12 `useFormValues(store: FormStore, path?: string | string[])` 使用 hooks 获取指定的表单值。
 - `useValidator()` hook创建 `validator`校验实例
 
 # Contribute
