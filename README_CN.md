@@ -11,7 +11,7 @@
 # 版本更新日志
  - 3.x版本
    重要架构更新，需要删除旧包，再安装新版本的包
-   - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, `component`属性渲染的组件既可以在`Form`上全局设置props，也可以在`Form.Item`或`Form.List`上局部设置
+   - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, 同时, 显示组件自身的props既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
    - 3.0.3 `data-type="fragment"` 需要改成 `data-type="ignore"`
  - 2.x版本

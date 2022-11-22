@@ -11,7 +11,7 @@ Lightweight form container component where the target control only needs to prov
 # Version changelog
 - 3.x
    Important architecture update, you need to delete the old package and install the new version again
-   - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, The components rendered by the `component` property can be set props either globally on `Form` or locally on `Form.Item` or `Form.List`.
+   - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, and the display component's own props can be set either globally on `Form` or locally on `Form.Item` or `Form.
    - `onFieldsChange` and `onValuesChange` changed
    - 3.0.3 `data-type="fragment"` changed to `data-type="ignore"`
  - 2.x
