@@ -6,14 +6,14 @@ English | [中文说明](./README_CN.md)
 
 # Introduction?
 
-Lightweight form container component where the target control only needs to provide the `props`： `value` (or set via `valueProp`) and `onChange`, leaving the rest to the component's `FormStore` to manage the updating and binding of the data. Very simple to use
+Lightweight form container two-way binding component that automatically handles the `value` (or other) and `onChange` of the control to complete the display and update of the form values. Other operations can be implemented through the methods provided by the injected `FormStore` instance.
 
 # Version changelog
 - 3.x
    Important architecture update, you need to delete the old package and install the new version again
    - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, and the display component's own props can be set either globally on `Form` or locally on `Form.Item` or `Form.
    - `onFieldsChange` and `onValuesChange` changed
-   - 3.0.3 `data-type="fragment"` changed to `data-type="ignore"`
+   - 3.0.3 ~~`data-type="fragment"`~~ changed to `data-type="ignore"`
  - 2.x
    - ~~`col` and `customInner` deprecated~~.
  - 1.3.x: 

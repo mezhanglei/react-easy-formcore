@@ -6,14 +6,13 @@
 
 # 适用场景
 
-轻量级表单容器双向绑定组件，目标控件只需要提供`props`：`value`(或通过`valueProp`设置)和`onChange`，其余的交给组件中的`FormStore`来管理数据的更新与绑定。使用非常简单
-
+轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。
 # 版本更新日志
  - 3.x版本
    重要架构更新，需要删除旧包，再安装新版本的包
    - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, 同时, 显示组件自身的props既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
-   - 3.0.3 `data-type="fragment"` 需要改成 `data-type="ignore"`
+   - 3.0.3 ~~`data-type="fragment"`~~ 需要改成 `data-type="ignore"`
  - 2.x版本
    - ~~`col`和`customInner`废弃~~.
  - 1.3.x版本: 
