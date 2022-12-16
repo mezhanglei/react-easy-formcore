@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.1.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -165,7 +165,6 @@ export default function Demo() {
 - `colon` boolean 是否添加冒号
 - `required` 是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
 - `gutter` 自定义`label`标签和表单组件间的距离，`可选`。
-- `compact` 是否隐藏错误信息，默认值为`false`。
 - `error` 表单域显示组件的报错信息字段。
 - `suffix` 后缀节点，`可选`。
 - `footer` 底部节点，`可选`。

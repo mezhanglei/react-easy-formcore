@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.1.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -165,7 +165,6 @@ export default function Demo() {
 - `colon` boolean whether add colon
 - `required` Indicates that the value of the field is required `optional`。
 - `gutter` The distance between field's display component custom labels and form components, `optional`.
-- `compact` Whether to hide error messages for field's display component.
 - `error` form field displays the component's error message field.
 - `suffix` Suffix node, `optional`.
 - `footer` bootom node, `optional`.

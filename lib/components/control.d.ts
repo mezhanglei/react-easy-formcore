@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react';
 import './control.less';
 export interface ControlBaseProps {
-    compact?: boolean;
     error?: string;
     suffix?: React.ReactNode | any;
     footer?: React.ReactNode | any;
