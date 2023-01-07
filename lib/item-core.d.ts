@@ -1,9 +1,12 @@
 /// <reference types="react" />
 import { FormRule } from './validator';
+export declare type TriggerType = string;
 export interface ItemCoreProps {
     name?: string | number;
     parent?: string;
     index?: number;
+    trigger?: TriggerType | TriggerType[];
+    validateTrigger?: TriggerType | TriggerType[];
     valueProp?: string | ((type: any) => string);
     valueGetter?: ((...args: any[]) => any);
     valueSetter?: ((value: any) => any);

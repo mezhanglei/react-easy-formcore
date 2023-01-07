@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -14,6 +14,7 @@ Lightweight form container two-way binding component that automatically handles 
    - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, and the display component's own props can be set either globally on `Form` or locally on `Form.Item` or `Form.
    - `onFieldsChange` and `onValuesChange` changed
    - 3.0.3 ~~`data-type="fragment"`~~ changed to `data-type="ignore"`
+   - 3.1.2 Add `trigger` property to `Form.Item` to set the event that triggers the collection of values, and `validateTrigger` to set the timing of triggering the form validation. Also `rules` property can set `validateTrigger` for each validation to set the rule specific validation timing.
  - 2.x
    - ~~`col` and `customInner` deprecated~~.
  - 1.3.x: 
@@ -187,6 +188,8 @@ Inherited field display component
 - `className` Form field class name, `optional`.
 - `component` field display component. 
 - `name` Form field name, `optional`.
+- `trigger` Sets the event name of the form field to collect form values, default `onChange`.
+- `validateTrigger` Sets the event for form field validation, default `onChange`.
 - `valueProp` attribute of the form value.`optional`.
 - `valueGetter` A function to format the output form value, used with `valueSetter`, `optional`.
 - `valueSetter` function to format input form value, used with `valueGetter`, `optional`.
@@ -207,6 +210,7 @@ Inherited field display component
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.
+- `validateTrigger` Event to validate form rules, default `onChange`.
 - `message` Default error message when a check rule reports an error `optional`。
 - `required` Indicates that the value of the field is required `optional`。
 - `validator` Type: `(value) => void | boolean` Custom check function, `value` is the current control value `optional`.

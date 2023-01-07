@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.1.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -13,6 +13,7 @@
    - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, 同时, 显示组件自身的props既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
    - 3.0.3 ~~`data-type="fragment"`~~ 需要改成 `data-type="ignore"`
+   - 3.1.2 `Form.Item`增加`trigger`属性用于设置触发收集值的事件, `validateTrigger`设置触发表单校验的事件. 同时`rules`属性中可以给每条校验设置`validateTrigger`设置规则具体的校验事件.
  - 2.x版本
    - ~~`col`和`customInner`废弃~~.
  - 1.3.x版本: 
@@ -188,6 +189,8 @@ export default function Demo() {
 - `className` 表单域类名，`可选`。
 - `component` 表单域显示组件。
 - `name` 表单域字段名，`可选`。
+- `trigger` 设置表单域收集表单值的事件名，默认`onChange`.
+- `validateTrigger` 设置表单域校验的事件, 默认`onChange`.
 - `valueProp` 填写到子组件的值属性名，默认值为`'value'`。
 - `valueGetter` 格式化输出表单值的函数，配合`valueSetter`使用, `可选`。
 - `valueSetter` 格式化输入表单值的函数，配合`valueGetter`使用, `可选`。
@@ -208,6 +211,7 @@ export default function Demo() {
 
 ### 表单的rules中的校验字段
 `rules`中的值的字段中的规则会按照顺序执行校验，`rules`中每一项只能设置一种规则。
+- `validateTrigger` 校验表单规则的事件, 默认`onChange`.
 - `message` 校验规则报错时，默认的报错信息 `可选`。
 - `required` 表示控件值为必填 `可选`。
 - `validator` 类型：`(value) => void | boolean` 自定义校验函数, `value`为当前控件值 `可选`。

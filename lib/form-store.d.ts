@@ -1,4 +1,4 @@
-import { FormRule } from './validator';
+import { FormRule, TriggerHandle } from './validator';
 export declare type FormListener = {
     path: string;
     onChange: (newValue?: any, oldValue?: any) => void;
@@ -34,14 +34,14 @@ export declare class FormStore<T extends Object = any> {
     getLastValue(path?: string | string[]): any;
     setInitialValues(path: string, initialValue: any): void;
     getInitialValues(path?: string | string[]): any;
-    setFieldValue(path: string | Partial<T>, value?: any, noError?: boolean): void;
+    setFieldValue(path: string | Partial<T>, value?: any, type?: TriggerHandle): void;
     setFieldsValue(values?: Partial<T>): void;
     reset(endValues?: Partial<T>): void;
     getFieldError(path?: string): any;
     private setFieldError;
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
-    validate(path: string): Promise<string>;
+    validate(path: string, type?: TriggerHandle): Promise<string>;
     private notifyFormItem;
     private notifyFormGlobal;
     private notifyError;
