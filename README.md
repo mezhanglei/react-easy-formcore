@@ -14,7 +14,7 @@ Lightweight form container two-way binding component that automatically handles 
    - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, and the display component's own props can be set either globally on `Form` or locally on `Form.Item` or `Form.
    - `onFieldsChange` and `onValuesChange` changed
    - 3.0.3 ~~`data-type="fragment"`~~ changed to `data-type="ignore"`
-   - 3.1.2 Add `trigger` property to `Form.Item` to set the event that triggers the collection of values, and `validateTrigger` to set the timing of triggering the form validation. Also `rules` property can set `validateTrigger` for each validation to set the rule specific validation timing.
+   - 3.1.2 Add `trigger` property to `Form.Item` to set the event that triggers the collection of values, and `validateTrigger` to set the event that triggers the form validation. Also `rules` property can set `validateTrigger` event for each rule.
  - 2.x
    - ~~`col` and `customInner` deprecated~~.
  - 1.3.x: 

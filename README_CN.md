@@ -13,7 +13,7 @@
    - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, 同时, 显示组件自身的props既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
    - `onFieldsChange` and `onValuesChange` 更改回调参数
    - 3.0.3 ~~`data-type="fragment"`~~ 需要改成 `data-type="ignore"`
-   - 3.1.2 `Form.Item`增加`trigger`属性用于设置触发收集值的事件, `validateTrigger`设置触发表单校验的事件. 同时`rules`属性中可以给每条校验设置`validateTrigger`设置规则具体的校验事件.
+   - 3.1.2 `Form.Item`增加`trigger`属性用于设置触发收集值的事件, `validateTrigger`设置触发表单校验的事件. 同时`rules`属性中可以给每条校验设置`validateTrigger`校验事件.
  - 2.x版本
    - ~~`col`和`customInner`废弃~~.
  - 1.3.x版本: 
