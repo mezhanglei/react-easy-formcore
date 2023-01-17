@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.1.3-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.4-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -15,6 +15,7 @@ Lightweight form container two-way binding component that automatically handles 
    - `onFieldsChange` and `onValuesChange` changed
    - 3.0.3 ~~`data-type="fragment"`~~ changed to `data-type="ignore"`
    - 3.1.2 Add `trigger` property to `Form.Item` to set the event that triggers the collection of values, and `validateTrigger` to set the event that triggers the form validation. Also `rules` property can set `validateTrigger` event for each rule.
+   - 3.1.3 Add `tooltip` property to add tip.
  - 2.x
    - ~~`col` and `customInner` deprecated~~.
  - 1.3.x: 
