@@ -22,7 +22,7 @@ export default function Demo() {
   console.log(formvalues, '监听表单值变化')
   return (
     <Form initialValues={{ name1: 1111 }} store={store} onSubmit={onSubmit}>
-      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+      <Form.Item tooltip='11111' label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
         <div data-type="ignore">
           <input />
         </div>

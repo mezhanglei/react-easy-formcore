@@ -3,11 +3,11 @@ import { FormItem } from './form-item'
 import { FormStore } from './form-store'
 import { FormStoreContext, FormValuesContext, FormOptionsContext } from './form-context'
 import { FormList } from './form-list';
-import { ItemCoreProps } from './item-core'
-import { ItemProps } from './components/item'
+import { ItemCoreProps } from './item-core';
+import { ItemProps } from './components/item';
+import "./icons/index.js";
 
-// 缓存数组类型的组件的路径
-export type FormProps<S = FormStore, T = ItemProps>  = T & ItemCoreProps & {
+export type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
   className?: string;
   store?: S;
   style?: CSSProperties;
@@ -28,7 +28,15 @@ export function Form(props: FormProps) {
   }, [onMount]);
 
   return (
-    <form className={classNames} style={style} onSubmit={onSubmit} onReset={onReset}>
+    <form
+      className={classNames}
+      style={style}
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit?.(e);
+      }}
+      onReset={onReset}
+    >
       <FormStoreContext.Provider value={store}>
         <FormOptionsContext.Provider value={options}>
           <FormValuesContext.Provider value={initialValues}>

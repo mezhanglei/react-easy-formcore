@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { FormStore } from './form-store';
 import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
+import "./icons/index.js";
 export declare type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
     className?: string;
     store?: S;

@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.3-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -14,6 +14,7 @@
    - `onFieldsChange` and `onValuesChange` 更改回调参数
    - 3.0.3 ~~`data-type="fragment"`~~ 需要改成 `data-type="ignore"`
    - 3.1.2 `Form.Item`增加`trigger`属性用于设置触发收集值的事件, `validateTrigger`设置触发表单校验的事件. 同时`rules`属性中可以给每条校验设置`validateTrigger`校验事件.
+   - 3.1.3 增加`tooltip`属性，可以添加提示.
  - 2.x版本
    - ~~`col`和`customInner`废弃~~.
  - 1.3.x版本: 
@@ -84,11 +85,11 @@ export default function Demo() {
   }
 
   const formvalues = useFormValues(form, ['name1', 'name2'])
-  console.log(formvalues, 'form values')
+  console.log(formvalues, 'formvalues')
 
   return (
     <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
-      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
         </div>
@@ -169,6 +170,7 @@ export default function Demo() {
 - `error` 表单域显示组件的报错信息字段。
 - `suffix` 后缀节点，`可选`。
 - `footer` 底部节点，`可选`。
+- `tooltip` 提示图标，可以提示信息。`可选`。
 
 ### Form Props
 继承表单域显示组件(`component`)的props

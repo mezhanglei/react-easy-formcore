@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.1.2-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-3.1.3-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -84,10 +84,10 @@ export default function Demo() {
   }
 
   const formvalues = useFormValues(form, ['name1', 'name2'])
-  console.log(formvalues, '监听表单值变化')
+  console.log(formvalues, 'formvalues')
   return (
     <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
-      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
         </div>
@@ -169,6 +169,7 @@ export default function Demo() {
 - `error` form field displays the component's error message field.
 - `suffix` Suffix node, `optional`.
 - `footer` bootom node, `optional`.
+- `tooltip` Tip icon to prompt for information. `optional`.
 
 ### Form Props
 Inherited field display component
