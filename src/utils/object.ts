@@ -14,15 +14,16 @@ export function isEqual(a: any, b: any) {
 // 接收路径字符串或数组字符串，返回数组字符串表示路径
 export function pathToArr(path?: string | string[]) {
   if (path instanceof Array) return path;
-  return typeof path === 'string' && path ? path.replace(/\]$/, '').split(/\.\[|\[\]|\]\[|\[|\]\.|\]|\./g) : [];
+  const parts = typeof path === 'string' && path ? path.replace(/\]$/, '').replace(/^\[/, '').split(/\.\[|\[\]|\]\[|\[|\]\.|\]|\./g) : []
+  return parts;
 }
 
 // 根据路径获取目标对象中的单个值或多个值
 export function deepGet(obj: object | undefined, keys?: string | string[]): any {
   if (!keys?.length) return
-  if(keys instanceof Array) {
+  if (keys instanceof Array) {
     const result = {}
-    for(let key in keys) {
+    for (let key in keys) {
       const item = keys[key]
       result[item] = pathToArr(item)?.reduce?.((o, k) => (o)?.[k], obj)
     }

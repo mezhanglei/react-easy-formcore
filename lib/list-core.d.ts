@@ -4,6 +4,7 @@ export interface ListCoreProps {
     parent?: string;
     rules?: FormRule[];
     initialValue?: any[];
+    ignore?: boolean;
     children?: any;
 }
 export declare const ListCore: {

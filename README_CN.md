@@ -2,12 +2,14 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-3.1.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。
 # 版本更新日志
+ - 4.x 版本
+   - 优化表单中的路径系统, 修复`useFormValues`的问题.
  - 3.x版本
    重要架构更新，需要删除旧包，再安装新版本的包
    - 分离出`component`属性，可以动态更换`Form.Item`和`Form.List`组件的显示组件, 同时, 显示组件自身的props既可以在`Form`上全局设置，也可以在`Form.Item`或`Form.List`上局部设置
@@ -157,20 +159,20 @@ export default function Demo() {
 ## APIs
 
 ### 默认的表单域显示组件的属性
-- `className` 类名，`可选`。
-- `label` 标签，`可选`。
-- `labelStyle` 自定义`label`样式，`可选`。
-- `labelWidth` numbr, label标签的宽度。
-- `labelAlign` numbr, label标签的textAlign属性。
-- `inline` boolean, 是否设置行内布局。
+- `className` `string` 类名，`可选`。
+- `label` `string` 标签，`可选`。
+- `labelStyle` `CSSProperties` 自定义`label`样式，`可选`。
+- `labelWidth` `CSSProperties['width']`, label标签的宽度。
+- `labelAlign` `CSSProperties['textAlign']`, label标签的textAlign属性。
+- `inline` `boolean`, 是否设置行内布局。
 - `layout` `'horizontal'|'vertical'` 设置布局类型，默认值为`horizontal`。
-- `colon` boolean 是否添加冒号
-- `required` 是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
-- `gutter` 自定义`label`标签和表单组件间的距离，`可选`。
-- `error` 表单域显示组件的报错信息字段。
-- `suffix` 后缀节点，`可选`。
-- `footer` 底部节点，`可选`。
-- `tooltip` 提示图标，可以提示信息。`可选`。
+- `colon` `boolean` 是否添加冒号
+- `required` `boolean` 是否显示星号，不包含表单校验，仅用于显示，默认值为`false`。
+- `gutter` `number` 自定义`label`标签和表单组件间的距离，`可选`。
+- `error` `string` 表单域显示组件的报错信息字段。
+- `suffix` `React.ReactNode` 后缀节点，`可选`。
+- `footer` `React.ReactNode` 底部节点，`可选`。
+- `tooltip` `string` 提示图标，可以提示信息。`可选`。
 
 ### Form Props
 继承表单域显示组件(`component`)的props

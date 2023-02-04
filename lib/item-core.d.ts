@@ -1,9 +1,14 @@
-/// <reference types="react" />
 import { FormRule } from './validator';
 export declare type TriggerType = string;
+export interface FieldChangedParams {
+    parent: string;
+    name?: string;
+    value: any;
+}
 export interface ItemCoreProps {
     name?: string | number;
     parent?: string;
+    ignore?: boolean;
     index?: number;
     trigger?: TriggerType | TriggerType[];
     validateTrigger?: TriggerType | TriggerType[];
@@ -13,19 +18,11 @@ export interface ItemCoreProps {
     rules?: FormRule[];
     initialValue?: any;
     errorClassName?: string;
-    onFieldsChange?: (obj: {
-        parent: string;
-        name?: string;
-        value: any;
-    }, values?: unknown) => void;
-    onValuesChange?: (obj: {
-        parent?: string;
-        name?: string;
-        value: any;
-    }, values?: unknown) => void;
+    onFieldsChange?: (obj: FieldChangedParams, values?: unknown) => void;
+    onValuesChange?: (obj: FieldChangedParams, values?: unknown) => void;
     children?: any;
 }
 export declare const ItemCore: {
-    (props: ItemCoreProps): JSX.Element;
+    (props: ItemCoreProps): any;
     displayName: string;
 };

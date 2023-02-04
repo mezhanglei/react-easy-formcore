@@ -2,13 +2,15 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-3.1.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container two-way binding component that automatically handles the `value` (or other) and `onChange` of the control to complete the display and update of the form values. Other operations can be implemented through the methods provided by the injected `FormStore` instance.
 
 # Version changelog
+- 4.x
+   - optimize the routing system in forms, fix the `useFormValues` error.
 - 3.x
    Important architecture update, you need to delete the old package and install the new version again
    - add `component` property to dynamically replace the display components of the `Form.Item` and `Form.List` components, and the display component's own props can be set either globally on `Form` or locally on `Form.Item` or `Form.
@@ -157,20 +159,20 @@ export default function Demo() {
 
 ### Default field display component
 
-- `className` class name, `optional`.
-- `label` label, `optional`.
-- `labelStyle` custom label's style, `optional`.
-- `labelWidth` numbr, the width of the label label.
-- `labelAlign` numbr, the label label's textAlign property.
-- `inline` boolea, Whether or not field display components have inline layout.
+- `className` `string` class name, `optional`.
+- `label` `string` label, `optional`.
+- `labelStyle` `CSSProperties` custom label's style, `optional`.
+- `labelWidth` `CSSProperties['width']`, the width of the label label.
+- `labelAlign` `CSSProperties['textAlign']`, the label label's textAlign property.
+- `inline` `boolea`, Whether or not field display components have inline layout.
 - `layout` `'horizontal'|'vertical'` field’s display components set the layout type, the default value is `horizontal`.
-- `colon` boolean whether add colon
-- `required` Indicates that the value of the field is required `optional`。
-- `gutter` The distance between field's display component custom labels and form components, `optional`.
-- `error` form field displays the component's error message field.
-- `suffix` Suffix node, `optional`.
-- `footer` bootom node, `optional`.
-- `tooltip` Tip icon to prompt for information. `optional`.
+- `colon` `boolean` whether add colon
+- `required` `boolean` Indicates that the value of the field is required `optional`。
+- `gutter` `number` The distance between field's display component custom labels and form components, `optional`.
+- `error` `string` form field displays the component's error message field.
+- `suffix` `React.ReactNode` Suffix node, `optional`.
+- `footer` `React.ReactNode` bootom node, `optional`.
+- `tooltip` `string` Tip icon to prompt for information. `optional`.
 
 ### Form Props
 Inherited field display component

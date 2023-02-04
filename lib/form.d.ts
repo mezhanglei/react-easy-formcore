@@ -20,7 +20,6 @@ export declare namespace Form {
         children?: React.ReactNode;
         style?: React.CSSProperties | undefined;
         component?: any;
-        ignore?: boolean | undefined;
     } & React.RefAttributes<unknown>>;
     var List: React.ForwardRefExoticComponent<ItemProps & import("./list-core").ListCoreProps & {
         className?: string | undefined;
