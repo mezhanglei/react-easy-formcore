@@ -92,7 +92,9 @@ export class FormStore<T extends Object = any> {
     this.lastValues = deepClone(this.values);
     // 设置值
     this.values = deepSet(this.values, path, initialValue);
-    this.notifyFormGlobal(path);
+    setTimeout(() => {
+      this.notifyFormGlobal(path);
+    }, 0);
   }
 
   // 获取初始值
