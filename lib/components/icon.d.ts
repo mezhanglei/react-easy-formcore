@@ -1,7 +1,8 @@
 import React from 'react';
 import './icon.less';
-declare const SvgIcon: React.ForwardRefExoticComponent<{
+interface SvgIconProps extends React.HtmlHTMLAttributes<SVGSVGElement> {
     name: string;
-    className?: string | undefined;
-} & React.RefAttributes<SVGSVGElement>>;
+    className?: string;
+}
+declare const SvgIcon: React.ForwardRefExoticComponent<SvgIconProps & React.RefAttributes<SVGSVGElement>>;
 export default SvgIcon;

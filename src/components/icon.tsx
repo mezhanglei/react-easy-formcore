@@ -1,7 +1,11 @@
 import React, { LegacyRef } from 'react';
 import './icon.less';
 
-const SvgIcon = React.forwardRef((props: { name: string, className?: string }, ref: LegacyRef<SVGSVGElement>) => {
+interface SvgIconProps extends React.HtmlHTMLAttributes<SVGSVGElement> {
+  name: string;
+  className?: string;
+}
+const SvgIcon = React.forwardRef((props: SvgIconProps, ref: LegacyRef<SVGSVGElement>) => {
   const { name, className, ...rest } = props
   const svgClass = className ? 'svg-icon ' + className : 'svg-icon';
   const iconName = `#${name}`;
