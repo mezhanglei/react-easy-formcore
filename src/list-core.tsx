@@ -27,8 +27,8 @@ export const ListCore = (props: ListCoreProps) => {
     ignore
   } = fieldProps;
 
-  const formPath = ignore ? parent : joinPath(parent, name);
-  const currentPath = (isEmpty(name) || ignore) ? undefined : formPath;
+  const formPath = ignore === true ? parent : joinPath(parent, name);
+  const currentPath = (isEmpty(name) || ignore === true) ? undefined : formPath;
   const initialListValue = initialValue ?? deepGet(initialValues, currentPath);
 
   // 渲染子元素
@@ -56,7 +56,7 @@ export const ListCore = (props: ListCoreProps) => {
   const renderFormItem = (child: any) => {
     const currentIndex = index;
     index++;
-    const childRules = (rules || [])?.concat(child?.props?.rules);
+    const childRules = rules instanceof Array && rules.concat(child?.props?.rules);
     const childValue = child?.props?.initialValue ?? initialListValue?.[currentIndex];
     return child && cloneElement(child, {
       parent: formPath,
