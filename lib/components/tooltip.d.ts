@@ -1,63 +1,8 @@
 import React from 'react';
-import { Instance, Props } from 'tippy.js';
+import { TippyProps } from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import 'tippy.js/themes/light.css';
-declare const _default: React.ForwardRefExoticComponent<Omit<React.HtmlHTMLAttributes<HTMLElement>, "role"> & {
-    trigger?: string | undefined;
-    role?: string | undefined;
-    animateFill?: boolean | undefined;
-    appendTo?: "parent" | Element | ((ref: Element) => Element) | undefined;
-    aria?: {
-        content?: "auto" | "describedby" | "labelledby" | null | undefined;
-        expanded?: boolean | "auto" | undefined;
-    } | undefined;
-    delay?: number | [number | null, number | null] | undefined;
-    duration?: number | [number | null, number | null] | undefined;
-    followCursor?: boolean | "horizontal" | "vertical" | "initial" | undefined;
-    getReferenceClientRect?: import("tippy.js").GetReferenceClientRect | null | undefined;
-    hideOnClick?: boolean | "toggle" | undefined;
-    ignoreAttributes?: boolean | undefined;
-    inlinePositioning?: boolean | undefined;
-    interactive?: boolean | undefined;
-    interactiveBorder?: number | undefined;
-    interactiveDebounce?: number | undefined;
-    moveTransition?: string | undefined;
-    offset?: [number, number] | (({ placement, popper, reference, }: {
-        placement: import("@popperjs/core").Placement;
-        popper: import("@popperjs/core").Rect;
-        reference: import("@popperjs/core").Rect;
-    }) => [number, number]) | undefined;
-    placement?: import("@popperjs/core").Placement | undefined;
-    plugins?: import("tippy.js").Plugin<unknown>[] | undefined;
-    popperOptions?: Partial<import("@popperjs/core").Options> | undefined;
-    render?: ((instance: Instance<Props>) => {
-        popper: import("tippy.js").PopperElement<Props>;
-        onUpdate?: ((prevProps: Props, nextProps: Props) => void) | undefined;
-    }) | null | undefined;
-    showOnCreate?: boolean | undefined;
-    sticky?: boolean | "reference" | "popper" | undefined;
-    touch?: boolean | "hold" | ["hold", number] | undefined;
-    triggerTarget?: Element | Element[] | null | undefined;
-    onAfterUpdate?: ((instance: Instance<Props>, partialProps: Partial<Props>) => void) | undefined;
-    onBeforeUpdate?: ((instance: Instance<Props>, partialProps: Partial<Props>) => void) | undefined;
-    onCreate?: ((instance: Instance<Props>) => void) | undefined;
-    onDestroy?: ((instance: Instance<Props>) => void) | undefined;
-    onHidden?: ((instance: Instance<Props>) => void) | undefined;
-    onHide?: ((instance: Instance<Props>) => false | void) | undefined;
-    onMount?: ((instance: Instance<Props>) => void) | undefined;
-    onShow?: ((instance: Instance<Props>) => false | void) | undefined;
-    onShown?: ((instance: Instance<Props>) => void) | undefined;
-    onTrigger?: ((instance: Instance<Props>, event: Event) => void) | undefined;
-    onUntrigger?: ((instance: Instance<Props>, event: Event) => void) | undefined;
-    onClickOutside?: ((instance: Instance<Props>, event: Event) => void) | undefined;
-    allowHTML?: boolean | undefined;
-    animation?: string | boolean | undefined;
-    arrow?: string | boolean | SVGElement | DocumentFragment | undefined;
-    inertia?: boolean | undefined;
-    maxWidth?: string | number | undefined;
-    theme?: string | undefined;
-    zIndex?: number | undefined;
-} & {
-    content: any;
-} & React.RefAttributes<unknown>>;
+import './tooltip.less';
+interface TooltipCustomProps extends TippyProps {
+}
+declare const _default: React.ForwardRefExoticComponent<Pick<TooltipCustomProps, "children" | "trigger" | "className" | "role" | "content" | "render" | "animateFill" | "appendTo" | "aria" | "delay" | "duration" | "followCursor" | "getReferenceClientRect" | "hideOnClick" | "ignoreAttributes" | "inlinePositioning" | "interactive" | "interactiveBorder" | "interactiveDebounce" | "moveTransition" | "offset" | "placement" | "plugins" | "popperOptions" | "showOnCreate" | "sticky" | "touch" | "triggerTarget" | "onAfterUpdate" | "onBeforeUpdate" | "onCreate" | "onDestroy" | "onHidden" | "onHide" | "onMount" | "onShow" | "onShown" | "onTrigger" | "onUntrigger" | "onClickOutside" | "allowHTML" | "animation" | "arrow" | "inertia" | "maxWidth" | "theme" | "zIndex" | "visible" | "disabled" | "singleton" | "reference"> & React.RefAttributes<unknown>>;
 export default _default;

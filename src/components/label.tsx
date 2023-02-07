@@ -53,7 +53,7 @@ export const Label = React.forwardRef((props: LabelProps, ref: any) => {
       <label ref={ref} className={cls} style={mergeStyle} {...restProps}>
         {colon === true ? <>{children}:</> : children}
         {tooltip && (
-          <Tooltip content={tooltip}>
+          <Tooltip content={tooltip} theme="light">
             <Icon name="wenhao" className={`${prefix}__tooltip`} />
           </Tooltip>)
         }
