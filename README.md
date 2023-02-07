@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-4.0.6-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.7-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -58,7 +58,7 @@ The `Form.Item` component acts as an item in the `Form.List` array type and is c
 
 ```bash
 npm install react-easy-formcore --save
-# 或者
+# or
 yarn add react-easy-formcore
 ```
 

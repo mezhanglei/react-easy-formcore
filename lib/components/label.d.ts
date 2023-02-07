@@ -1,7 +1,4 @@
 import React, { CSSProperties } from 'react';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/themes/light.css';
-import './label.less';
 export interface LabelBaseProps {
     colon?: boolean;
     required?: boolean;
