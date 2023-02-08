@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import "./label.less";
 export interface LabelBaseProps {
     colon?: boolean;
     required?: boolean;

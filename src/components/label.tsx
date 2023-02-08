@@ -3,6 +3,7 @@ import React, { CSSProperties } from 'react';
 import { isValidChildren } from 'src/utils/ReactIs';
 import Icon from './icon';
 import Tooltip from './tooltip';
+import "./label.less";
 
 export interface LabelBaseProps {
   colon?: boolean;
