@@ -90,12 +90,12 @@ export default function Demo() {
   console.log(formvalues, 'formvalues')
   return (
     <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
-      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
+      <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
         </div>
       </Form.Item>
-      <Form.Item label="Name2" name="name2" required rules={[{ required: true, message: 'name2 is empty' }]}>
+      <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
         <input />
       </Form.Item>
       <Form.Item label="">
@@ -193,13 +193,13 @@ Inherited field display component
 - `component` field display component. 
 - `name` Form field name, `optional`.
 - `trigger` Sets the event name of the form field to collect form values, default `onChange`.
-- `validateTrigger` Sets the event for form field validation, default `onChange`.
-- `valueProp` attribute of the form value.`optional`.
+- `validateTrigger` Sets the event for trigger form field validation, default `onChange`.
+- `valueProp` The field name of the value in the callback function object, the default value is `'value'`.
 - `valueGetter` A function to format the output form value, used with `valueSetter`, `optional`.
 - `valueSetter` function to format input form value, used with `valueGetter`, `optional`.
 - `rules` Checksum rules for form fields `optional`.
-- `initialValue` Form field initial value, Note that this value can only initialise the form `optional`.
-- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`.
+- `initialValue` The initial value of the form field, note that this value is different from `value` when the form is rendered for the first time.
+- `onFieldsChange` The event function when the value of the control changes will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls. `optional`.
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
@@ -214,24 +214,24 @@ Inherited field display component
 
 ### rules
 The rules in the fields of the values in `rules` perform the checks in order, and only one rule can be set for each item in `rules`.
-- `validateTrigger` Event to validate form rules, default `onChange`.
-- `message` Default error message when a check rule reports an error `optional`。
-- `required` Indicates that the value of the field is required `optional`。
-- `validator` Type: `(value) => void | boolean` Custom check function, `value` is the current control value `optional`.
-- `pattern` Type: `RegExp | string` Expression check, error if does not match `optional`.
-- `whitespace` Type: `boolean` For type `string`, set true check space `optional`.
-- `max` Type: `number` Maximum length for string type; maximum length for number type; maximum length for array type `optional`.
-- `min` Type: `number` minimum length for string type; minimum value for number type; minimum length for array type `optional`.
+- `validateTrigger` `string` Event to trigger validate form rules, default `onChange`.
+- `message` `string` Default error message when a check rule reports an error `optional`。
+- `required` `boolean` The required symbol is marked, and a `required` attribute of `true` in `rules` also automatically adds the required symbol `optional`。
+- `validator` `(value) => void | boolean` Custom check function, `value` is the current control value `optional`.
+- `pattern` `RegExp | string` Expression check, error if does not match `optional`.
+- `whitespace` `boolean` space check `optional`.
+- `max` `number` Maximum length for string type; maximum length for number type; maximum length for array type `optional`.
+- `min` `number` minimum length for `string` type; minimum value for `number` type; minimum length for `array` type. `optional`.
 
 ### FormStore Methods
 
 - `new FormStore(defaultValues)` form manager.
-- `store.getFieldValue(name?: string)` Returns the value of the form field for which `name` is specified, or the value of the whole form without `name`.
-- `store.setFieldValue(name, value)` Update the value of a form field
+- `store.getFieldValue(path?: string)` Returns the value of the form field for which `path` is specified, or the value of the whole form without `name`.
+- `store.setFieldValue(path, value)` Update the value of a form field
 - `store.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
 - `store.reset(values?: Partial<T>)` Reset the form.The value can be passed to reset to the target value.
-- `store.validate(name?: string)` Checks form and returns error messages and form values.
-- `store.getFieldError(name?: string)` Returns error messages for a single form field or for all errors on a form.
+- `store.validate(path?: string)` Checks form and returns error messages and form values.
+- `store.getFieldError(path?: string)` Returns the target's error message or all error messages.
 
 ### Hooks
 

@@ -91,12 +91,12 @@ export default function Demo() {
 
   return (
     <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
-      <Form.Item label="Name1" name="name1" required rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
+      <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
         </div>
       </Form.Item>
-      <Form.Item label="Name2" name="name2" required rules={[{ required: true, message: 'name2 is empty' }]}>
+      <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
         <input />
       </Form.Item>
       <Form.Item label="">
@@ -183,7 +183,7 @@ export default function Demo() {
 - `onSubmit` 表单提交回调，`可选`。
 - `onMount` 表单渲染完毕的回调，`可选`。
 - `onReset` 表单重置默认值，`可选`。
-- `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
+- `onFieldsChange` 表单域 `onChange` 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 
 
@@ -194,13 +194,13 @@ export default function Demo() {
 - `component` 表单域显示组件。
 - `name` 表单域字段名，`可选`。
 - `trigger` 设置表单域收集表单值的事件名，默认`onChange`.
-- `validateTrigger` 设置表单域校验的事件, 默认`onChange`.
-- `valueProp` 填写到子组件的值属性名，默认值为`'value'`。
+- `validateTrigger` 设置表单域校验的触发事件, 默认`onChange`.
+- `valueProp` 回调函数对象中值的字段名，默认值为`'value'`。
 - `valueGetter` 格式化输出表单值的函数，配合`valueSetter`使用, `可选`。
 - `valueSetter` 格式化输入表单值的函数，配合`valueGetter`使用, `可选`。
 - `rules` 表单域的校验规则 `可选`。
-- `initialValue` 表单域的初始值，注意此值和`value`不同，只能初始化表单赋值`可选`。
-- `onFieldsChange` 表单域 onChange 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
+- `initialValue` 表单域的初始值，注意此值和`value`不同，只能表单第一次渲染时赋值`可选`。
+- `onFieldsChange` 控件的值变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 - `errorClassName` 控件当有错误信息时，添加一个自定义类名，`可选`。
 
@@ -215,24 +215,24 @@ export default function Demo() {
 
 ### 表单的rules中的校验字段
 `rules`中的值的字段中的规则会按照顺序执行校验，`rules`中每一项只能设置一种规则。
-- `validateTrigger` 校验表单规则的事件, 默认`onChange`.
-- `message` 校验规则报错时，默认的报错信息 `可选`。
-- `required` 表示控件值为必填 `可选`。
-- `validator` 类型：`(value) => void | boolean` 自定义校验函数, `value`为当前控件值 `可选`。
-- `pattern` 类型：`RegExp | string` 表达式校验，不符合则报错 `可选`。
-- `whitespace` 类型：`boolean` 针对`string`类型, 设置true校验空格 `可选`。
-- `max` 类型：`number` 表单值为string类型时字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度 `可选`。
-- `min` 类型：`number` 表单值为string类型时字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度 `可选`。
+- `validateTrigger` `string` 校验表单规则的触发事件, 默认`onChange`.
+- `message` `string` 校验规则报错时，默认的报错信息 `可选`。
+- `required` `boolean` 标记必填符号, 同时`rules`中的`required`属性为`true`也自动添加必填标记 `可选`。
+- `validator` `(value) => void | boolean` 自定义校验函数, `value`为当前控件值 `可选`。
+- `pattern` `RegExp | string` 表达式校验，不符合则报错 `可选`。
+- `whitespace` `boolean` 空格校验 `可选`。
+- `max` `number` 表单值为`string`类型时字符串最大长度；`number` 类型时为最大值；`array` 类型时为数组最大长度 `可选`。
+- `min` `number` 表单值为`string`类型时字符串最小长度；`number` 类型时为最小值；`array` 类型时为数组最小长度 `可选`。
 
 ### FormStore Methods
 
 - `new FormStore(defaultValues)` 创建表单存储。
-- `store.getFieldValue(name?: string)` 返回指定`name`的表单域的值，不指定`name`返回整个表单的值。
-- `store.setFieldValue(name, value)` 更新表单域的值
+- `store.getFieldValue(path?: string)` 返回指定`path`的表单域的值，不指定`path`返回整个表单的值。
+- `store.setFieldValue(path, value)` 更新表单域的值
 - `store.setFieldsValue(obj: Partial<T>)` 设置表单域的值(覆盖)。
 - `store.reset(values?: Partial<T>)` 重置表单, 可以传值重置为目标值。
-- `store.validate(name?: string)` 校验表单，并返回错误信息和表单值。
-- `store.getFieldError(name?: string)` 返回单个表单域的错误信息或表单所有的错误信息。
+- `store.validate(path?: string)` 校验表单，并返回错误信息和表单值。
+- `store.getFieldError(path?: string)` 返回目标的错误信息或所有的错误信息。
 
 ### Hooks
 
@@ -240,6 +240,3 @@ export default function Demo() {
 - `useFormError(store: FormStore, path?: string)` 使用 hooks 获取指定的报错信息。
 - 3.0.12 `useFormValues(store: FormStore, path?: string | string[])` 使用 hooks 获取指定的表单值。
 - `useValidator()` hook创建 `validator`校验实例
-
-# Contribute
-感谢来自react-hero-form提供的灵感支持。
