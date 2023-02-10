@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-4.0.10-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -10,6 +10,7 @@ Lightweight form container two-way binding component that automatically handles 
 
 # Version changelog
 - 4.x
+   - 4.0.11 Add `tagName` property to the `Form` component, which can replace the default `form` tag
    - optimize the routing system in forms, fix the `useFormValues` error.
 - 3.x
    Important architecture update, you need to delete the old package and install the new version again
@@ -179,10 +180,11 @@ Inherited field display component
 
 - `className` The class name of the form element, `optional`.
 - `store` The form data store, `required`.
+- `tagName` Replace the element tag name of the form, default `form` tag
 - `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, Note that this value can only initialise the form `optional`.
-- `onSubmit` The form submit callback, `optional`.
+- `onSubmit` `form` tag triggers the reset default event, only `button` tags that provide `htmlType` as `submit` can trigger `optional`.
 - `onMount` The form mounted callback `optional`.
-- `onReset` Form reset defaults, `optional`.
+- `onReset` `form` tag triggers the reset default event, only `button` tags that provide `htmlType` as `reset` can trigger `optional`.
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`.
 - `onValuesChange` Listening for changes in form values.`optional`.
 

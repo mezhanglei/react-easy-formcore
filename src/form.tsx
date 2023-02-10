@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect } from 'react'
+import React, { CSSProperties, LegacyRef, useEffect } from 'react'
 import { FormItem } from './form-item'
 import { FormStore } from './form-store'
 import { FormStoreContext, FormValuesContext, FormOptionsContext } from './form-context'
@@ -7,19 +7,27 @@ import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
 import "./icons/index.js";
 
+interface CreateFormProps extends React.HTMLAttributes<HTMLElement> {
+  tagName?: keyof React.ReactHTML
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+const CreateForm = React.forwardRef((props: CreateFormProps, ref: LegacyRef<any>) => {
+  const { tagName = "form", ...rest } = props;
+  return React.createElement(tagName, { ...rest, ref });
+});
+
 export type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
   className?: string;
   store?: S;
   style?: CSSProperties;
   children?: any;
   initialValues?: Partial<unknown>;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-  onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
   onMount?: () => void;
-}
+} & CreateFormProps;
 
 export function Form(props: FormProps) {
-  const { className = '', style, children, store, initialValues, onSubmit, onReset, onMount, ...options } = props
+  const { className = '', style, children, store, initialValues, tagName, onSubmit, onReset, onMount, ...options } = props
 
   const classNames = 'easy-form ' + className
 
@@ -28,7 +36,8 @@ export function Form(props: FormProps) {
   }, [onMount]);
 
   return (
-    <form
+    <CreateForm
+      tagName={tagName}
       className={classNames}
       style={style}
       onSubmit={(e) => {
@@ -44,7 +53,7 @@ export function Form(props: FormProps) {
           </FormValuesContext.Provider>
         </FormOptionsContext.Provider>
       </FormStoreContext.Provider>
-    </form>
+    </CreateForm>
   )
 }
 

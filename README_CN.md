@@ -2,13 +2,14 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-4.0.10-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。
 # 版本更新日志
  - 4.x 版本
+   - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签
    - 优化表单中的路径系统, 修复`useFormValues`的问题.
  - 3.x版本
    重要架构更新，需要删除旧包，再安装新版本的包
@@ -179,10 +180,11 @@ export default function Demo() {
 
 - `className` 表单元素类名，`可选`。
 - `store` 表单数据存储，`必须`。
+- `tagName` 更换表单的元素标签名, 默认`form`标签
 - `initialValues` 表单的初始值，会被表单域的`initialValue`覆盖, 注意此值只能初始化表单赋值`可选`。
-- `onSubmit` 表单提交回调，`可选`。
+- `onSubmit` `form`标签提交事件, 只有提供`htmlType`为`submit`的`button`标签才可以触发，`可选`。
 - `onMount` 表单渲染完毕的回调，`可选`。
-- `onReset` 表单重置默认值，`可选`。
+- `onReset` `form`标签触发重置默认值触发事件, 只有提供`htmlType`为`reset`的`button`标签才可以触发 `可选`。
 - `onFieldsChange` 表单域 `onChange` 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 
