@@ -61,7 +61,7 @@ export default class Validator {
     this.errorsMap = {}
   }
 
-  async start(path: string, value: any, eventName?: TriggerType) {
+  async start(path: string, value: any, eventName?: TriggerType | boolean) {
     this.setError(path);
     const rules = this.rulesMap[path];
     if (!(rules instanceof Array)) return;
@@ -69,7 +69,7 @@ export default class Validator {
       const rule = rules?.[i];
       const { validateTrigger, ...rest } = rule || {};
       // 是否可以触发规则
-      const canTrigger = typeof eventName === 'boolean' || typeof eventName === 'string' ? validateTriggerCondition(eventName, validateTrigger) : true;
+      const canTrigger = validateTriggerCondition(eventName, validateTrigger);
       if (canTrigger) {
         const message = await handleRule(rest, value);
         if (message) {

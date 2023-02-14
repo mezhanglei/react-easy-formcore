@@ -26,5 +26,5 @@ export default class Validator {
     getError(path?: string): string | undefined;
     setError(path: string, msg?: string): void;
     resetError(): void;
-    start(path: string, value: any, eventName?: TriggerType): Promise<any>;
+    start(path: string, value: any, eventName?: TriggerType | boolean): Promise<any>;
 }

@@ -35,14 +35,14 @@ export declare class FormStore<T extends Object = any> {
     getLastValue(path?: string | string[]): any;
     setInitialValues(path: string, initialValue: any): void;
     getInitialValues(path?: string | string[]): any;
-    setFieldValue(path: string | Partial<T>, value?: any, eventName?: TriggerType): void;
+    setFieldValue(path: string | Partial<T>, value?: any, eventName?: TriggerType | boolean): void;
     setFieldsValue(values?: Partial<T>): void;
     reset(endValues?: Partial<T>): void;
     getFieldError(path?: string): any;
     private setFieldError;
     private setFieldsError;
     validate(): Promise<ValidateResult<T>>;
-    validate(path: string, eventName?: TriggerType): Promise<string>;
+    validate(path: string, eventName?: TriggerType | boolean): Promise<string>;
     private notifyFormItem;
     private notifyFormGlobal;
     private notifyError;

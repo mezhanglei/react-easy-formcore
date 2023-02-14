@@ -23,5 +23,5 @@ export declare const isWithBracket: (part?: any) => boolean;
 export declare const isValidNumber: (item?: any) => true | undefined;
 export declare function joinFormPath(...args: Array<any>): any;
 export declare const isFormNode: (child: any) => boolean;
-export declare const validateTriggerCondition: (eventName?: TriggerType, validateTrigger?: TriggerType | TriggerType[]) => boolean | undefined;
+export declare const validateTriggerCondition: (eventName?: TriggerType | boolean, validateTrigger?: TriggerType | TriggerType[]) => boolean | undefined;
 export declare function toArray<T>(list: T | T[]): T[];

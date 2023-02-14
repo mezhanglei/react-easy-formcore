@@ -109,7 +109,7 @@ export class FormStore<T extends Object = any> {
   }
 
   // 更新表单值，单个表单值或多个表单值
-  public setFieldValue(path: string | Partial<T>, value?: any, eventName?: TriggerType) {
+  public setFieldValue(path: string | Partial<T>, value?: any, eventName?: TriggerType | boolean) {
     if (typeof path === 'string') {
       // 旧表单值存储
       this.lastValues = deepClone(this.values);
@@ -173,8 +173,8 @@ export class FormStore<T extends Object = any> {
 
   // 校验整个表单或校验表单中的某个控件
   public async validate(): Promise<ValidateResult<T>>
-  public async validate(path: string, eventName?: TriggerType): Promise<string>
-  public async validate(path?: string, eventName?: TriggerType) {
+  public async validate(path: string, eventName?: TriggerType | boolean): Promise<string>
+  public async validate(path?: string, eventName?: TriggerType | boolean) {
     if (path === undefined) {
       const fieldPropsMap = this.getFieldProps() || {};
       const result = await Promise.all(Object.keys(fieldPropsMap)?.map((key) => {

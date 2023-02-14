@@ -94,9 +94,11 @@ export const isFormNode = (child: any) => {
 };
 
 // 是否触发校验规则
-export const validateTriggerCondition = (eventName?: TriggerType, validateTrigger?: TriggerType | TriggerType[],) => {
+export const validateTriggerCondition = (eventName?: TriggerType | boolean, validateTrigger?: TriggerType | TriggerType[],) => {
   // 不设置validateTrigger允许触发
   if (validateTrigger === undefined || eventName === undefined) return true;
+  // 如果为布尔值则返回该值
+  if(typeof eventName === 'boolean') return eventName;
   if (typeof validateTrigger === 'string') {
     return validateTrigger === eventName;
   }
