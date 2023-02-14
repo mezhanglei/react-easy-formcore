@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-4.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.12-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -10,6 +10,7 @@ Lightweight form container two-way binding component that automatically handles 
 
 # Version changelog
 - 4.x
+   - 4.0.12 optimize the routing system in forms, ~~`joinPath`~~ changed to `joinFormPath`.
    - 4.0.11 Add `tagName` property to the `Form` component, which can replace the default `form` tag
    - optimize the routing system in forms, fix the `useFormValues` error.
 - 3.x

@@ -2,14 +2,15 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-4.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.12-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。
 # 版本更新日志
  - 4.x 版本
-   - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签
+   - 4.0.12 优化路径传递，~~`joinPath`~~ 更改为 `joinFormPath`.
+   - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签.
    - 优化表单中的路径系统, 修复`useFormValues`的问题.
  - 3.x版本
    重要架构更新，需要删除旧包，再安装新版本的包

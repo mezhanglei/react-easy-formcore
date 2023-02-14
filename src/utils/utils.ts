@@ -43,14 +43,33 @@ export const isWithBracket = (part?: any) => {
 }
 
 // 是否为数组索引项
-export const isListIndex = (item?: any) => typeof item === 'number' && !isNaN(item);
+export const isValidNumber = (item?: any) => typeof item === 'number' && !isNaN(item);
 
-// 由前到后拼接当前项的path
+// 由前到后拼接当前项的表单的path
+export function joinFormPath(...args: Array<any>) {
+  const result = args?.reduce((pre, cur) => {
+    const curName = isEmpty(cur) ? '' : cur;
+    const parent = isEmpty(pre) ? '' : pre;
+    if (isValidNumber(curName) || isWithBracket(curName)) {
+      const end = typeof curName === 'number' ? `[${curName}]` : curName
+      return parent ? (end ? `${parent}${end}` : parent) : end;
+    } else {
+      return parent ? (curName ? `${parent}.${curName}` : parent) : `${curName}`;
+    }
+  });
+  return result;
+};
+
+/** 旧方法, 请用joinFormPath代替
+ * @deprecated A legacy feature for browser compatibility
+ * @param args 
+ * @returns 
+ */
 export function joinPath(...args: Array<any>) {
   const result = args?.reduce((pre, cur) => {
     const curName = isEmpty(cur) ? '' : cur;
     const parent = isEmpty(pre) ? '' : pre;
-    if (isListIndex(curName) || isWithBracket(curName)) {
+    if (isValidNumber(curName) || isWithBracket(curName)) {
       const end = typeof curName === 'number' ? `[${curName}]` : curName
       return parent ? (end ? `${parent}${end}` : parent) : end;
     } else {
