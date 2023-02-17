@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FormStore } from './form-store'
 import Validator from './validator'
 
@@ -17,21 +17,21 @@ export function useFormError(store: FormStore, path?: string) {
   const storeError = path && store && store.getFieldError(path);
   const [error, setError] = useState(storeError);
 
-  const subscribeError = useCallback((store: FormStore, path?: string) => {
+  const subscribeError = (store: FormStore, path?: string) => {
     if (!path || !store) return
     const queue = store.subscribeError(path, () => {
       const error = store?.getFieldError(path);
       setError(error);
     });
     return queue;
-  }, [store]);
+  };
 
-  const uninstall = useRef(subscribeError(store, path));
+  const uninstall = useMemo(() => subscribeError(store, path), []);
 
   // 订阅组件更新错误的函数
   useEffect(() => {
     return () => {
-      uninstall.current?.();
+      uninstall?.();
     };
   }, []);
 
@@ -42,7 +42,7 @@ export function useFormError(store: FormStore, path?: string) {
 export function useFormValues<T = unknown>(store: FormStore, path?: string | string[]) {
   const [formValues, setFomValues] = useState<T>();
 
-  const subscribeList = useCallback((store: FormStore, path?: string | string[]) => {
+  const subscribeList = (store: FormStore, path?: string | string[]) => {
     if (!path) return;
     const queue = [];
     const isChar = typeof path == 'string' || typeof path == 'number';
@@ -57,14 +57,14 @@ export function useFormValues<T = unknown>(store: FormStore, path?: string | str
       }))
     }
     return queue;
-  }, [store]);
+  };
 
   // 订阅目标控件
-  const uninstallList = useRef(subscribeList(store, path) || []);
+  const uninstallList = useMemo(() => subscribeList(store, path) || [], []);
 
   useEffect(() => {
     return () => {
-      uninstallList?.current?.map((uninstall) => uninstall?.())
+      uninstallList?.map((uninstall) => uninstall?.())
     }
   }, []);
 
