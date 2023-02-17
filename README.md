@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-4.0.14-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.15-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -175,6 +175,7 @@ export default function Demo() {
 - `suffix` `React.ReactNode` Suffix node, `optional`.
 - `footer` `React.ReactNode` bootom node, `optional`.
 - `tooltip` `string` Tip icon to prompt for information. `optional`.
+- `compact` `boolean` Whether or not compact, will remove the component's `padding`. `optional`.
 
 ### Form Props
 Inherited field display component

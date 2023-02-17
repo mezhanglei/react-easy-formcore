@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FormStore } from './form-store'
 import Validator from './validator'
 
@@ -16,18 +16,25 @@ export function useValidator() {
 export function useFormError(store: FormStore, path?: string) {
   const storeError = path && store && store.getFieldError(path);
   const [error, setError] = useState(storeError);
-  // 订阅组件更新错误的函数
-  useEffect(() => {
+
+  const subscribeError = useCallback((store: FormStore, path?: string) => {
     if (!path || !store) return
-    // 订阅目标控件
-    const uninstall = store.subscribeError(path, () => {
+    const queue = store.subscribeError(path, () => {
       const error = store?.getFieldError(path);
       setError(error);
     });
+    return queue;
+  }, [store]);
+
+  const uninstall = useRef(subscribeError(store, path));
+
+  // 订阅组件更新错误的函数
+  useEffect(() => {
     return () => {
-      uninstall();
+      uninstall.current?.();
     };
-  }, [path, store]);
+  }, []);
+
   return [error, setError];
 }
 
@@ -35,7 +42,7 @@ export function useFormError(store: FormStore, path?: string) {
 export function useFormValues<T = unknown>(store: FormStore, path?: string | string[]) {
   const [formValues, setFomValues] = useState<T>();
 
-  const subscribeList = (store: FormStore, path?: string | string[]) => {
+  const subscribeList = useCallback((store: FormStore, path?: string | string[]) => {
     if (!path) return;
     const queue = [];
     const isChar = typeof path == 'string' || typeof path == 'number';
@@ -50,18 +57,16 @@ export function useFormValues<T = unknown>(store: FormStore, path?: string | str
       }))
     }
     return queue;
-  }
+  }, [store]);
 
-  // 订阅更新值的函数
+  // 订阅目标控件
+  const uninstallList = useRef(subscribeList(store, path) || []);
+
   useEffect(() => {
-    if (!path || !store) return
-    // 订阅目标控件
-    const uninstallList = subscribeList(store, path)
-
     return () => {
-      uninstallList?.map((uninstall) => uninstall?.())
+      uninstallList?.current?.map((uninstall) => uninstall?.())
     }
-  }, [path, store]);
+  }, []);
 
   return formValues;
 }

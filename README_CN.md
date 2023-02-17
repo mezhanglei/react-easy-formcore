@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-4.0.14-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-4.0.15-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -175,6 +175,7 @@ export default function Demo() {
 - `suffix` `React.ReactNode` 后缀节点，`可选`。
 - `footer` `React.ReactNode` 底部节点，`可选`。
 - `tooltip` `string` 提示图标，可以提示信息。`可选`。
+- `compact` `boolean` 是否紧凑，会去掉组件的`padding`。`可选`。
 
 ### Form Props
 继承表单域显示组件(`component`)的props
