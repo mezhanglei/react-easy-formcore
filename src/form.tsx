@@ -1,7 +1,7 @@
 import React, { CSSProperties, LegacyRef, useEffect } from 'react'
 import { FormItem } from './form-item'
 import { FormStore } from './form-store'
-import { FormStoreContext, FormValuesContext, FormOptionsContext } from './form-context'
+import { FormStoreContext, FormValuesContext, FormOptionsContext, FormInitialValuesContext } from './form-context'
 import { FormList } from './form-list';
 import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
@@ -22,12 +22,13 @@ export type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
   store?: S;
   style?: CSSProperties;
   children?: any;
-  initialValues?: Partial<unknown>;
+  values?: any;
+  initialValues?: any;
   onMount?: () => void;
 } & CreateFormProps;
 
 export function Form(props: FormProps) {
-  const { className = '', style, children, store, initialValues, tagName, onSubmit, onReset, onMount, ...options } = props
+  const { className = '', style, children, store, initialValues, values, tagName, onSubmit, onReset, onMount, ...options } = props
 
   const classNames = 'easy-form ' + className
 
@@ -48,9 +49,11 @@ export function Form(props: FormProps) {
     >
       <FormStoreContext.Provider value={store}>
         <FormOptionsContext.Provider value={options}>
-          <FormValuesContext.Provider value={initialValues}>
-            {children}
-          </FormValuesContext.Provider>
+          <FormInitialValuesContext.Provider value={initialValues}>
+            <FormValuesContext.Provider value={values}>
+              {children}
+            </FormValuesContext.Provider>
+          </FormInitialValuesContext.Provider>
         </FormOptionsContext.Provider>
       </FormStoreContext.Provider>
     </CreateForm>

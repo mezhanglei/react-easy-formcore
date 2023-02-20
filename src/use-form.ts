@@ -17,21 +17,19 @@ export function useFormError(store: FormStore, path?: string) {
   const storeError = path && store && store.getFieldError(path);
   const [error, setError] = useState(storeError);
 
-  const subscribeError = (store: FormStore, path?: string) => {
+  const uninstallMemo = useMemo(() => {
     if (!path || !store) return
-    const queue = store.subscribeError(path, () => {
+    const uninstall = store.subscribeError(path, () => {
       const error = store?.getFieldError(path);
       setError(error);
     });
-    return queue;
-  };
-
-  const uninstall = useMemo(() => subscribeError(store, path), []);
+    return uninstall;
+  }, [store, path]);
 
   // 订阅组件更新错误的函数
   useEffect(() => {
     return () => {
-      uninstall?.();
+      uninstallMemo?.();
     };
   }, []);
 
@@ -42,8 +40,9 @@ export function useFormError(store: FormStore, path?: string) {
 export function useFormValues<T = unknown>(store: FormStore, path?: string | string[]) {
   const [formValues, setFomValues] = useState<T>();
 
-  const subscribeList = (store: FormStore, path?: string | string[]) => {
-    if (!path) return;
+  // 订阅目标控件
+  const uninstallListMemo = useMemo(() => {
+    if (!store || !path) return [];
     const queue = [];
     const isChar = typeof path == 'string' || typeof path == 'number';
     const pathList = isChar ? [path] : (path instanceof Array ? path : [])
@@ -57,14 +56,11 @@ export function useFormValues<T = unknown>(store: FormStore, path?: string | str
       }))
     }
     return queue;
-  };
-
-  // 订阅目标控件
-  const uninstallList = useMemo(() => subscribeList(store, path) || [], []);
+  }, [store, path]);
 
   useEffect(() => {
     return () => {
-      uninstallList?.map((uninstall) => uninstall?.())
+      uninstallListMemo?.map((uninstall) => uninstall?.())
     }
   }, []);
 
