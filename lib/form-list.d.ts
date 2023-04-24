@@ -14,4 +14,4 @@ export declare const FormList: React.ForwardRefExoticComponent<ItemProps & ListC
     style?: React.CSSProperties | undefined;
     component?: any;
     ignore?: boolean | undefined;
-} & React.RefAttributes<unknown>>;
+} & React.RefAttributes<any>>;

@@ -12,4 +12,4 @@ export interface ItemProps extends LabelBaseProps, ControlBaseProps {
     children?: React.ReactNode;
     style?: CSSProperties;
 }
-export declare const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<unknown>>;
+export declare const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<any>>;

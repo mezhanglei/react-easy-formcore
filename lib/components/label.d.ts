@@ -3,6 +3,7 @@ import "./label.less";
 export interface LabelBaseProps {
     colon?: boolean;
     required?: boolean;
+    showLabel?: boolean;
     labelWidth?: CSSProperties['width'];
     labelAlign?: CSSProperties['textAlign'];
     labelStyle?: CSSProperties;
@@ -14,4 +15,4 @@ export interface LabelProps extends LabelBaseProps {
     style?: CSSProperties;
     className?: string;
 }
-export declare const Label: React.ForwardRefExoticComponent<LabelProps & React.RefAttributes<unknown>>;
+export declare const Label: React.ForwardRefExoticComponent<LabelProps & React.RefAttributes<any>>;

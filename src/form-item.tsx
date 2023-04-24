@@ -14,7 +14,7 @@ export type FormItemProps<T = ItemProps> = T & ItemCoreProps & {
   component?: any;
 }
 
-export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
+export const FormItem = React.forwardRef<any, FormItemProps>((props, ref) => {
   const store = useContext<FormStore>(FormStoreContext)
   const options = useContext<FormItemProps>(FormOptionsContext)
   const mergeProps = { ...options, ...props };
@@ -67,7 +67,7 @@ export const FormItem = React.forwardRef((props: FormItemProps, ref: any) => {
 
   return (
     FieldComponent ?
-      <FieldComponent {...rest} required={required} ref={ref} error={error}>
+      <FieldComponent {...fieldProps} required={required} ref={ref} error={error}>
         {childs}
       </FieldComponent>
       : childs

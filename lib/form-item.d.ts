@@ -12,4 +12,4 @@ export declare const FormItem: React.ForwardRefExoticComponent<ItemProps & ItemC
     children?: React.ReactNode;
     style?: React.CSSProperties | undefined;
     component?: any;
-} & React.RefAttributes<unknown>>;
+} & React.RefAttributes<any>>;

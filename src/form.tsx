@@ -1,4 +1,4 @@
-import React, { CSSProperties, LegacyRef, useEffect } from 'react'
+import React, { CSSProperties, useEffect } from 'react'
 import { FormItem } from './form-item'
 import { FormStore } from './form-store'
 import { FormStoreContext, FormValuesContext, FormOptionsContext, FormInitialValuesContext } from './form-context'
@@ -12,7 +12,7 @@ interface CreateFormProps extends React.HTMLAttributes<HTMLElement> {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   onReset?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
-const CreateForm = React.forwardRef((props: CreateFormProps, ref: LegacyRef<any>) => {
+const CreateForm = React.forwardRef<any, CreateFormProps>((props, ref) => {
   const { tagName = "form", ...rest } = props;
   return React.createElement(tagName, { ...rest, ref });
 });

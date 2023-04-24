@@ -10,4 +10,4 @@ export interface ControlProps extends ControlBaseProps {
     style?: CSSProperties;
     className?: string;
 }
-export declare const Control: React.ForwardRefExoticComponent<ControlProps & React.RefAttributes<unknown>>;
+export declare const Control: React.ForwardRefExoticComponent<ControlProps & React.RefAttributes<any>>;

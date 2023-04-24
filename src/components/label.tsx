@@ -8,6 +8,7 @@ import "./label.less";
 export interface LabelBaseProps {
   colon?: boolean;
   required?: boolean;
+  showLabel?: boolean;
   labelWidth?: CSSProperties['width'];
   labelAlign?: CSSProperties['textAlign'];
   labelStyle?: CSSProperties;
@@ -20,7 +21,7 @@ export interface LabelProps extends LabelBaseProps {
   className?: string;
 }
 
-export const Label = React.forwardRef((props: LabelProps, ref: any) => {
+export const Label = React.forwardRef<any, LabelProps>((props, ref) => {
   const {
     children,
     style,
@@ -31,6 +32,7 @@ export const Label = React.forwardRef((props: LabelProps, ref: any) => {
     labelWidth,
     labelAlign,
     tooltip,
+    showLabel = true,
     ...restProps
   } = props;
 
@@ -50,7 +52,7 @@ export const Label = React.forwardRef((props: LabelProps, ref: any) => {
   }
 
   return (
-    isValidChildren(children) ? (
+    isValidChildren(children) && showLabel ? (
       <label ref={ref} className={cls} style={mergeStyle} {...restProps}>
         {colon === true ? <>{children}:</> : children}
         {tooltip && (

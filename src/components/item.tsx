@@ -25,11 +25,12 @@ const classes = {
   error: `${prefixCls}--error`
 };
 
-export const Item = React.forwardRef((props: ItemProps, ref: any) => {
+export const Item = React.forwardRef<any, ItemProps>((props, ref) => {
   const {
     /** LabelBaseProps */
     colon,
     required,
+    showLabel,
     labelWidth,
     labelAlign,
     gutter,
@@ -66,6 +67,7 @@ export const Item = React.forwardRef((props: ItemProps, ref: any) => {
   return (
     <div ref={ref} className={cls} style={style} {...pickAttrs(rest, { aria: true, data: true })}>
       <Label
+        showLabel={showLabel}
         tooltip={tooltip}
         colon={colon}
         gutter={gutter}

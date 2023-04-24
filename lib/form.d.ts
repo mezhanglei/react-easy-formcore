@@ -24,13 +24,13 @@ export declare namespace Form {
         children?: React.ReactNode;
         style?: React.CSSProperties | undefined;
         component?: any;
-    } & React.RefAttributes<unknown>>;
+    } & React.RefAttributes<any>>;
     var List: React.ForwardRefExoticComponent<ItemProps & import("./list-core").ListCoreProps & {
         className?: string | undefined;
         children?: React.ReactNode;
         style?: React.CSSProperties | undefined;
         component?: any;
         ignore?: boolean | undefined;
-    } & React.RefAttributes<unknown>>;
+    } & React.RefAttributes<any>>;
 }
 export {};
