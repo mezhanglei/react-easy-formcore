@@ -2,13 +2,17 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-4.0.19-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-5.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
 Lightweight form container two-way binding component that automatically handles the `value` (or other) and `onChange` of the control to complete the display and update of the form values. Other operations can be implemented through the methods provided by the injected `FormStore` instance.
 
 # Version changelog
+- Version 5.x
+   Major Updates
+  - Adjusted rendering, nesting between `Form.Item` is no longer allowed, detailed usage documentation has been updated.
+  - The `Form.Item` option in `Form.List` sets the `name` field as an attribute field in the array.
 - 4.x
    - 4.0.12 optimize the routing system in forms, ~~`joinPath`~~ changed to `joinFormPath`.
    - 4.0.11 Add `tagName` property to the `Form` component, which can replace the default `form` tag
@@ -53,7 +57,7 @@ The smallest unit of a component in a form, and nodes as an object can be nested
 
 The `Form.Item` component acts as an item in the `Form.List` array type and is combined to form an array
 
-- Only `Form.Item` items are recognised in `Form.List` and there is no need to set the `name` field.
+- Only `Form.Item` items are recognised in `Form.List`, The `name` field of `Form.Item`, if set, is the field property in the array, if not, it defaults to the array serial number.
 - The `rules` provided by `Form.List` are valid for all input items in the array, but have a lower priority than the `rules` of the `Form.Item` in the array
 
 ## install
@@ -97,7 +101,10 @@ export default function Demo() {
           <input />
         </div>
       </Form.Item>
-      <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
+      <Form.Item label="object" name="name2.a" rules={[{ required: true, message: 'name2.a is empty' }]}>
+        <input />
+      </Form.Item>
+      <Form.Item label="list" name="name3[0]" rules={[{ required: true, message: 'name3[0] is empty' }]}>
         <input />
       </Form.Item>
       <Form.Item label="">

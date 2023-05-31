@@ -1,13 +1,11 @@
 import { FormRule } from './validator';
 export declare type TriggerType = string;
 export interface FieldChangedParams {
-    parent: string;
     name?: string;
     value: any;
 }
 export interface ItemCoreProps {
-    name?: string | number;
-    parent?: string;
+    name?: string;
     ignore?: boolean;
     index?: number;
     trigger?: TriggerType | TriggerType[];

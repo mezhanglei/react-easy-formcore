@@ -2,12 +2,16 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-4.0.19-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-5.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
 轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。
 # 版本更新日志
+- 5.x 版本
+   大版本更新
+  - 调整渲染方式，`Form.Item`之间不再允许嵌套，详细使用文档已更新.
+  - `Form.List`中的`Form.Item`选项可设置`name`字段，作为数组中的属性字段.
  - 4.x 版本
    - 4.0.12 优化路径传递，~~`joinPath`~~ 更改为 `joinFormPath`.
    - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签.
@@ -42,10 +46,10 @@
 
 # Form.Item
 
-表单中的组件最小单元，作为一个对象的节点可以相互嵌套。
+表单域组件，用于双向绑定目标控件。
 
-- 提供样式，以及`value`(或通过`valueProp`设置)和`onChange`双向绑定。
-- 可以控件外部自定义`onChange`，但只能通过`store.setFieldValue`等实例方法设置表单值
+- 双向绑定：`value`(或通过`valueProp`设置)和`onChange`双向绑定，`name`字段为目标属性。
+- 更新表单值：可通过`store.setFieldValue`等实例方法设置表单值。
 - 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
 - 当输入表单控件外面添加了非表单组件或节点，通过添加`data-type="ignore"`过滤非目标节点或设置`data-name`标记目标节点来绑定目标控件。
 
@@ -53,7 +57,7 @@
 
 `Form.Item`组件作为`Form.List`数组类型中的项，组合形成一个数组
 
-- `Form.List`中只识别`Form.Item`项，无需设置`name`字段。
+- `Form.List`中只识别`Form.Item`项，`Form.Item`的`name`字段如果设置，则为数组中的字段属性，如果不设置，则默认为数组序号。
 - `Form.List`提供的`rules`校验规则，对数组中的所有输入项都有效，但优先级低于数组中的`Form.Item`的`rules`规则
 
 ## 安装
@@ -98,7 +102,10 @@ export default function Demo() {
           <input />
         </div>
       </Form.Item>
-      <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
+      <Form.Item label="object" name="name2.a" rules={[{ required: true, message: 'name2.a is empty' }]}>
+        <input />
+      </Form.Item>
+      <Form.Item label="list" name="name3[0]" rules={[{ required: true, message: 'name3[0] is empty' }]}>
         <input />
       </Form.Item>
       <Form.Item label="">

@@ -18,21 +18,23 @@ export default function Demo() {
     }
   }
 
-  const formvalues = useFormValues(store, ['name1', 'name2'])
+  const formvalues = useFormValues(store, ['[0]name1', '[1]name2'])
   console.log(formvalues, '监听表单值变化')
   return (
-    <Form initialValues={{ name1: 1111 }} store={store} onSubmit={onSubmit}>
-      <Form.Item tooltip='11111' label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
-        <div data-type="ignore">
+    <Form initialValues={[{ name1: 1111 }]} store={store} onSubmit={onSubmit}>
+      <Form.List>
+        <Form.Item tooltip='11111' label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
+          <div data-type="ignore">
+            <input />
+          </div>
+        </Form.Item>
+        <Form.Item label="Name2" name="name2.a" rules={[{ required: true, message: 'name2 is empty' }]}>
           <input />
-        </div>
-      </Form.Item>
-      <Form.Item label="Name2" name="name2" rules={[{ required: true, message: 'name2 is empty' }]}>
-        <input />
-      </Form.Item>
-      <Form.Item label="">
-        <button>Submit</button>
-      </Form.Item>
+        </Form.Item>
+        <Form.Item label="">
+          <button>Submit</button>
+        </Form.Item>
+      </Form.List>
     </Form>
   );
 };
