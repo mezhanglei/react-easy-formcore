@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-5.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -12,6 +12,7 @@
    大版本更新
   - 调整渲染方式，`Form.Item`之间不再允许嵌套，详细使用文档已更新.
   - `Form.List`中的`Form.Item`选项可设置`name`字段，作为数组中的属性字段.
+  - ~~`store`~~ 属性更改为`form`
  - 4.x 版本
    - 4.0.12 优化路径传递，~~`joinPath`~~ 更改为 `joinFormPath`.
    - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签.
@@ -49,7 +50,7 @@
 表单域组件，用于双向绑定目标控件。
 
 - 双向绑定：`value`(或通过`valueProp`设置)和`onChange`双向绑定，`name`字段为目标属性。
-- 更新表单值：可通过`store.setFieldValue`等实例方法设置表单值。
+- 更新表单值：可通过`form.setFieldValue`等实例方法设置表单值。
 - 可以提供表单校验规则属性`rules`，进行自定义表单校验规则。
 - 当输入表单控件外面添加了非表单组件或节点，通过添加`data-type="ignore"`过滤非目标节点或设置`data-name`标记目标节点来绑定目标控件。
 
@@ -96,7 +97,7 @@ export default function Demo() {
   console.log(formvalues, 'formvalues')
 
   return (
-    <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
+    <Form initialValues={{ name1: 1111 }} form={form} onSubmit={onSubmit}>
       <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
@@ -141,7 +142,7 @@ export default function Demo() {
   }
 
   return (
-    <Form store={form} onSubmit={onSubmit}>
+    <Form form={form} onSubmit={onSubmit}>
       <Form.List name="list">
         <Form.Item
           rules={[
@@ -188,13 +189,13 @@ export default function Demo() {
 继承表单域显示组件(`component`)的props
 
 - `className` 表单元素类名，`可选`。
-- `store` 表单数据存储，`必须`。
+- `form` 表单数据管理，`必须`。
 - `tagName` 更换表单的元素标签名, 默认`form`标签
 - `initialValues` 表单的初始值，会被表单域的`initialValue`覆盖, 注意此值只能初始化表单赋值`可选`。
 - `onSubmit` `form`标签提交事件, 只有提供`htmlType`为`submit`的`button`标签才可以触发，`可选`。
 - `onMount` 表单渲染完毕的回调，`可选`。
 - `onReset` `form`标签触发重置默认值触发事件, 只有提供`htmlType`为`reset`的`button`标签才可以触发 `可选`。
-- `onFieldsChange` 表单域 `onChange` 变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
+- `onFieldsChange` 表单域 `onChange` 变化时的事件函数，只会被控件主动`onChange`触发，不会被`form.setFieldValue`和`form.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 
 
@@ -211,7 +212,7 @@ export default function Demo() {
 - `valueSetter` 格式化输入表单值的函数，配合`valueGetter`使用, `可选`。
 - `rules` 表单域的校验规则 `可选`。
 - `initialValue` 表单域的初始值，注意此值和`value`不同，只能表单第一次渲染时赋值`可选`。
-- `onFieldsChange` 控件的值变化时的事件函数，只会被控件主动`onChange`触发，不会被`store.setFieldValue`和`store.setFieldsValue`触发, 避免循环调用。`可选`。
+- `onFieldsChange` 控件的值变化时的事件函数，只会被控件主动`onChange`触发，不会被`form.setFieldValue`和`form.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。
 - `errorClassName` 控件当有错误信息时，添加一个自定义类名，`可选`。
 
@@ -238,16 +239,16 @@ export default function Demo() {
 ### FormStore Methods
 
 - `new FormStore(defaultValues)` 创建表单存储。
-- `store.getFieldValue(path?: string)` 返回指定`path`的表单域的值，不指定`path`返回整个表单的值。
-- `store.setFieldValue(path, value)` 更新表单域的值
-- `store.setFieldsValue(obj: Partial<T>)` 设置表单域的值(覆盖)。
-- `store.reset(values?: Partial<T>)` 重置表单, 可以传值重置为目标值。
-- `store.validate(path?: string)` 校验表单，并返回错误信息和表单值。
-- `store.getFieldError(path?: string)` 返回目标的错误信息或所有的错误信息。
+- `form.getFieldValue(path?: string)` 返回指定`path`的表单域的值，不指定`path`返回整个表单的值。
+- `form.setFieldValue(path, value)` 更新表单域的值
+- `form.setFieldsValue(obj: Partial<T>)` 设置表单域的值(覆盖)。
+- `form.reset(values?: Partial<T>)` 重置表单, 可以传值重置为目标值。
+- `form.validate(path?: string)` 校验表单，并返回错误信息和表单值。
+- `form.getFieldError(path?: string)` 返回目标的错误信息或所有的错误信息。
 
 ### Hooks
 
 - `useFormStore(defaultValues)` 使用 hooks 创建 FormStore。
-- `useFormError(store: FormStore, path?: string)` 使用 hooks 获取指定的报错信息。
-- 3.0.12 `useFormValues(store: FormStore, path?: string | string[])` 使用 hooks 获取指定的表单值。
+- `useFormError(form: FormStore, path?: string)` 使用 hooks 获取指定的报错信息。
+- 3.0.12 `useFormValues(form: FormStore, path?: string | string[])` 使用 hooks 获取指定的表单值。
 - `useValidator()` hook创建 `validator`校验实例

@@ -4,11 +4,11 @@ import { Form, useFormStore, useFormValues } from '../../src/index';
 
 export default function Demo() {
 
-  const store = useFormStore();
+  const form = useFormStore();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { error, values } = await store.validate();
+    const { error, values } = await form.validate();
     console.log(error, values, 'error ang values');
   };
 
@@ -18,10 +18,10 @@ export default function Demo() {
     }
   }
 
-  const formvalues = useFormValues(store, ['[0]name1', '[1]name2'])
+  const formvalues = useFormValues(form, ['[0]name1', '[1]name2'])
   console.log(formvalues, '监听表单值变化')
   return (
-    <Form initialValues={[{ name1: 1111 }]} store={store} onSubmit={onSubmit}>
+    <Form initialValues={[{ name1: 1111 }]} form={form} onSubmit={onSubmit}>
       <Form.List>
         <Form.Item tooltip='11111' label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: '自定义校验' }]}>
           <div data-type="ignore">

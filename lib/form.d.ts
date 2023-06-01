@@ -10,7 +10,7 @@ interface CreateFormProps extends React.HTMLAttributes<HTMLElement> {
 }
 export declare type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
     className?: string;
-    store?: S;
+    form?: S;
     style?: CSSProperties;
     children?: any;
     values?: any;

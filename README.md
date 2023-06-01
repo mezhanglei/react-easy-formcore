@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-5.0.0-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![Version](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -13,6 +13,7 @@ Lightweight form container two-way binding component that automatically handles 
    Major Updates
   - Adjusted rendering, nesting between `Form.Item` is no longer allowed, detailed usage documentation has been updated.
   - The `Form.Item` option in `Form.List` sets the `name` field as an attribute field in the array.
+  - ~~`store`~~ changed to `form`
 - 4.x
    - 4.0.12 optimize the routing system in forms, ~~`joinPath`~~ changed to `joinFormPath`.
    - 4.0.11 Add `tagName` property to the `Form` component, which can replace the default `form` tag
@@ -49,7 +50,7 @@ Lightweight form container two-way binding component that automatically handles 
 The smallest unit of a component in a form, and nodes as an object can be nested within each other.
 
 - Provides styles, as well as `value` (or set via `valueProp`) and `onChange` two-way bindings.
-- You can customize `onChange` in outside, but you can only set the form value via an instance method such as `store.setFieldValue`.
+- You can customize `onChange` in outside, but you can only set the form value via an instance method such as `form.setFieldValue`.
 - Custom form validation rules can be provided with the form validation rules property `rules`.
 - When a non-form component or node is added outside the input form control, bind the target control by adding `data-type="ignore"` to filter the non-target node or by setting `data-name` to mark the target input form.
 
@@ -95,7 +96,7 @@ export default function Demo() {
   const formvalues = useFormValues(form, ['name1', 'name2'])
   console.log(formvalues, 'formvalues')
   return (
-    <Form initialValues={{ name1: 1111 }} store={form} onSubmit={onSubmit}>
+    <Form initialValues={{ name1: 1111 }} form={form} onSubmit={onSubmit}>
       <Form.Item label="Name1" name="name1" rules={[{ required: true, message: 'name1 is Empty' }, { validator: validator, message: 'validator error' }]}>
         <div data-type="ignore">
           <input />
@@ -139,7 +140,7 @@ export default function Demo() {
   }
 
   return (
-    <Form store={form} onSubmit={onSubmit}>
+    <Form form={form} onSubmit={onSubmit}>
       <Form.List name="list">
         <Form.Item
           rules={[
@@ -188,13 +189,13 @@ export default function Demo() {
 Inherited field display component
 
 - `className` The class name of the form element, `optional`.
-- `store` The form data store, `required`.
+- `form` The form data store, `required`.
 - `tagName` Replace the element tag name of the form, default `form` tag
 - `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, Note that this value can only initialise the form `optional`.
 - `onSubmit` `form` tag triggers the reset default event, only `button` tags that provide `htmlType` as `submit` can trigger `optional`.
 - `onMount` The form mounted callback `optional`.
 - `onReset` `form` tag triggers the reset default event, only `button` tags that provide `htmlType` as `reset` can trigger `optional`.
-- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls。`optional`.
+- `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `form.setFieldValue` and `form.setFieldsValue`, avoiding circular calls。`optional`.
 - `onValuesChange` Listening for changes in form values.`optional`.
 
 ### Form.Item Props
@@ -210,7 +211,7 @@ Inherited field display component
 - `valueSetter` function to format input form value, used with `valueGetter`, `optional`.
 - `rules` Checksum rules for form fields `optional`.
 - `initialValue` The initial value of the form field, note that this value is different from `value` when the form is rendered for the first time.
-- `onFieldsChange` The event function when the value of the control changes will only be triggered by the control's active `onChange`, not by `store.setFieldValue` and `store.setFieldsValue`, avoiding circular calls. `optional`.
+- `onFieldsChange` The event function when the value of the control changes will only be triggered by the control's active `onChange`, not by `form.setFieldValue` and `form.setFieldsValue`, avoiding circular calls. `optional`.
 - `onValuesChange` Listening for changes in form values.`optional`。
 - `errorClassName` add a custom class name when there is an error message, `optional`.
 
@@ -237,16 +238,16 @@ The rules in the fields of the values in `rules` perform the checks in order, an
 ### FormStore Methods
 
 - `new FormStore(defaultValues)` form manager.
-- `store.getFieldValue(path?: string)` Returns the value of the form field for which `path` is specified, or the value of the whole form without `name`.
-- `store.setFieldValue(path, value)` Update the value of a form field
-- `store.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
-- `store.reset(values?: Partial<T>)` Reset the form.The value can be passed to reset to the target value.
-- `store.validate(path?: string)` Checks form and returns error messages and form values.
-- `store.getFieldError(path?: string)` Returns the target's error message or all error messages.
+- `form.getFieldValue(path?: string)` Returns the value of the form field for which `path` is specified, or the value of the whole form without `name`.
+- `form.setFieldValue(path, value)` Update the value of a form field
+- `form.setFieldsValue(obj: Partial<T>)` Set the value of the form field (override).
+- `form.reset(values?: Partial<T>)` Reset the form.The value can be passed to reset to the target value.
+- `form.validate(path?: string)` Checks form and returns error messages and form values.
+- `form.getFieldError(path?: string)` Returns the target's error message or all error messages.
 
 ### Hooks
 
 - `useFormStore(defaultValues)` create `FormStore`
-- `useFormError(store: FormStore, path?: string)` Use hooks to get the specified form error.
-- 3.0.12 `useFormValues(store: FormStore, path?: string | string[])` Use hooks to get the specified form values.
+- `useFormError(form: FormStore, path?: string)` Use hooks to get the specified form error.
+- 3.0.12 `useFormValues(form: FormStore, path?: string | string[])` Use hooks to get the specified form values.
 - `useValidator()` create `validator`
