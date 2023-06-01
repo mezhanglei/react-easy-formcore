@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![Version](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -12,7 +12,7 @@
    大版本更新
   - 调整渲染方式，`Form.Item`之间不再允许嵌套，详细使用文档已更新.
   - `Form.List`中的`Form.Item`选项可设置`name`字段，作为数组中的属性字段.
-  - ~~`store`~~ 属性更改为`form`
+  - 5.0.1 ~~`store`~~ 属性更改为`form`
  - 4.x 版本
    - 4.0.12 优化路径传递，~~`joinPath`~~ 更改为 `joinFormPath`.
    - 4.0.11 `Form`组件增加`tagName`属性，可以替换默认的`form`标签.

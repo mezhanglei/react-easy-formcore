@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![Version](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-5.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -13,7 +13,7 @@ Lightweight form container two-way binding component that automatically handles 
    Major Updates
   - Adjusted rendering, nesting between `Form.Item` is no longer allowed, detailed usage documentation has been updated.
   - The `Form.Item` option in `Form.List` sets the `name` field as an attribute field in the array.
-  - ~~`store`~~ changed to `form`
+  - 5.0.1 ~~`store`~~ changed to `form`
 - 4.x
    - 4.0.12 optimize the routing system in forms, ~~`joinPath`~~ changed to `joinFormPath`.
    - 4.0.11 Add `tagName` property to the `Form` component, which can replace the default `form` tag
