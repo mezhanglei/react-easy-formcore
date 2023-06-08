@@ -130,21 +130,15 @@ export const ItemCore = (props: ItemCoreProps) => {
     }
   }, [currentPath]);
 
-  const childValue = (value: any) => {
-    if (typeof valueSetter === 'function') {
-      return valueSetter(value);
-    } else {
-      return value;
-    }
-  }
+  const childValue = useMemo(() => typeof valueSetter === 'function' ? valueSetter(value) : value, [valueSetter, value]);
 
-  // 最底层才会绑定value和onChange
+  // 控件绑定value和onChange
   const bindChild = (child: any) => {
     if (!isEmpty(currentPath) && isValidElement(child)) {
       const valuePropName = getValuePropName(valueProp, child && child.type);
       const childProps = child?.props as any;
       const { className } = childProps || {};
-      const valueResult = childValue(value);
+      const valueResult = childValue;
       const newChildProps = { className: classnames(className, errorClassName), [valuePropName]: valueResult }
 
       triggers.forEach((eventName) => {
@@ -160,7 +154,7 @@ export const ItemCore = (props: ItemCoreProps) => {
     }
   };
 
-  // 渲染子元素
+  // 遍历子组件绑定控件
   const getChildren = (children: any): any => {
     return React.Children.map(children, (child: any) => {
       const nestChildren = child?.props?.children;
