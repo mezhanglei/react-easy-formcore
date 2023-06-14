@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![](https://img.shields.io/badge/version-5.0.5-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-5.0.6-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -248,7 +248,7 @@ export default function Demo() {
 
 ### Hooks
 
-- `useFormStore(defaultValues)` 使用 hooks 创建 FormStore。
-- `useFormError(form: FormStore, path?: string)` 使用 hooks 获取指定的报错信息。
-- 3.0.12 `useFormValues(form: FormStore, path?: string | string[])` 使用 hooks 获取指定的表单值。
-- `useValidator()` hook创建 `validator`校验实例
+- `useFormStore(defaultValues)`: 创建 `new FormStore()`
+- `useFormError(form: FormStore, path?: string)`: 使用 hooks 获取指定的报错信息。
+- 3.0.12 `useFormValues(form: FormStore, path?: string | string[])`: 使用 hooks 获取指定的表单值。
+- `useValidator()`: hook创建 `validator`校验实例
