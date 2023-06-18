@@ -1,6 +1,7 @@
 import React from 'react';
 import "./index.less";
-import { Form, useFormStore, useFormValues } from '../../lib';
+// import { Form, useFormStore, useFormValues } from '../../lib';
+import { Form, useFormStore, useFormValues } from '../../src';
 
 export default function Demo() {
 
