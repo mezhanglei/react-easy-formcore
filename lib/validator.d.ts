@@ -1,7 +1,7 @@
 import { TriggerType } from "./item-core";
 export declare type FormRule = {
     required?: boolean;
-    pattern?: string;
+    pattern?: RegExp;
     whitespace?: boolean;
     max?: number;
     min?: number;
