@@ -8,6 +8,7 @@ export interface ItemProps extends LabelBaseProps, ControlBaseProps {
     inline?: boolean;
     layout?: Layout;
     compact?: boolean;
+    readOnly?: boolean;
     className?: string;
     children?: React.ReactNode;
     style?: CSSProperties;

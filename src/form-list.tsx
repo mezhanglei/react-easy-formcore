@@ -33,11 +33,11 @@ export const FormList = React.forwardRef<any, FormListProps>((props, ref) => {
     onFieldsChange,
     onValuesChange,
     component = Item,
-    ignore,
     ...rest
   } = fieldProps;
 
   const [error] = useFormError(form, name);
+  const ignore = rest?.ignore || rest?.readOnly;
   const isHaveRequired = useMemo(() => (rules instanceof Array && rules?.find((rule) => rule?.required === true)), [rules]);
   const required = isHaveRequired && ignore !== true ? true : rest?.required;
   const FieldComponent = component
@@ -55,7 +55,7 @@ export const FormList = React.forwardRef<any, FormListProps>((props, ref) => {
 
   return (
     FieldComponent ?
-      <FieldComponent {...fieldProps} required={required} ref={ref} error={error}>
+      <FieldComponent {...fieldProps} required={required} ref={ref} error={ignore !== true && error}>
         {childs}
       </FieldComponent>
       : childs

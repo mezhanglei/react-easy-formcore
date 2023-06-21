@@ -25,6 +25,7 @@ export type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
   values?: any;
   initialValues?: any;
   onMount?: () => void;
+  component?: any;
 } & CreateFormProps;
 
 export function Form(props: FormProps) {
