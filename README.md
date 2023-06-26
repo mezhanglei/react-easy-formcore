@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![](https://img.shields.io/badge/version-5.0.9-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-5.0.10-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -193,7 +193,6 @@ Inherited field display component
 - `tagName` Replace the element tag name of the form, default `form` tag
 - `initialValues` The initial value of the form, which is overridden by the `initialValue` of the form field, Note that this value can only initialise the form `optional`.
 - `onSubmit` `form` tag triggers the reset default event, only `button` tags that provide `htmlType=submit` can trigger `optional`.
-- `onMount` The form mounted callback `optional`.
 - `onReset` `form` tag triggers the reset default event, only `button` tags that provide `htmlType=reset` can trigger `optional`.
 - `onFieldsChange` The event function when a form changes onChange will only be triggered by the control's active `onChange`, not by `form.setFieldValue` and `form.setFieldsValue`, avoiding circular calls。`optional`.
 - `onValuesChange` Listening for changes in form values.`optional`.

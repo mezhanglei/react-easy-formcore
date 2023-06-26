@@ -17,6 +17,7 @@ export interface ItemCoreProps {
     initialValue?: any;
     errorClassName?: string;
     onFieldsChange?: (obj: FieldChangedParams, values?: any) => void;
+    onFieldsMounted?: (obj: FieldChangedParams, values?: any) => void;
     onValuesChange?: (obj: FieldChangedParams, values?: any) => void;
     children?: any;
 }

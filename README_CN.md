@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![](https://img.shields.io/badge/version-5.0.9-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-5.0.10-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 
@@ -193,7 +193,6 @@ export default function Demo() {
 - `tagName` 更换表单的元素标签名, 默认`form`标签
 - `initialValues` 表单的初始值，会被表单域的`initialValue`覆盖, 注意此值只能初始化表单赋值`可选`。
 - `onSubmit` `form`标签提交事件, 只有提供`htmlType=submit`的`button`标签才可以触发，`可选`。
-- `onMount` 表单渲染完毕的回调，`可选`。
 - `onReset` `form`标签触发重置默认值触发事件, 只有`htmlType=reset`的`button`标签才可以触发 `可选`。
 - `onFieldsChange` 表单域 `onChange` 变化时的事件函数，只会被控件主动`onChange`触发，不会被`form.setFieldValue`和`form.setFieldsValue`触发, 避免循环调用。`可选`。
 - `onValuesChange` 监听表单值的变化。`可选`。

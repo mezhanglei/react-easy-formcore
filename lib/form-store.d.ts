@@ -48,6 +48,8 @@ export declare class FormStore<T extends Object = any> {
     private notifyError;
     subscribeFormItem(path: string, listener: FormListener['onChange']): () => void;
     subscribeFormGlobal(path: string, listener: FormListener['onChange']): () => void;
-    unsubscribeFormGlobal(path?: string): void;
     subscribeError(path: string, listener: FormListener['onChange']): () => void;
+    unsubscribeFormItem(path?: string): void;
+    unsubscribeFormGlobal(path?: string): void;
+    unsubscribeError(path?: string): void;
 }

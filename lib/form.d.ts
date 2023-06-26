@@ -13,9 +13,7 @@ export declare type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps 
     form?: S;
     style?: CSSProperties;
     children?: any;
-    values?: any;
     initialValues?: any;
-    onMount?: () => void;
     component?: any;
 } & CreateFormProps;
 export declare function Form(props: FormProps): JSX.Element;
