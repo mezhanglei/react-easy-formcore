@@ -18,6 +18,28 @@ export function pathToArr(path?: string | string[]) {
   return parts;
 }
 
+// 提取对象中的部分属性
+export const pickObject = <T = any>(obj: T | undefined, keys: string[] | ((key?: string, value?: any) => boolean)) => {
+  if (obj === undefined || obj === null) return obj;
+  if (keys instanceof Array) {
+    return keys.reduce((iter, key) => {
+      const item = deepGet(obj as any, key);
+      if(item !== undefined) {
+        iter[key] = item;
+      }
+      return iter;
+    }, {}) as T;
+  } else if (typeof keys === 'function') {
+    return Object.keys(obj || {}).reduce((iter, key) => {
+      const item = deepGet(obj as any, key);
+      if (keys(key, item)) {
+        iter[key] = item;
+      }
+      return iter;
+    }, {}) as T;
+  }
+}
+
 // 根据路径获取目标对象中的单个值或多个值
 export function deepGet(obj: object | undefined, keys?: string | string[]): any {
   if (!keys?.length) return

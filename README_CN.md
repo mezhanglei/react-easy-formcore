@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文说明
 
-[![](https://img.shields.io/badge/version-5.0.12-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-6.0.1-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # 适用场景
 

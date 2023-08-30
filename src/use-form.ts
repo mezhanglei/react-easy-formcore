@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { FormStore } from './form-store'
+import { pickObject } from './utils/object'
 import Validator from './validator'
 
 export function useFormStore<T extends Object = any>(
@@ -44,26 +45,12 @@ export function useFormError(form: FormStore, path?: string, immediate = true) {
 export function useFormValues<T = unknown>(form: FormStore, path?: string | string[], immediate = true) {
   const [formValues, setFomValues] = useState<T>();
 
-  const isChar = (key?: any) => typeof key === 'string' || typeof key === 'number';
-
   const subscribeForm = () => {
-    if (!form) return;
-    const pathList = path === undefined ? Object.keys(form.getFieldProps() || {}) : (path instanceof Array ? path : [path]);
-    pathList.map((key) => {
-      if (isChar(key)) {
-        return form.subscribeFormGlobal(key, (newVal) => {
-          // 返回目标值对象
-          if (path) {
-            setFomValues((old) => {
-              return Object.assign({}, old, { [key]: newVal });
-            })
-          } else {
-            // 返回整个表单值
-            const oldValues = form.getFieldValue();
-            setFomValues(oldValues);
-          }
-        })
-      }
+    if (!form || !path) return;
+    form.subscribeFormValues((newVal) => {
+      const keys = path instanceof Array ? path : [path];
+      const result = keys ? pickObject(newVal, keys) : newVal;
+      setFomValues(result);
     });
   };
 
@@ -75,10 +62,7 @@ export function useFormValues<T = unknown>(form: FormStore, path?: string | stri
   useEffect(() => {
     subscribeForm();
     return () => {
-      const pathList = path === undefined ? Object.keys(form.getFieldProps() || {}) : (path instanceof Array ? path : [path]);
-      pathList?.forEach((key) => {
-        form.unsubscribeFormGlobal(key);
-      });
+      form.unsubscribeFormValues();
     }
   }, [form, JSON.stringify(path)]);
 

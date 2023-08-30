@@ -19,7 +19,7 @@ export default function Demo() {
     }
   }
 
-  const formvalues = useFormValues(form, ['[0]name1', '[1]name2'])
+  const formvalues = useFormValues(form)
   console.log(formvalues, '监听表单值变化')
   return (
     <Form initialValues={[{ name1: 1111 }]} form={form} onSubmit={onSubmit}>

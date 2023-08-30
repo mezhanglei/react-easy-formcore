@@ -21,7 +21,8 @@ export declare type FormFieldsProps<T = any> = {
 export declare class FormStore<T extends Object = any> {
     private initialValues?;
     private formItemListeners;
-    private formGlobalListeners;
+    private formValueListeners;
+    private formValuesListeners;
     private errorListeners;
     private values?;
     private lastValues?;
@@ -44,12 +45,15 @@ export declare class FormStore<T extends Object = any> {
     validate(): Promise<ValidateResult<T>>;
     validate(path: string, eventName?: TriggerType | boolean): Promise<string>;
     private notifyFormItem;
-    private notifyFormGlobal;
+    private notifyFormValue;
+    private notifyFormValues;
     private notifyError;
     subscribeFormItem(path: string, listener: FormListener['onChange']): () => void;
-    subscribeFormGlobal(path: string, listener: FormListener['onChange']): () => void;
+    subscribeFormValue(path: string, listener: FormListener['onChange']): () => void;
+    subscribeFormValues(listener: FormListener['onChange']): () => void;
     subscribeError(path: string, listener: FormListener['onChange']): () => void;
     unsubscribeFormItem(path?: string): void;
-    unsubscribeFormGlobal(path?: string): void;
+    unsubscribeFormValue(path?: string): void;
+    unsubscribeFormValues(): void;
     unsubscribeError(path?: string): void;
 }
