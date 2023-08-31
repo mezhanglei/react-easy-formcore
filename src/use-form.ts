@@ -14,7 +14,7 @@ export function useValidator() {
 }
 
 // 获取error信息
-export function useFormError(form: FormStore, path?: string, immediate = true) {
+export function useFormError(form: FormStore, path?: string) {
   const [error, setError] = useState();
 
   const subscribeError = () => {
@@ -26,7 +26,6 @@ export function useFormError(form: FormStore, path?: string, immediate = true) {
   };
 
   useMemo(() => {
-    if (!immediate) return
     subscribeError();
   }, []);
 
@@ -42,20 +41,23 @@ export function useFormError(form: FormStore, path?: string, immediate = true) {
 }
 
 // 获取表单值
-export function useFormValues<T = unknown>(form: FormStore, path?: string | string[], immediate = true) {
+export function useFormValues<T = unknown>(form: FormStore, path?: string | string[]) {
   const [formValues, setFomValues] = useState<T>();
 
   const subscribeForm = () => {
-    if (!form || !path) return;
+    if (!form) return;
     form.subscribeFormValues((newVal) => {
-      const keys = path instanceof Array ? path : [path];
-      const result = keys ? pickObject(newVal, keys) : newVal;
-      setFomValues(result);
+      if (path == undefined) {
+        setFomValues(newVal);
+      } else {
+        const keys = path instanceof Array ? path : [path];
+        const result = keys ? pickObject(newVal, keys) : newVal;
+        setFomValues(result);
+      }
     });
   };
 
   useMemo(() => {
-    if (!immediate) return
     subscribeForm();
   }, []);
 
