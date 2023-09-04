@@ -4,7 +4,7 @@ import { LabelBaseProps } from './label';
 import './item.less';
 export declare type Layout = 'horizontal' | 'vertical' | string;
 export interface ItemProps extends LabelBaseProps, ControlBaseProps {
-    label?: string;
+    label?: string | React.ReactNode;
     inline?: boolean;
     layout?: Layout;
     compact?: boolean;

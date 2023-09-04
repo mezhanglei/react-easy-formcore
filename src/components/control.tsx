@@ -4,7 +4,7 @@ import { isEmpty } from '../utils/type';
 import './control.less';
 
 export interface ControlBaseProps {
-  error?: string;
+  error?: string | React.ReactNode;
   suffix?: React.ReactNode | any; // 右边节点
   footer?: React.ReactNode | any; // 底部节点
 }
