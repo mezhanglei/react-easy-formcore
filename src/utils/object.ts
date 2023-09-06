@@ -1,6 +1,6 @@
 import { copy } from 'copy-anything';
 import compare from 'react-fast-compare';
-import { isNumberStr } from './type';
+import { isNumberStr, isObject } from './type';
 
 export function deepClone<T = any>(value: T) {
   return copy(value);
@@ -71,7 +71,7 @@ export function deepSet(obj: any, path: string | string[], value: any) {
     const nextIsIndex = pathIsArr ? isNumberStr(next) : path?.indexOf(`[${next}]`) > -1
 
     // 当传入的值为空赋值初始值
-    if (typeof obj !== 'object' && i === 0) {
+    if (!isObject(obj) && i === 0) {
       if (isIndex) {
         temp = [];
         root = temp;
@@ -92,9 +92,9 @@ export function deepSet(obj: any, path: string | string[], value: any) {
       } else {
         temp[current] = value;
       }
-    } else if (typeof temp[current] !== 'object' && nextIsIndex) {
+    } else if (temp[current] === undefined && nextIsIndex) {
       temp[current] = [];
-    } else if (typeof temp[current] !== 'object') {
+    } else if (temp[current] === undefined) {
       temp[current] = {};
     }
     temp = temp[current];

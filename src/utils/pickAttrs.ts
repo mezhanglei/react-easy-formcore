@@ -1,3 +1,5 @@
+import { isObject } from "./type";
+
 const attributes = `accept acceptCharset accessKey action allowFullScreen allowTransparency
     alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge
     charSet checked classID className colSpan cols content contentEditable contextMenu
@@ -55,7 +57,7 @@ export default function pickAttrs(
     mergedConfig = {
       aria: true,
     };
-  } else if (typeof ariaOnly === 'object') {
+  } else if (isObject(ariaOnly)) {
     mergedConfig = {
       ...ariaOnly,
     };

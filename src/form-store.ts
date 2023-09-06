@@ -2,6 +2,7 @@ import { isExitPrefix, validateTriggerCondition } from './utils/utils';
 import { deepClone, deepGet, deepSet } from './utils/object';
 import Validator, { FormRule } from './validator';
 import { TriggerType } from './item-core';
+import { isObject } from './utils/type';
 
 export type FormListener = { path: string, onChange: (newValue?: any, oldValue?: any) => void }
 
@@ -136,7 +137,7 @@ export class FormStore<T extends Object = any> {
       this.notifyFormItem(path);
       this.notifyFormValue(path);
       this.notifyFormValues();
-    } else if (typeof path === 'object') {
+    } else if (isObject(path)) {
       Promise.all(Object.keys(path).map((n) => setFormItemValue(n, path?.[n])))
       this.notifyFormItem();
       this.notifyFormValue();
