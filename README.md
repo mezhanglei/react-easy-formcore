@@ -2,7 +2,7 @@
 
 English | [中文说明](./README_CN.md)
 
-[![](https://img.shields.io/badge/version-6.0.4-green)](https://www.npmjs.com/package/react-easy-formcore)
+[![](https://img.shields.io/badge/version-6.0.5-green)](https://www.npmjs.com/package/react-easy-formcore)
 
 # Introduction?
 
@@ -87,9 +87,9 @@ export default function Demo() {
     console.log(error, values, 'error ang values');
   };
 
-  const validator = async (value) => {
+  const validator = (value) => {
     if (value?.length < 2) {
-      return 'length is < 2';
+      return Promise.reject(new Error('length is < 2'));
     }
   }
 
@@ -133,9 +133,9 @@ export default function Demo() {
     console.log(error, values, 'error ang values');
   };
 
-  const validator = async (value) => {
+  const validator = (value) => {
     if (value?.length < 2) {
-      return 'length is < 2';
+      return Promise.reject(new Error('length is < 2'));
     }
   }
 
