@@ -1,6 +1,6 @@
 import { copy } from 'copy-anything';
 import compare from 'react-fast-compare';
-import { isArray, isEmpty, isNumberStr } from './type';
+import { isEmpty, isNumberStr } from './type';
 
 export function deepClone<T = any>(value: T) {
   return copy(value);
@@ -24,7 +24,7 @@ export const pickObject = <T = any>(obj: T | undefined, keys: string[] | ((key?:
   if (keys instanceof Array) {
     return keys.reduce((iter, key) => {
       const item = deepGet(obj as any, key);
-      if(item !== undefined) {
+      if (item !== undefined) {
         iter[key] = item;
       }
       return iter;
@@ -71,7 +71,7 @@ export function deepSet<T = any>(obj: T, path: string | string[], value: any) {
     const current = parts[i];
     const next = parts[i + 1];
 
-    if (i === parts?.length - 1) {
+    const handleTarget = () => {
       if (value === undefined) {
         if (temp instanceof Array) {
           const index = +current;
@@ -82,13 +82,22 @@ export function deepSet<T = any>(obj: T, path: string | string[], value: any) {
       } else {
         temp[current] = value;
       }
+    }
+
+    if (i === parts?.length - 1) {
+      handleTarget();
     } else {
-      const nextValue = temp[current];
-      if(isEmpty(nextValue)) {
+      const currentValue = temp[current];
+      if (isEmpty(currentValue)) {
+        // 如果目标值也是赋值undefined则提前结束查找
+        if (value == undefined) {
+          handleTarget();
+          return root;
+        }
         temp[current] = isIndex(next) ? [] : {}
       }
     }
-    // 进入下个循环
+    // 下个嵌套
     temp = temp[current];
   }
   return root;
