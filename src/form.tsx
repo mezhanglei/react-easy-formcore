@@ -5,7 +5,6 @@ import { FormStoreContext, FormOptionsContext, FormInitialValuesContext } from '
 import { FormList } from './form-list';
 import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
-import "./icons/index.js";
 
 interface CreateFormProps extends React.HTMLAttributes<HTMLElement> {
   tagName?: keyof React.ReactHTML

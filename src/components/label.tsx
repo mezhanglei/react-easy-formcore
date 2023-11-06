@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React, { CSSProperties } from 'react';
-import Icon from './icon';
+import SvgIcon from './SvgIcon';
 import Tooltip from './tooltip';
 import "./label.less";
 import { isEmpty } from '../utils/type';
@@ -57,7 +57,7 @@ export const Label = React.forwardRef<any, LabelProps>((props, ref) => {
         {colon === true ? <>{children}:</> : children}
         {tooltip && (
           <Tooltip content={tooltip} theme="light">
-            <Icon name="wenhao" className={`${prefix}__tooltip`} />
+            <SvgIcon name="wenhao" className={`${prefix}__tooltip`} />
           </Tooltip>)
         }
       </label>

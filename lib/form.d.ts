@@ -2,7 +2,6 @@ import React, { CSSProperties } from 'react';
 import { FormStore } from './form-store';
 import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
-import "./icons/index.js";
 interface CreateFormProps extends React.HTMLAttributes<HTMLElement> {
     tagName?: keyof React.ReactHTML;
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
