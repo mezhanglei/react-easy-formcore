@@ -49,7 +49,7 @@ export const Label = React.forwardRef<any, LabelProps>((props, ref) => {
     width: labelWidth,
     textAlign: labelAlign,
     ...style
-  }
+  };
 
   return (
     !isEmpty(children) && showLabel ? (

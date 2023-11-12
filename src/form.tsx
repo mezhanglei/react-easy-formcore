@@ -1,7 +1,7 @@
-import React, { CSSProperties } from 'react'
-import { FormItem } from './form-item'
-import { FormStore } from './form-store'
-import { FormStoreContext, FormOptionsContext, FormInitialValuesContext } from './form-context'
+import React, { CSSProperties } from 'react';
+import { FormItem } from './form-item';
+import { FormStore } from './form-store';
+import { FormStoreContext, FormOptionsContext, FormInitialValuesContext } from './form-context';
 import { FormList } from './form-list';
 import { ItemCoreProps } from './item-core';
 import { ItemProps } from './components/item';
@@ -26,9 +26,9 @@ export type FormProps<S = FormStore, T = ItemProps> = T & ItemCoreProps & {
 } & CreateFormProps;
 
 export function Form(props: FormProps) {
-  const { className = '', style, children, form, initialValues, tagName, onSubmit, onReset, ...options } = props
+  const { className = '', style, children, form, initialValues, tagName, onSubmit, onReset, ...options } = props;
 
-  const classNames = 'easy-form ' + className
+  const classNames = 'easy-form ' + className;
 
   return (
     <CreateForm
@@ -49,8 +49,8 @@ export function Form(props: FormProps) {
         </FormOptionsContext.Provider>
       </FormStoreContext.Provider>
     </CreateForm>
-  )
+  );
 }
 
-Form.Item = FormItem
-Form.List = FormList
+Form.Item = FormItem;
+Form.List = FormList;

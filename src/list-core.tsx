@@ -63,7 +63,7 @@ export const ListCore = (props: ListCoreProps) => {
 
   const childs = getChildren(children);
 
-  return childs
+  return childs;
 };
 
 ListCore.displayName = 'ListCore';

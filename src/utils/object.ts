@@ -14,7 +14,7 @@ export function isEqual(a: any, b: any) {
 // 接收路径字符串或数组字符串，返回数组字符串表示路径
 export function pathToArr(path?: string | string[]) {
   if (path instanceof Array) return path;
-  const parts = typeof path === 'string' && path ? path.replace(/\]$/, '').replace(/^\[/, '').split(/\.\[|\]\[|\[|\]\.|\]|\./g) : []
+  const parts = typeof path === 'string' && path ? path.replace(/\]$/, '').replace(/^\[/, '').split(/\.\[|\]\[|\[|\]\.|\]|\./g) : [];
   return parts;
 }
 
@@ -38,19 +38,19 @@ export const pickObject = <T = any>(obj: T | undefined, keys: string[] | ((key?:
       return iter;
     }, {}) as T;
   }
-}
+};
 
 // 根据路径获取目标对象中的单个值或多个值
 export function deepGet(obj: object | undefined, keys?: string | string[]): any {
-  if (!keys?.length) return
+  if (!keys?.length) return;
   if (keys instanceof Array) {
-    const result = obj instanceof Array ? [] : {}
+    const result = obj instanceof Array ? [] : {};
     for (let key of keys) {
-      result[key] = pathToArr(key)?.reduce?.((o, k) => (o)?.[k], obj)
+      result[key] = pathToArr(key)?.reduce?.((o, k) => (o)?.[k], obj);
     }
     return result;
   } else {
-    return pathToArr(keys)?.reduce?.((o, k) => (o)?.[k], obj)
+    return pathToArr(keys)?.reduce?.((o, k) => (o)?.[k], obj);
   }
 }
 
@@ -61,7 +61,7 @@ export function deepSet<T = any>(obj: T, path: string | string[], value: any) {
 
   // 是否为数组序号
   const isIndex = (str?: string) => {
-    return Array.isArray(path) ? isNumberStr(str) : path?.indexOf(`[${str}]`) > -1
+    return Array.isArray(path) ? isNumberStr(str) : path?.indexOf(`[${str}]`) > -1;
   };
 
   let temp: any = isEmpty(obj) ? (isIndex(parts[0]) ? [] : {}) : deepClone(obj);
@@ -82,7 +82,7 @@ export function deepSet<T = any>(obj: T, path: string | string[], value: any) {
       } else {
         temp[current] = value;
       }
-    }
+    };
 
     if (i === parts?.length - 1) {
       handleTarget();
@@ -94,7 +94,7 @@ export function deepSet<T = any>(obj: T, path: string | string[], value: any) {
           handleTarget();
           return root;
         }
-        temp[current] = isIndex(next) ? [] : {}
+        temp[current] = isIndex(next) ? [] : {};
       }
     }
     // 下个嵌套

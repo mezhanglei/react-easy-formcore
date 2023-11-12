@@ -55,7 +55,7 @@ export const Item = React.forwardRef<any, ItemProps>((props, ref) => {
     style,
     children,
     ...rest
-  } = itemProps
+  } = itemProps;
 
   const cls = classnames(
     classes.field,

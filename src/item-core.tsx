@@ -64,12 +64,12 @@ export const ItemCore = (props: ItemCoreProps) => {
   // 收集的rules中的validateTrigger
   const ruleTriggers = useMemo(() => {
     const rules = fieldProps?.['rules'];
-    const result = []
+    const result = [];
     if (rules instanceof Array) {
       for (let i = 0; i < rules?.length; i++) {
         const rule = rules?.[i];
         if (rule?.validateTrigger) {
-          result.push(rule?.validateTrigger)
+          result.push(rule?.validateTrigger);
         }
       }
     }
@@ -99,16 +99,16 @@ export const ItemCore = (props: ItemCoreProps) => {
 
   // 订阅更新值的函数
   useEffect(() => {
-    if (!currentPath || !form) return
+    if (!currentPath || !form) return;
     // 订阅目标控件
     form.subscribeFormItem(currentPath, (newValue, oldValue) => {
       setValue(newValue);
       if (!(isEmpty(newValue) && isEmpty(oldValue))) {
-        onValuesChange && onValuesChange({ name: currentPath, value: newValue }, form?.getFieldValue())
+        onValuesChange && onValuesChange({ name: currentPath, value: newValue }, form?.getFieldValue());
       }
     });
     return () => {
-      form.unsubscribeFormItem(currentPath)
+      form.unsubscribeFormItem(currentPath);
     };
   }, [JSON.stringify(currentPath), form, onValuesChange]);
 
@@ -119,13 +119,13 @@ export const ItemCore = (props: ItemCoreProps) => {
     if (initialItemValue !== undefined) {
       form.setInitialValues(currentPath, initialItemValue);
     }
-    onFieldsMounted && onFieldsMounted({ name: currentPath, value: initialItemValue }, form?.getFieldValue())
+    onFieldsMounted && onFieldsMounted({ name: currentPath, value: initialItemValue }, form?.getFieldValue());
     return () => {
       // 清除该表单域的props(在设置值的前面)
       currentPath && form?.setFieldProps(currentPath, undefined);
       // 清除初始值
       currentPath && form.setInitialValues(currentPath, undefined);
-    }
+    };
   }, [JSON.stringify(currentPath)]);
 
   const childValue = useMemo(() => typeof valueSetter === 'function' ? valueSetter(value) : (valueSetter ? undefined : value), [valueSetter, value]);
@@ -137,7 +137,7 @@ export const ItemCore = (props: ItemCoreProps) => {
       const childProps = child?.props as any;
       const { className } = childProps || {};
       const valueResult = childValue;
-      const newChildProps = { className: classnames(className, errorClassName), [valuePropName]: valueResult }
+      const newChildProps = { className: classnames(className, errorClassName), [valuePropName]: valueResult };
 
       triggers.forEach((eventName) => {
         newChildProps[eventName] = (...args: any[]) => {
@@ -146,7 +146,7 @@ export const ItemCore = (props: ItemCoreProps) => {
         };
       });
 
-      return cloneElement(child, newChildProps)
+      return cloneElement(child, newChildProps);
     } else {
       return child;
     }

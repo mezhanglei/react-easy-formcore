@@ -14,8 +14,8 @@ export type FormListProps<T = ItemProps> = T & ListCoreProps & {
 }
 
 export const FormList = React.forwardRef<any, FormListProps>((props, ref) => {
-  const form = useContext<FormStore>(FormStoreContext)
-  const options = useContext<any>(FormOptionsContext)
+  const form = useContext<FormStore>(FormStoreContext);
+  const options = useContext<any>(FormOptionsContext);
   const mergeProps = Object.assign({}, options, props);
   const { children, ...fieldProps } = mergeProps;
   const {
@@ -40,7 +40,7 @@ export const FormList = React.forwardRef<any, FormListProps>((props, ref) => {
   const ignore = rest?.ignore || rest?.readOnly;
   const isHaveRequired = useMemo(() => (rules instanceof Array && rules?.find((rule) => rule?.required === true)), [rules]);
   const required = isHaveRequired && ignore !== true ? true : rest?.required;
-  const FieldComponent = component
+  const FieldComponent = component;
 
   const childs = (
     <ListCore
@@ -51,7 +51,7 @@ export const FormList = React.forwardRef<any, FormListProps>((props, ref) => {
     >
       {children}
     </ListCore>
-  )
+  );
 
   return (
     FieldComponent ?

@@ -1,7 +1,7 @@
 import React from 'react';
 import Tippy, { TippyProps } from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import './tooltip.less'
+import './tooltip.less';
 import classnames from 'classnames';
 
 interface TooltipCustomProps extends TippyProps {
@@ -18,10 +18,10 @@ export default React.forwardRef((props: TooltipCustomProps, ref: any) => {
     ...rest
   } = props;
 
-  const prefixCls = 'custom-tooltip'
+  const prefixCls = 'custom-tooltip';
   const classes = {
     light: `${prefixCls}-light`
-  }
+  };
 
   const cls = classnames(
     className,

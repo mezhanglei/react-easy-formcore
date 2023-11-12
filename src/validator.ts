@@ -19,11 +19,11 @@ export default class Validator {
   rulesMap: { [path: string]: FormRule[] };
   errorsMap: { [path: string]: string | undefined };
   constructor() {
-    this.getError = this.getError.bind(this)
-    this.setError = this.setError.bind(this)
-    this.resetError = this.resetError.bind(this)
-    this.start = this.start.bind(this)
-    this.add = this.add.bind(this)
+    this.getError = this.getError.bind(this);
+    this.setError = this.setError.bind(this);
+    this.resetError = this.resetError.bind(this);
+    this.start = this.start.bind(this);
+    this.add = this.add.bind(this);
     this.rulesMap = {};
     this.errorsMap = {};
   }
@@ -39,26 +39,26 @@ export default class Validator {
   }
 
   getRulesMap() {
-    return this.rulesMap
+    return this.rulesMap;
   }
 
   getError(path?: string) {
     if (path) {
-      return this.errorsMap[path]
+      return this.errorsMap[path];
     }
   }
 
   setError(path: string, msg?: string) {
     if (!path) return;
     if (msg === undefined) {
-      delete this.errorsMap[path]
+      delete this.errorsMap[path];
     } else {
-      this.errorsMap[path] = msg
+      this.errorsMap[path] = msg;
     }
   }
 
   resetError() {
-    this.errorsMap = {}
+    this.errorsMap = {};
   }
 
   async start(path: string, value: any, eventName?: TriggerType | boolean) {
@@ -73,8 +73,8 @@ export default class Validator {
       if (canTrigger) {
         const message = await handleRule(rest, value);
         if (message) {
-          this.setError(path, message)
-          return message
+          this.setError(path, message);
+          return message;
         }
       }
     }
@@ -83,7 +83,7 @@ export default class Validator {
 
 // 处理单条规则
 const handleRule = async (rule: FormRule | undefined, value: any) => {
-  if (!rule) return
+  if (!rule) return;
   // 默认消息
   const defaultMessage = rule?.message;
   // 参与校验的字段
@@ -100,10 +100,10 @@ const handleRule = async (rule: FormRule | undefined, value: any) => {
         return msg;
       } catch (error: any) {
         if (typeof error === 'string') {
-          return error
+          return error;
         }
         if (typeof error?.message == 'string') {
-          return error?.message
+          return error?.message;
         }
         return defaultMessage;
       }
@@ -112,4 +112,4 @@ const handleRule = async (rule: FormRule | undefined, value: any) => {
       return defaultMessage;
     }
   }
-}
+};

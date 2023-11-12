@@ -1,16 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
-import { FormStore } from './form-store'
-import { pickObject } from './utils/object'
-import Validator from './validator'
+import { useEffect, useMemo, useState } from 'react';
+import { FormStore } from './form-store';
+import { pickObject } from './utils/object';
+import Validator from './validator';
 
 export function useFormStore<T extends Object = any>(
   values?: Partial<T>
 ) {
-  return useMemo(() => new FormStore(values), [])
+  return useMemo(() => new FormStore(values), []);
 }
 
 export function useValidator() {
-  return useMemo(() => new Validator(), [])
+  return useMemo(() => new Validator(), []);
 }
 
 // 获取error信息
@@ -18,7 +18,7 @@ export function useFormError(form: FormStore, path?: string) {
   const [error, setError] = useState();
 
   const subscribeError = () => {
-    if (!path || !form) return
+    if (!path || !form) return;
     form.subscribeError(path, () => {
       const error = form?.getFieldError(path);
       setError(error);
@@ -65,7 +65,7 @@ export function useFormValues<T = unknown>(form: FormStore, path?: string | stri
     subscribeForm();
     return () => {
       form.unsubscribeFormValues();
-    }
+    };
   }, [form, JSON.stringify(path)]);
 
   return formValues;

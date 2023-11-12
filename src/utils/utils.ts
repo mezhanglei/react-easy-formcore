@@ -17,19 +17,19 @@ export function isExitPrefix(prefix: string, path: string | string[]) {
 
 // 表单值的键名
 export function getValuePropName(valueProp: string | ((type: any) => string), type: any) {
-  return typeof valueProp === 'function' ? valueProp(type) : valueProp
+  return typeof valueProp === 'function' ? valueProp(type) : valueProp;
 }
 
 // 表单的值
 export function getValueFromEvent(...args: any[]) {
-  const e = args[0] as React.ChangeEvent<any>
-  return e && e.target ? (e.target.type === 'checkbox' ? e.target.checked : e.target.value) : e
+  const e = args[0] as React.ChangeEvent<any>;
+  return e && e.target ? (e.target.type === 'checkbox' ? e.target.checked : e.target.value) : e;
 }
 
 // 是否携带中括号
 export const isWithBracket = (part?: any) => {
-  return typeof part === 'string' && (/\[(\d+)\]/gi.test(part))
-}
+  return typeof part === 'string' && (/\[(\d+)\]/gi.test(part));
+};
 
 // 是否为数组索引项
 export const isValidNumber = (item?: any) => isNumberStr(item);
@@ -58,9 +58,9 @@ export const validateTriggerCondition = (eventName?: TriggerType | boolean, vali
     return validateTrigger === eventName;
   }
   if (validateTrigger instanceof Array) {
-    return validateTrigger?.includes(eventName)
+    return validateTrigger?.includes(eventName);
   }
-}
+};
 
 export function toArray<T>(list: T | T[]): T[] {
   if (!list) {
