@@ -4,3 +4,4 @@ node_modules
 dist
 cdn
 *.min.js
+**/*.stylelintrc
