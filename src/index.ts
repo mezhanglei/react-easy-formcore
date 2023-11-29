@@ -7,4 +7,6 @@ export * from './form-store';
 export * from './use-form';
 export * from './form-context';
 export * from './utils/utils';
+export * from './utils/object';
+export * from './utils/pickAttrs';
 export * from './validator';
