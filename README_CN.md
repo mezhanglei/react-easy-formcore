@@ -4,6 +4,8 @@
 
 [![](https://img.shields.io/badge/version-6.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
 
+> 项目已迁移至[@simpleform/form](https://github.com/mezhanglei/simpleform), 本仓库已废弃.
+
 # 适用场景
 
 轻量级表单容器双向绑定组件，会自动处理控件的`value`(或其他)和`onChange`，完成表单值的显示和更新。通过注入的`FormStore`实例提供的方法可以实现其他操作。

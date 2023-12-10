@@ -4,6 +4,8 @@ English | [中文说明](./README_CN.md)
 
 [![](https://img.shields.io/badge/version-6.0.11-green)](https://www.npmjs.com/package/react-easy-formcore)
 
+> The project has been migrated to [@simpleform/form](https://github.com/mezhanglei/simpleform), this repository is deprecated.
+
 # Introduction?
 
 Lightweight form container two-way binding component that automatically handles the `value` (or other) and `onChange` of the control to complete the display and update of the form values. Other operations can be implemented through the methods provided by the injected `FormStore` instance.
